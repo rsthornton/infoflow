@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfoFlow Social Media Simulation - Agent Interaction Diagrams</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #1976d2;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            margin-top: 2rem;
+        }
+        .diagram {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .explanation {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        .example {
+            margin: 1rem 0;
+            padding: 1rem;
+            background-color: #e3f2fd;
+            border-left: 4px solid #1976d2;
+            border-radius: 4px;
+        }
+        .key-concept {
+            font-weight: bold;
+            color: #1976d2;
+        }
+        footer {
+            margin-top: 3rem;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>InfoFlow Social Media Simulation</h1>
+        <h2>Agent Interaction Diagrams</h2>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>Introduction</h2>
+            <p>
+                The InfoFlow Social Media Simulation models how information spreads through social networks and how users form their assessments of truth. These diagrams visualize the key mechanisms that drive the simulation and explain how different parameters affect agent behavior.
+            </p>
+        </section>
+
+        <section>
+            <h2>Information Flow Overview</h2>
+            <div class="diagram">
+                <img src="information_flow_overview.svg" alt="Information Flow Overview">
+            </div>
+            <div class="explanation">
+                <p>
+                    This diagram shows the high-level information flow in the social media simulation. Content originates from three types of social media accounts:
+                </p>
+                <ul>
+                    <li><span class="key-concept">Corporate Social Media Accounts</span> - Represent established corporate entities on social platforms</li>
+                    <li><span class="key-concept">Social Media Influencers</span> - Individual content creators with follower bases</li>
+                    <li><span class="key-concept">Government Social Media Accounts</span> - Official government entities on social platforms</li>
+                </ul>
+                <p>
+                    Each account type creates content with varying levels of accuracy and political framing bias. This content is then broadcast to social media users in the network. Users process the information based on their cognitive parameters, update their trust in sources, and may share content with their connections.
+                </p>
+                <p>
+                    The diagram illustrates two critical pathways: the initial broadcast of content from social media accounts to users, and the subsequent sharing of content between connected users in the network.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>How Social Media Users Process Information</h2>
+            <div class="diagram">
+                <img src="content_processing_flow.svg" alt="Content Processing Flow">
+            </div>
+            <div class="explanation">
+                <p>
+                    When a social media user receives content, they go through a multi-step process to determine whether to accept it and update their truth assessment:
+                </p>
+                <ol>
+                    <li><span class="key-concept">Extract Content Properties</span> - The user identifies the content's accuracy, framing bias, source type, and other attributes</li>
+                    <li><span class="key-concept">Apply Source Trust Filter</span> - The user's existing trust in the source type affects how they receive the content</li>
+                    <li><span class="key-concept">Calculate Confirmation Bias Effect</span> - Content that aligns with existing beliefs is more likely to be accepted</li>
+                    <li><span class="key-concept">Apply Critical Thinking</span> - Higher critical thinking allows better evaluation of source credibility</li>
+                    <li><span class="key-concept">Calculate Acceptance Factor</span> - These factors combine to determine the probability of accepting the content</li>
+                    <li><span class="key-concept">Decision Point</span> - Based on the acceptance factor, the user either accepts or rejects the content</li>
+                    <li><span class="key-concept">Update Truth Assessment</span> - If accepted, the user updates their truth assessment based on the content</li>
+                </ol>
+                <p>
+                    This process models how real social media users selectively filter content based on their trust in sources, cognitive biases, and existing beliefs.
+                </p>
+            </div>
+            <div class="example">
+                <h4>Example</h4>
+                <p>
+                    A user with high trust in corporate social media accounts (7.5/10) receives content from a corporate account. If the content aligns with their existing beliefs, their confirmation bias (8/10) increases the acceptance probability. However, their critical thinking (6/10) might slightly reduce acceptance if the source has low credibility. The combined factors result in an acceptance probability of 0.75, making them likely to accept the content and update their truth assessment.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Trust Update Mechanism</h2>
+            <div class="diagram">
+                <img src="trust_update_mechanism.svg" alt="Trust Update Mechanism">
+            </div>
+            <div class="explanation">
+                <p>
+                    When content is accepted, the user also updates their trust in the source type through the following process:
+                </p>
+                <ol>
+                    <li><span class="key-concept">Get Current Trust</span> - Retrieve the existing trust level for the source type</li>
+                    <li><span class="key-concept">Evaluate Content Accuracy</span> - Assess how accurate the content seems to be</li>
+                    <li><span class="key-concept">Calculate Accuracy Impact</span> - Determine how accuracy affects trust:
+                        <ul>
+                            <li>Low accuracy (< 0.4) causes strong negative impact (-1.0 to -3.0)</li>
+                            <li>High accuracy (> 0.6) causes strong positive impact (+1.0 to +3.0)</li>
+                            <li>Medium accuracy (0.4-0.6) causes small impact (-0.4 to +0.4)</li>
+                        </ul>
+                    </li>
+                    <li><span class="key-concept">Apply Critical Thinking Factor</span> - Users with higher critical thinking make larger trust adjustments</li>
+                    <li><span class="key-concept">Calculate Final Trust Adjustment</span> - Combine all factors to determine the final change in trust</li>
+                    <li><span class="key-concept">Update Trust Level</span> - Apply the adjustment to the current trust level (bounded between 0-10)</li>
+                </ol>
+                <p>
+                    This mechanism creates a feedback loop where perceived accuracy of content directly impacts future trust in the source, affecting how future content from that source will be received.
+                </p>
+            </div>
+            <div class="example">
+                <h4>Example</h4>
+                <p>
+                    A user accepts content that has an accuracy of 0.8 (highly accurate). This high accuracy results in a strong positive impact of +2.0. With a critical thinking level of 8/10, the critical factor is 1.3, resulting in a final trust adjustment of +2.6. If their current trust in the source was 5.0, it would increase to 7.6 after this interaction.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Cognitive Parameters Effect</h2>
+            <div class="diagram">
+                <img src="cognitive_parameters_effect.svg" alt="Cognitive Parameters Effect">
+            </div>
+            <div class="explanation">
+                <p>
+                    Social media users in the simulation have several cognitive parameters that affect how they process information:
+                </p>
+                <ul>
+                    <li><span class="key-concept">Confirmation Bias (0-10)</span> - Determines how strongly users prefer content that matches their existing beliefs</li>
+                    <li><span class="key-concept">Critical Thinking (0-10)</span> - Affects how carefully users evaluate source credibility and how strongly they adjust trust</li>
+                    <li><span class="key-concept">Truth Seeking (-5 to +5)</span> - Determines whether users weight accuracy or bias more heavily when updating beliefs</li>
+                    <li><span class="key-concept">Social Conformity (0-10)</span> - Controls how strongly users are influenced by the beliefs of their connections</li>
+                </ul>
+                <p>
+                    The diagram shows how different levels of each parameter affect user behavior. These parameters interact to create diverse user profiles, from independent critical thinkers to socially conformist users who are highly susceptible to confirmation bias.
+                </p>
+            </div>
+            <div class="example">
+                <h4>Example User Profiles</h4>
+                <p>
+                    <strong>Critical Truth Seeker:</strong> High critical thinking (9), low confirmation bias (2), high truth seeking (+4), low social conformity (3)
+                    <br>
+                    <em>Behavior:</em> Evaluates sources carefully, prefers accurate content regardless of bias, makes large trust adjustments, and forms independent beliefs.
+                </p>
+                <p>
+                    <strong>Echo Chamber User:</strong> Low critical thinking (3), high confirmation bias (9), low truth seeking (-3), high social conformity (8)
+                    <br>
+                    <em>Behavior:</em> Strongly prefers content matching beliefs, minimally evaluates sources, is strongly influenced by political bias, and aligns closely with network connections.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Key Insights from Agent Interactions</h2>
+            <div class="explanation">
+                <p>
+                    These agent interaction mechanisms produce several emergent behaviors in the simulation:
+                </p>
+                <ul>
+                    <li><span class="key-concept">Truth Assessment Ceiling</span> - The simulation shows a natural ceiling of approximately 0.72 for average truth assessment, reflecting real-world limitations in collective truth perception</li>
+                    <li><span class="key-concept">Trust Volatility</span> - Trust in sources can shift dramatically based on content accuracy, creating feedback loops</li>
+                    <li><span class="key-concept">Network Effects</span> - The network structure significantly impacts how information spreads and how beliefs form</li>
+                    <li><span class="key-concept">Parameter Interactions</span> - Cognitive parameters interact in complex ways, sometimes amplifying or diminishing each other's effects</li>
+                </ul>
+                <p>
+                    Understanding these interaction mechanisms helps explain the patterns observed in the simulation and provides insights into real-world social media information dynamics.
+                </p>
+            </div>
+        </section>
+
+        <footer>
+            <p>InfoFlow Social Media Simulation - April 2025</p>
+        </footer>
+    </div>
+</body>
+</html>

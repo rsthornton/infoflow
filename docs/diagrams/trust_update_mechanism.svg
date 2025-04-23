@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .box { fill: #f0f0f0; stroke: #333; stroke-width: 2; }
+        .decision { fill: #ffe0b2; stroke: #333; stroke-width: 2; }
+        .process { fill: #bbdefb; stroke: #333; stroke-width: 2; }
+        .start-end { fill: #c8e6c9; stroke: #333; stroke-width: 2; rx: 20; ry: 20; }
+        .arrow { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+        .text { font-family: Arial, sans-serif; font-size: 12px; text-anchor: middle; }
+        .small-text { font-family: Arial, sans-serif; font-size: 10px; text-anchor: middle; }
+        .parameter { fill: #e1bee7; stroke: #333; stroke-width: 1; }
+        .impact { fill: #ffccbc; stroke: #333; stroke-width: 1; }
+        .dotted { stroke-dasharray: 5,5; }
+    </style>
+    
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+        </marker>
+    </defs>
+    
+    <rect x="0" y="0" width="800" height="600" fill="white" />
+    
+    <text x="400" y="30" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" font-weight="bold">
+        Trust Update Mechanism
+    </text>
+    
+    <!-- Starting point -->
+    <rect x="350" y="60" width="100" height="40" class="start-end" />
+    <text x="400" y="85" class="text">Content Accepted</text>
+    
+    <!-- Get current trust -->
+    <rect x="350" y="130" width="100" height="40" class="process" />
+    <text x="400" y="155" class="text">Get Current Trust</text>
+    
+    <!-- Assess perceived accuracy -->
+    <rect x="350" y="200" width="100" height="50" class="process" />
+    <text x="400" y="225" class="text">Evaluate Content</text>
+    <text x="400" y="240" class="small-text">Accuracy</text>
+    
+    <!-- Calculate accuracy impact -->
+    <rect x="350" y="280" width="100" height="50" class="process" />
+    <text x="400" y="305" class="text">Calculate</text>
+    <text x="400" y="320" class="small-text">Accuracy Impact</text>
+    
+    <!-- Low accuracy impact -->
+    <rect x="190" y="280" width="120" height="50" class="impact" />
+    <text x="250" y="297" class="small-text">If accuracy &lt; 0.4:</text>
+    <text x="250" y="312" class="small-text">Strong negative impact</text>
+    <text x="250" y="327" class="small-text">(-1.0 to -3.0)</text>
+    
+    <!-- High accuracy impact -->
+    <rect x="490" y="280" width="120" height="50" class="impact" />
+    <text x="550" y="297" class="small-text">If accuracy &gt; 0.6:</text>
+    <text x="550" y="312" class="small-text">Strong positive impact</text>
+    <text x="550" y="327" class="small-text">(+1.0 to +3.0)</text>
+    
+    <!-- Medium accuracy impact -->
+    <rect x="340" y="360" width="120" height="50" class="impact" />
+    <text x="400" y="377" class="small-text">If 0.4 ≤ accuracy ≤ 0.6:</text>
+    <text x="400" y="392" class="small-text">Small impact</text>
+    <text x="400" y="407" class="small-text">(-0.4 to +0.4)</text>
+    
+    <!-- Apply critical thinking -->
+    <rect x="350" y="440" width="100" height="50" class="process" />
+    <text x="400" y="465" class="text">Apply Critical</text>
+    <text x="400" y="480" class="small-text">Thinking Factor</text>
+    
+    <!-- Critical thinking parameter -->
+    <rect x="520" y="440" width="120" height="50" class="parameter" />
+    <text x="580" y="457" class="small-text">Critical thinking (0-10)</text>
+    <text x="580" y="472" class="small-text">Higher = stronger</text>
+    <text x="580" y="487" class="small-text">trust adjustments</text>
+    
+    <!-- Calculate trust adjustment -->
+    <rect x="350" y="520" width="100" height="50" class="process" />
+    <text x="400" y="545" class="text">Calculate Final</text>
+    <text x="400" y="560" class="small-text">Trust Adjustment</text>
+    
+    <!-- Ending point -->
+    <rect x="350" y="600" width="100" height="40" class="start-end" />
+    <text x="400" y="625" class="text">Update Trust Level</text>
+    
+    <!-- Connection lines -->
+    <path d="M 400 100 L 400 130" class="arrow" />
+    <path d="M 400 170 L 400 200" class="arrow" />
+    <path d="M 400 250 L 400 280" class="arrow" />
+    
+    <!-- Impact connections -->
+    <path d="M 310 305 L 350 305" class="arrow dotted" />
+    <path d="M 490 305 L 450 305" class="arrow dotted" />
+    <path d="M 400 360 L 400 330" class="arrow dotted" />
+    
+    <path d="M 400 330 L 400 440" class="arrow" />
+    <path d="M 400 490 L 400 520" class="arrow" />
+    <path d="M 400 570 L 400 600" class="arrow" />
+    
+    <!-- Parameter connections -->
+    <path d="M 520 465 L 450 465" class="arrow dotted" />
+    
+    <!-- Legend -->
+    <rect x="620" y="520" width="150" height="120" fill="white" stroke="#333" />
+    <text x="695" y="540" class="text" font-weight="bold">Legend</text>
+    
+    <rect x="630" y="550" width="20" height="15" class="process" />
+    <text x="700" y="560" class="small-text" text-anchor="start">Process Step</text>
+    
+    <rect x="630" y="575" width="20" height="15" class="parameter" />
+    <text x="700" y="585" class="small-text" text-anchor="start">Parameter</text>
+    
+    <rect x="630" y="600" width="20" height="15" class="impact" />
+    <text x="700" y="610" class="small-text" text-anchor="start">Impact Rule</text>
+    
+    <rect x="630" y="625" width="20" height="15" class="start-end" />
+    <text x="700" y="635" class="small-text" text-anchor="start">Start/End</text>
+</svg>

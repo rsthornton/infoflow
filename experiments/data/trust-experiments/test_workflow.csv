@@ -1,0 +1,6 @@
+step,run_id,timestamp,name,num_citizens,network_type,avg_trust_corporate,avg_trust_government,avg_trust_influencer,avg_truth_assessment,total_content_created,avg_content_spread,max_content_spread,viral_content_count,avg_spread_CorporateMediaAgent,avg_spread_InfluencerAgent,avg_spread_GovernmentMediaAgent,avg_spread_true_content,avg_spread_fuzzy_content,avg_spread_false_content,count_true_content,count_fuzzy_content,count_false_content
+0,workflow_test,2025-04-23 07:01:56,test_workflow,100,small_world,5.5,6.8,5.2,0.68,3,6.2,14,0,8.3,5.1,4.9,9.5,5.7,3.1,1,1,1
+5,workflow_test,2025-04-23 07:01:56,test_workflow,100,small_world,5.8,7.2,5.5,0.72,3,20.6,35,0,27.3,18.1,17.4,28.5,18.2,15.1,1,1,1
+10,workflow_test,2025-04-23 07:01:56,test_workflow,100,small_world,6.2,7.5,5.7,0.75,3,36.1,68,1,45.3,26.1,36.0,48.0,32.3,27.0,1,1,1
+15,workflow_test,2025-04-23 07:01:56,test_workflow,100,small_world,6.5,7.7,6.0,0.79,3,49.5,86,2,68.0,39.5,39.0,68.0,44.5,36.0,1,1,1
+20,workflow_test,2025-04-23 07:01:56,test_workflow,100,small_world,6.8,8.0,6.3,0.84,3,65.3,95,2,85.0,48.0,63.0,88.0,56.0,53.0,1,1,1

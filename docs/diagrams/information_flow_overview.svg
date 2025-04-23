@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .social-media { fill: #bbdefb; stroke: #1976d2; stroke-width: 2; }
+        .citizen { fill: #c8e6c9; stroke: #4caf50; stroke-width: 2; }
+        .arrow { stroke: #333; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+        .broadcast { stroke: #e91e63; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+        .share { stroke: #673ab7; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); stroke-dasharray: 4,2; }
+        .text { font-family: Arial, sans-serif; font-size: 14px; text-anchor: middle; }
+        .small-text { font-family: Arial, sans-serif; font-size: 10px; text-anchor: middle; }
+        .label { font-family: Arial, sans-serif; font-size: 12px; }
+        .content { fill: #fff9c4; stroke: #fbc02d; stroke-width: 1.5; }
+        .connection { stroke: #757575; stroke-width: 1; stroke-dasharray: 4,2; fill: none; }
+    </style>
+    
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+        </marker>
+    </defs>
+    
+    <rect x="0" y="0" width="800" height="600" fill="white" />
+    
+    <text x="400" y="30" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" font-weight="bold">
+        Information Flow in Social Media Network
+    </text>
+    
+    <!-- Media Agents -->
+    <ellipse cx="200" cy="120" rx="70" ry="40" class="social-media" />
+    <text x="200" y="125" class="text">Corporate</text>
+    
+    <ellipse cx="400" cy="120" rx="70" ry="40" class="social-media" />
+    <text x="400" y="125" class="text">Influencer</text>
+    
+    <ellipse cx="600" cy="120" rx="70" ry="40" class="social-media" />
+    <text x="600" y="125" class="text">Government</text>
+    
+    <!-- Media Properties -->
+    <text x="200" y="90" class="small-text">Truth commitment | Political bias</text>
+    <text x="200" y="150" class="small-text">Publication rate | Influence reach</text>
+    
+    <text x="400" y="90" class="small-text">Truth commitment | Political bias</text>
+    <text x="400" y="150" class="small-text">Publication rate | Engagement factor</text>
+    
+    <text x="600" y="90" class="small-text">Truth commitment | Political bias</text>
+    <text x="600" y="150" class="small-text">Publication rate | Authority factor</text>
+    
+    <!-- Content -->
+    <rect x="180" y="200" width="40" height="30" rx="5" ry="5" class="content" />
+    <text x="200" y="220" class="small-text">Content</text>
+    
+    <rect x="380" y="200" width="40" height="30" rx="5" ry="5" class="content" />
+    <text x="400" y="220" class="small-text">Content</text>
+    
+    <rect x="580" y="200" width="40" height="30" rx="5" ry="5" class="content" />
+    <text x="600" y="220" class="small-text">Content</text>
+    
+    <!-- Content Properties -->
+    <text x="120" y="210" class="small-text" text-anchor="end">accuracy</text>
+    <text x="120" y="225" class="small-text" text-anchor="end">framing_bias</text>
+    <text x="120" y="240" class="small-text" text-anchor="end">source_type</text>
+    
+    <!-- User Network -->
+    <g id="user-network">
+        <!-- Users -->
+        <ellipse cx="200" cy="350" rx="25" ry="20" class="citizen" />
+        <ellipse cx="280" cy="320" rx="25" ry="20" class="citizen" />
+        <ellipse cx="360" cy="390" rx="25" ry="20" class="citizen" />
+        <ellipse cx="440" cy="330" rx="25" ry="20" class="citizen" />
+        <ellipse cx="500" cy="400" rx="25" ry="20" class="citizen" />
+        <ellipse cx="580" cy="360" rx="25" ry="20" class="citizen" />
+        <ellipse cx="290" cy="410" rx="25" ry="20" class="citizen" />
+        
+        <!-- Network Connections -->
+        <path d="M 220 342 L 260 327" class="connection" />
+        <path d="M 225 358 L 270 400" class="connection" />
+        <path d="M 300 330 L 335 380" class="connection" />
+        <path d="M 380 380 L 425 340" class="connection" />
+        <path d="M 460 345 L 485 385" class="connection" />
+        <path d="M 520 390 L 560 370" class="connection" />
+        <path d="M 315 400 L 340 390" class="connection" />
+    </g>
+    
+    <!-- Media to User Broadcast -->
+    <path d="M 200 160 L 200 200" class="broadcast" />
+    <path d="M 180 155 L 190 330" class="broadcast" />
+    <path d="M 220 155 L 270 305" class="broadcast" />
+    
+    <path d="M 400 160 L 400 200" class="broadcast" />
+    <path d="M 380 155 L 350 375" class="broadcast" />
+    <path d="M 420 155 L 435 315" class="broadcast" />
+    
+    <path d="M 600 160 L 600 200" class="broadcast" />
+    <path d="M 580 155 L 510 385" class="broadcast" />
+    <path d="M 615 155 L 575 345" class="broadcast" />
+    
+    <!-- User to User Sharing -->
+    <path d="M 280 340 L 340 350 L 380 370" class="share" />
+    <text x="330" y="335" class="small-text" fill="#673ab7">shared content</text>
+    
+    <path d="M 440 350 L 480 360 L 560 370" class="share" />
+    <text x="510" y="345" class="small-text" fill="#673ab7">shared content</text>
+    
+    <!-- User properties -->
+    <text x="400" y="460" class="small-text">User cognitive parameters: truth_seeking, confirmation_bias, critical_thinking, social_conformity</text>
+    
+    <!-- Legend -->
+    <rect x="580" y="460" width="200" height="130" fill="white" stroke="#333" />
+    <text x="680" y="480" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" font-weight="bold">Legend</text>
+    
+    <ellipse cx="600" cy="500" rx="15" ry="10" class="social-media" />
+    <text x="680" y="505" class="small-text" text-anchor="start">Social Media Account</text>
+    
+    <ellipse cx="600" cy="525" rx="15" ry="10" class="citizen" />
+    <text x="680" y="530" class="small-text" text-anchor="start">Social Media User</text>
+    
+    <rect x="585" y="545" width="30" height="15" rx="5" ry="5" class="content" />
+    <text x="680" y="553" class="small-text" text-anchor="start">Content</text>
+    
+    <line x1="590" y1="570" x2="610" y2="570" class="broadcast" />
+    <text x="680" y="575" class="small-text" text-anchor="start">Content Broadcast</text>
+    
+    <line x1="590" y1="590" x2="610" y2="590" class="share" />
+    <text x="680" y="595" class="small-text" text-anchor="start">Content Sharing</text>
+</svg>

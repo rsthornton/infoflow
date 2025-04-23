@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="700" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .box { fill: #f0f0f0; stroke: #333; stroke-width: 2; }
+        .param-box { fill: #e1bee7; stroke: #333; stroke-width: 2; }
+        .effect-box { fill: #bbdefb; stroke: #333; stroke-width: 2; }
+        .high { fill: #c8e6c9; }
+        .medium { fill: #fff9c4; }
+        .low { fill: #ffccbc; }
+        .arrow { stroke: #333; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+        .text { font-family: Arial, sans-serif; font-size: 14px; text-anchor: middle; }
+        .title { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; text-anchor: middle; }
+        .small-text { font-family: Arial, sans-serif; font-size: 10px; text-anchor: middle; }
+        .label { font-family: Arial, sans-serif; font-size: 12px; }
+    </style>
+    
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+        </marker>
+    </defs>
+    
+    <rect x="0" y="0" width="800" height="700" fill="white" />
+    
+    <text x="400" y="30" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" font-weight="bold">
+        How Cognitive Parameters Affect User Behavior
+    </text>
+    
+    <!-- Confirmation Bias Section -->
+    <rect x="100" y="70" width="600" height="120" class="box" />
+    <text x="400" y="90" class="title">Confirmation Bias (0-10)</text>
+    
+    <rect x="120" y="110" width="160" height="60" class="param-box low" />
+    <text x="200" y="130" class="text">Low (0-3)</text>
+    <text x="200" y="150" class="small-text">Considers diverse viewpoints</text>
+    <text x="200" y="165" class="small-text">Less preference for aligned content</text>
+    
+    <rect x="320" y="110" width="160" height="60" class="param-box medium" />
+    <text x="400" y="130" class="text">Medium (4-7)</text>
+    <text x="400" y="150" class="small-text">Moderate preference for</text>
+    <text x="400" y="165" class="small-text">content matching beliefs</text>
+    
+    <rect x="520" y="110" width="160" height="60" class="param-box high" />
+    <text x="600" y="130" class="text">High (8-10)</text>
+    <text x="600" y="150" class="small-text">Strongly favors content</text>
+    <text x="600" y="165" class="small-text">that aligns with existing beliefs</text>
+    
+    <!-- Critical Thinking Section -->
+    <rect x="100" y="210" width="600" height="120" class="box" />
+    <text x="400" y="230" class="title">Critical Thinking (0-10)</text>
+    
+    <rect x="120" y="250" width="160" height="60" class="param-box low" />
+    <text x="200" y="270" class="text">Low (0-3)</text>
+    <text x="200" y="290" class="small-text">Minimal source evaluation</text>
+    <text x="200" y="305" class="small-text">Small trust adjustments</text>
+    
+    <rect x="320" y="250" width="160" height="60" class="param-box medium" />
+    <text x="400" y="270" class="text">Medium (4-7)</text>
+    <text x="400" y="290" class="small-text">Moderate source evaluation</text>
+    <text x="400" y="305" class="small-text">Standard trust adjustments</text>
+    
+    <rect x="520" y="250" width="160" height="60" class="param-box high" />
+    <text x="600" y="270" class="text">High (8-10)</text>
+    <text x="600" y="290" class="small-text">Strong source credibility checks</text>
+    <text x="600" y="305" class="small-text">Large trust adjustments</text>
+    
+    <!-- Truth Seeking Section -->
+    <rect x="100" y="350" width="600" height="120" class="box" />
+    <text x="400" y="370" class="title">Truth Seeking (-5 to +5)</text>
+    
+    <rect x="120" y="390" width="160" height="60" class="param-box low" />
+    <text x="200" y="410" class="text">Low (-5 to -1)</text>
+    <text x="200" y="430" class="small-text">Avoids truthful content</text>
+    <text x="200" y="445" class="small-text">Strongly influenced by bias</text>
+    
+    <rect x="320" y="390" width="160" height="60" class="param-box medium" />
+    <text x="400" y="410" class="text">Medium (-1 to +1)</text>
+    <text x="400" y="430" class="small-text">Balanced between truth</text>
+    <text x="400" y="445" class="small-text">and confirmation bias</text>
+    
+    <rect x="520" y="390" width="160" height="60" class="param-box high" />
+    <text x="600" y="410" class="text">High (+1 to +5)</text>
+    <text x="600" y="430" class="small-text">Actively seeks accurate content</text>
+    <text x="600" y="445" class="small-text">More influenced by accuracy</text>
+    
+    <!-- Social Conformity Section -->
+    <rect x="100" y="490" width="600" height="120" class="box" />
+    <text x="400" y="510" class="title">Social Conformity (0-10)</text>
+    
+    <rect x="120" y="530" width="160" height="60" class="param-box low" />
+    <text x="200" y="550" class="text">Low (0-3)</text>
+    <text x="200" y="570" class="small-text">Forms independent beliefs</text>
+    <text x="200" y="585" class="small-text">Minimal network influence</text>
+    
+    <rect x="320" y="530" width="160" height="60" class="param-box medium" />
+    <text x="400" y="550" class="text">Medium (4-7)</text>
+    <text x="400" y="570" class="small-text">Moderate social influence</text>
+    <text x="400" y="585" class="small-text">Balanced independence</text>
+    
+    <rect x="520" y="530" width="160" height="60" class="param-box high" />
+    <text x="600" y="550" class="text">High (8-10)</text>
+    <text x="600" y="570" class="small-text">Strongly influenced by network</text>
+    <text x="600" y="585" class="small-text">Aligns with social circle</text>
+    
+    <!-- Combined Effects Section -->
+    <rect x="100" y="630" width="600" height="50" class="effect-box" />
+    <text x="400" y="650" class="title">Combined Effects on User Behavior</text>
+    <text x="400" y="670" class="small-text">These parameters interact to determine how social media users process, share, and are influenced by content</text>
+</svg>

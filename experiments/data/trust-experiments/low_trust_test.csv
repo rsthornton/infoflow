@@ -1,0 +1,6 @@
+step,run_id,timestamp,name,num_citizens,network_type,avg_trust_corporate,avg_trust_government,avg_trust_influencer,avg_truth_assessment,total_content_created,avg_content_spread,max_content_spread,viral_content_count,avg_spread_CorporateMediaAgent,avg_spread_InfluencerAgent,avg_spread_GovernmentMediaAgent,avg_spread_true_content,avg_spread_fuzzy_content,avg_spread_false_content,count_true_content,count_fuzzy_content,count_false_content
+0,test_run_54321,2025-04-23 12:34:56,low_trust_test,100,small_world,5.0,3.2,5.0,0.45,3,4.8,10,0,6.1,3.9,4.2,4.2,5.1,6.3,1,1,1
+5,test_run_54321,2025-04-23 12:34:56,low_trust_test,100,small_world,4.8,2.9,4.9,0.42,3,16.2,28,0,18.5,13.2,17.1,12.5,15.2,22.1,1,1,1
+10,test_run_54321,2025-04-23 12:34:56,low_trust_test,100,small_world,4.6,2.5,4.7,0.38,3,28.5,52,1,32.8,21.5,31.2,21.3,28.6,38.2,1,1,1
+15,test_run_54321,2025-04-23 12:34:56,low_trust_test,100,small_world,4.3,2.2,4.5,0.35,3,38.9,74,2,45.2,32.2,36.6,30.2,38.5,48.5,1,1,1
+20,test_run_54321,2025-04-23 12:34:56,low_trust_test,100,small_world,4.0,1.8,4.3,0.32,3,52.8,82,2,55.5,42.8,60.3,39.0,48.0,72.5,1,1,1

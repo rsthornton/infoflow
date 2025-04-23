@@ -1,0 +1,50 @@
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*.so
+.Python
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Virtual environments
+.env
+.venv
+
+# Development environments
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Project specific
+logs/
+data/
+experiments/exports/
+experiments/.archive/
+*.db
+simulation_stats.db
+
+# Temporary files
+random-test_run_*.json
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

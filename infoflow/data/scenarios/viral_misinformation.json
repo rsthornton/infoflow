@@ -1,0 +1,56 @@
+{
+    "id": "viral_misinformation",
+    "name": "Viral Misinformation",
+    "description": "This scenario demonstrates how obviously false information can spread rapidly through social networks and social media platforms. By examining the emergence of echo chambers and viral content sharing patterns, you'll observe how cognitive biases enable misinformation to thrive despite being factually incorrect.",
+    "learning_objectives": [
+        "Observe how misinformation spreads despite being clearly false",
+        "Identify the formation and reinforcement of echo chambers",
+        "Understand how social media amplifiers accelerate the spread of false content",
+        "Recognize how confirmation bias affects information processing"
+    ],
+    "scenario_context": "In this simulation, a false claim about a fictional technology is introduced into the social media environment. The claim is easily verifiable as false, but it aligns with certain users' existing beliefs and creates engagement opportunities for social media influencers.",
+    "observation_guidance": "Pay attention to the speed of information spread, clustering of beliefs, and changes in trust levels over time. Notice how groups with similar cognitive profiles tend to converge in their belief patterns, even when presented with contradicting information.",
+    "simulation_parameters": {
+        "num_citizens": 100,
+        "num_corporate_media": 3,
+        "num_influencers": 5,
+        "num_government": 1,
+        "network_type": "small_world",
+        "steps": 50,
+        
+        "truth_seeking_mean": -1.5,
+        "truth_seeking_std": 1.5,
+        "confirmation_bias_min": 6,
+        "confirmation_bias_max": 9,
+        "critical_thinking_min": 2,
+        "critical_thinking_max": 5,
+        "social_conformity_min": 6,
+        "social_conformity_max": 9,
+        
+        "initial_trust_in_corporate": 6.5,
+        "initial_trust_in_influencers": 7.0,
+        "initial_trust_in_government": 3.5,
+        
+        "corporate_bias_min": -2,
+        "corporate_bias_max": 3,
+        "influencer_bias_min": -4,
+        "influencer_bias_max": 4,
+        "government_bias": 0,
+        
+        "truth_commitment_corporate": 4.0,
+        "truth_commitment_influencer": 2.0,
+        "truth_commitment_government": 7.0,
+        
+        "corporate_publication_rate": 0.9,
+        "corporate_influence_reach": 0.8,
+        "influencer_publication_rate": 0.95,
+        "influencer_influence_reach": 0.7,
+        "government_publication_rate": 0.6,
+        "government_influence_reach": 0.5,
+        
+        "small_world_k": 5,
+        "small_world_p": 0.15,
+        "scale_free_m": 3,
+        "random_p": 0.1
+    }
+}

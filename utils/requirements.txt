@@ -1,0 +1,3 @@
+solara
+matplotlib
+mesa[rec]>=3.0.0

@@ -1,0 +1,291 @@
+{% extends "base.html" %}
+
+{% block title %}InfoFlow - Research Scenarios{% endblock %}
+
+{% block extra_head %}
+<style>
+    .research-card {
+        height: 100%;
+        transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .research-card:hover {
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .card-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid rgba(0,0,0,0.125);
+        font-weight: 600;
+    }
+    .card-header-icon {
+        margin-right: 8px;
+        vertical-align: text-bottom;
+    }
+    .research-question {
+        font-style: italic;
+        color: #6c757d;
+        margin-bottom: 1rem;
+        padding: 0.5rem;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+        font-size: 0.95rem;
+    }
+    .parameter-section {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+    }
+    .parameter-header {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+    .parameter-list {
+        margin-bottom: 0.5rem;
+    }
+    .btn-run {
+        margin-top: 1rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <h1>Research Scenarios</h1>
+            <p class="lead">
+                These scenarios are designed specifically to investigate the core research questions of this project. 
+                Each scenario systematically tests different parameters related to a specific research question.
+            </p>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        {% for scenario in scenarios %}
+        <div class="col-md-4 mb-4">
+            <div class="card research-card">
+                <div class="card-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-text card-header-icon" viewBox="0 0 16 16">
+                        <path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                        <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-12a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3z"/>
+                    </svg>
+                    {{ scenario.name }}
+                </div>
+                <div class="card-body">
+                    <div class="research-question">
+                        <small>Research Question:</small><br>
+                        {{ scenario.research_question }}
+                    </div>
+                    
+                    <p class="card-text">{{ scenario.description }}</p>
+                    
+                    <div class="parameter-section">
+                        <div class="parameter-header">Key Parameters:</div>
+                        <div class="parameter-list">
+                            {% if scenario.id == 'trust_study' %}
+                            • Initial trust levels across media sources
+                            • Truth commitment of different sources
+                            • Trust evolution dynamics
+                            {% elif scenario.id == 'network_connectivity' %}
+                            • Scale-free network structure
+                            • Hub-dominated connectivity
+                            • Information spread velocity
+                            {% elif scenario.id == 'belief_resistance' %}
+                            • Confirmation bias spectrum
+                            • Critical thinking levels
+                            • Truth-seeking tendency
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <div class="text-center d-grid gap-2">
+                        <button class="btn btn-primary btn-run" onclick="runResearchScenario('{{ scenario.id }}')">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                                <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                            </svg>
+                            Run Scenario (Default Parameters)
+                        </button>
+                        <a href="{{ url_for('main.research_variation', scenario_id=scenario.id) }}" class="btn btn-outline-primary mt-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
+                            </svg>
+                            Vary Parameters
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>About Research Scenarios</h3>
+                </div>
+                <div class="card-body">
+                    <p>
+                        These research scenarios are designed to systematically explore the main research questions of the InfoFlow project:
+                    </p>
+                    <ol>
+                        <li><strong>What is the relationship between institutional trust and a healthy social media information ecosystem?</strong></li>
+                        <li><strong>How does the amount, and the types of connectivity in social media networks influence how information spreads?</strong></li>
+                        <li><strong>How does resistance to update one's beliefs affect information trust evaluation?</strong></li>
+                    </ol>
+                    <p>
+                        Each scenario provides a baseline configuration that can be modified or compared with other 
+                        configurations to explore different aspects of these questions. For more detailed parameter 
+                        recommendations, see the 
+                        <a href="https://github.com/your-username/infoflow/blob/master/research-parameter-guide.md" target="_blank">
+                            Research Parameter Guide
+                        </a>.
+                    </p>
+                    <div class="mt-3">
+                        <a href="{{ url_for('main.simulation') }}" class="btn btn-outline-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill me-1" viewBox="0 0 16 16">
+                                <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+                            </svg>
+                            Create Custom Simulation
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to run a research scenario by ID
+    function runResearchScenario(scenarioId) {
+        // Show loading spinner
+        const loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
+        loadingModal.show();
+        
+        // Define the parameters based on the scenario ID if API fails
+        let fallbackParams = {};
+        
+        if (scenarioId === 'trust_study') {
+            fallbackParams = {
+                "num_citizens": 100,
+                "num_corporate_media": 3,
+                "num_influencers": 5,
+                "num_government": 1,
+                "network_type": "small_world",
+                "steps": 50,
+                "truth_seeking_mean": 0.5,
+                "truth_seeking_std": 2.0,
+                "confirmation_bias_min": 4,
+                "confirmation_bias_max": 7,
+                "critical_thinking_min": 4,
+                "critical_thinking_max": 7,
+                "social_conformity_min": 4,
+                "social_conformity_max": 7,
+                "initial_trust_in_corporate": 5.0,
+                "initial_trust_in_influencers": 5.0,
+                "initial_trust_in_government": 5.0,
+                "scenario_id": "trust_study"
+            };
+        } else if (scenarioId === 'network_connectivity') {
+            fallbackParams = {
+                "num_citizens": 150,
+                "num_corporate_media": 3,
+                "num_influencers": 6,
+                "num_government": 1,
+                "network_type": "scale_free",
+                "steps": 50,
+                "truth_seeking_mean": 0,
+                "truth_seeking_std": 2.5,
+                "confirmation_bias_min": 4,
+                "confirmation_bias_max": 7,
+                "critical_thinking_min": 4,
+                "critical_thinking_max": 7,
+                "social_conformity_min": 4,
+                "social_conformity_max": 7,
+                "scenario_id": "network_connectivity"
+            };
+        } else if (scenarioId === 'belief_resistance') {
+            fallbackParams = {
+                "num_citizens": 100,
+                "num_corporate_media": 3,
+                "num_influencers": 5,
+                "num_government": 1,
+                "network_type": "small_world",
+                "steps": 50,
+                "truth_seeking_mean": 0,
+                "truth_seeking_std": 2.5,
+                "confirmation_bias_min": 5,
+                "confirmation_bias_max": 7,
+                "critical_thinking_min": 4,
+                "critical_thinking_max": 6,
+                "social_conformity_min": 5,
+                "social_conformity_max": 7,
+                "scenario_id": "belief_resistance"
+            };
+        }
+        
+        // Try to fetch the scenario configuration from the API
+        fetch(`/api/scenarios/${scenarioId}`)
+            .then(response => {
+                if (!response.ok) {
+                    // Use fallback parameters if API fails
+                    console.log("Using fallback parameters for " + scenarioId);
+                    return { status: 'success', scenario: { simulation_parameters: fallbackParams } };
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.status === 'success') {
+                    // Add scenario_id to parameters for tracking
+                    const params = data.scenario.simulation_parameters;
+                    params.scenario_id = scenarioId;
+                    
+                    // Ensure we have a reasonable number of citizens for performance
+                    if (!params.num_citizens || params.num_citizens > 200) {
+                        params.num_citizens = Math.min(params.num_citizens || 100, 200);
+                    }
+                    
+                    // Start the simulation with the scenario parameters
+                    return fetch('/api/run-simulation', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(params)
+                    });
+                } else {
+                    throw new Error(data.message || 'Failed to load scenario');
+                }
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.status === 'success') {
+                    // Redirect to results page
+                    window.location.href = `/metrics-dashboard/${result.run_id}`;
+                } else {
+                    throw new Error(result.message || 'Failed to run simulation');
+                }
+            })
+            .catch(error => {
+                loadingModal.hide();
+                alert(`Error: ${error.message}`);
+                console.error('Error:', error);
+            });
+    }
+</script>
+
+<!-- Loading Modal -->
+<div class="modal fade" id="loadingModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center p-5">
+                <div class="spinner-border text-primary mb-4" role="status" style="width: 3rem; height: 3rem;">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <h5>Running Simulation</h5>
+                <p class="text-muted">Please wait while we process your simulation. This may take a few moments...</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

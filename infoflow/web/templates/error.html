@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}InfoFlow - Error{% endblock %}
+
+{% block extra_head %}
+<style>
+    .error-container {
+        max-width: 500px;
+        margin: 4rem auto;
+        padding: 2rem;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+    .error-icon {
+        font-size: 4rem;
+        color: #dc3545;
+        margin-bottom: 1rem;
+    }
+    .error-title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .error-message {
+        margin-bottom: 1.5rem;
+        color: #6c757d;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="error-container">
+    <div class="error-icon">⚠️</div>
+    <h1 class="error-title">Error</h1>
+    <p class="error-message">{{ message }}</p>
+    <div class="mt-4">
+        <a href="{{ url_for('main.index') }}" class="btn btn-primary">Return to Home</a>
+        <a href="{{ url_for('main.metrics_dashboard') }}" class="btn btn-outline-secondary ms-2">Dashboard</a>
+    </div>
+</div>
+{% endblock %}

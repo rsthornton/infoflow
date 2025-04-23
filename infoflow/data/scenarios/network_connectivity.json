@@ -1,0 +1,57 @@
+{
+    "id": "network_connectivity",
+    "name": "Network Connectivity Study",
+    "description": "This scenario explores how network structure affects information diffusion patterns and belief formation. It models a scale-free network with influential hubs, ideal for examining how connection density and network topology influence information spread.",
+    "learning_objectives": [
+        "Observe how network structure influences information propagation speed",
+        "Compare information spread patterns in hub-dominated networks versus small-world networks",
+        "Examine the role of influencers in hub positions on belief formation",
+        "Analyze how network topology affects belief polarization and clustering"
+    ],
+    "scenario_context": "The simulation creates a scale-free network with hub-based connectivity patterns similar to Twitter or Instagram. A mix of factual and opinion-based information propagates through this network, showing how network structure affects what information reaches which users.",
+    "observation_guidance": "Pay attention to how quickly information spreads from hub nodes versus peripheral nodes. Notice if belief clusters form around influential hubs, and how the distance between nodes affects belief similarity. Compare this with small-world networks to see different spread patterns.",
+    "research_question": "How does the amount, and the types of connectivity in social media networks influence how information spreads?",
+    "simulation_parameters": {
+        "num_citizens": 150,
+        "num_corporate_media": 3,
+        "num_influencers": 6,
+        "num_government": 1,
+        "network_type": "scale_free",
+        "steps": 75,
+        
+        "truth_seeking_mean": 1.0,
+        "truth_seeking_std": 2.5,
+        "confirmation_bias_min": 4,
+        "confirmation_bias_max": 7,
+        "critical_thinking_min": 4,
+        "critical_thinking_max": 7,
+        "social_conformity_min": 4,
+        "social_conformity_max": 7,
+        
+        "initial_trust_in_corporate": 5.0,
+        "initial_trust_in_influencers": 5.0,
+        "initial_trust_in_government": 5.0,
+        
+        "corporate_bias_min": -2,
+        "corporate_bias_max": 2,
+        "influencer_bias_min": -3,
+        "influencer_bias_max": 3,
+        "government_bias": 0,
+        
+        "truth_commitment_corporate": 6.0,
+        "truth_commitment_influencer": 5.0,
+        "truth_commitment_government": 6.0,
+        
+        "corporate_publication_rate": 0.8,
+        "corporate_influence_reach": 0.7,
+        "influencer_publication_rate": 0.9,
+        "influencer_influence_reach": 0.7,
+        "government_publication_rate": 0.7,
+        "government_influence_reach": 0.6,
+        
+        "small_world_k": 4,
+        "small_world_p": 0.1,
+        "scale_free_m": 4,
+        "random_p": 0.1
+    }
+}

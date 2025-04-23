@@ -1,0 +1,707 @@
+{% extends "base.html" %}
+
+{% block title %}InfoFlow - Research Parameter Variation{% endblock %}
+
+{% block extra_head %}
+<style>
+    .variation-card {
+        height: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+    }
+    .parameter-range {
+        margin-bottom: 1rem;
+    }
+    .parameter-range label {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+    .variation-heading {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid rgba(0,0,0,0.125);
+        font-weight: 600;
+        padding: 0.75rem 1.25rem;
+    }
+    .slider-value {
+        font-weight: 600;
+        text-align: center;
+        padding: 0.25rem;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+        margin-top: 0.25rem;
+        font-size: 0.9rem;
+    }
+    .run-button {
+        margin-top: 1rem;
+    }
+    .parameter-description {
+        font-size: 0.85rem;
+        color: #6c757d;
+        margin-top: 0.25rem;
+    }
+    .recommended-values {
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+    }
+    .recommended-value {
+        display: inline-block;
+        padding: 0.1rem 0.5rem;
+        margin-right: 0.3rem;
+        margin-bottom: 0.3rem;
+        background-color: #e9ecef;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    .recommended-value:hover {
+        background-color: #dee2e6;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <div class="d-flex align-items-center">
+                <a href="{{ url_for('main.research_scenarios') }}" class="btn btn-sm btn-outline-secondary me-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                    </svg>
+                </a>
+                <h1>{{ scenario.name }} Parameter Variation</h1>
+            </div>
+            <div class="research-question mb-4 mt-3 p-3 bg-light rounded">
+                <strong>Research Question:</strong> {{ scenario.research_question }}
+            </div>
+            <p>
+                {{ scenario.description }}
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <!-- Parameter Variation Panel -->
+            <div class="card variation-card">
+                <div class="variation-heading">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders me-2" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
+                    </svg>
+                    Adjust Parameters
+                </div>
+                <div class="card-body">
+                    <form id="variationForm">
+                        <input type="hidden" id="scenarioId" value="{{ scenario.id }}">
+                        
+                        <!-- Parameter Groups -->
+                        {% if scenario.id == 'trust_study' %}
+                        <h5>Institutional Trust Parameters</h5>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="parameter-range">
+                                    <label for="initialTrustCorp">Initial Trust in Corporate Media</label>
+                                    <input type="range" class="form-range" id="initialTrustCorp" min="1" max="9" step="0.5" value="5">
+                                    <div class="slider-value" id="initialTrustCorpValue">5.0</div>
+                                    <div class="parameter-description">Initial trust level in corporate media sources</div>
+                                    <div class="recommended-values">
+                                        <span class="recommended-value" data-target="initialTrustCorp" data-value="3">Low (3)</span>
+                                        <span class="recommended-value" data-target="initialTrustCorp" data-value="5">Med (5)</span>
+                                        <span class="recommended-value" data-target="initialTrustCorp" data-value="7">High (7)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="parameter-range">
+                                    <label for="initialTrustInf">Initial Trust in Influencers</label>
+                                    <input type="range" class="form-range" id="initialTrustInf" min="1" max="9" step="0.5" value="5">
+                                    <div class="slider-value" id="initialTrustInfValue">5.0</div>
+                                    <div class="parameter-description">Initial trust level in social media influencers</div>
+                                    <div class="recommended-values">
+                                        <span class="recommended-value" data-target="initialTrustInf" data-value="3">Low (3)</span>
+                                        <span class="recommended-value" data-target="initialTrustInf" data-value="5">Med (5)</span>
+                                        <span class="recommended-value" data-target="initialTrustInf" data-value="7">High (7)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="parameter-range">
+                                    <label for="initialTrustGov">Initial Trust in Government</label>
+                                    <input type="range" class="form-range" id="initialTrustGov" min="1" max="9" step="0.5" value="5">
+                                    <div class="slider-value" id="initialTrustGovValue">5.0</div>
+                                    <div class="parameter-description">Initial trust level in government media sources</div>
+                                    <div class="recommended-values">
+                                        <span class="recommended-value" data-target="initialTrustGov" data-value="2">Low (2)</span>
+                                        <span class="recommended-value" data-target="initialTrustGov" data-value="5">Med (5)</span>
+                                        <span class="recommended-value" data-target="initialTrustGov" data-value="8">High (8)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-3 mb-4">
+                            <h5>Source Credibility</h5>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="parameter-range">
+                                        <label for="truthCommitmentCorp">Corporate Truth Commitment</label>
+                                        <input type="range" class="form-range" id="truthCommitmentCorp" min="2" max="9" step="0.5" value="6">
+                                        <div class="slider-value" id="truthCommitmentCorpValue">6.0</div>
+                                        <div class="parameter-description">Fact-checking threshold for corporate media</div>
+                                        <div class="recommended-values">
+                                            <span class="recommended-value" data-target="truthCommitmentCorp" data-value="3">Low (3)</span>
+                                            <span class="recommended-value" data-target="truthCommitmentCorp" data-value="6">Med (6)</span>
+                                            <span class="recommended-value" data-target="truthCommitmentCorp" data-value="8">High (8)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="parameter-range">
+                                        <label for="truthCommitmentInf">Influencer Truth Commitment</label>
+                                        <input type="range" class="form-range" id="truthCommitmentInf" min="2" max="9" step="0.5" value="4">
+                                        <div class="slider-value" id="truthCommitmentInfValue">4.0</div>
+                                        <div class="parameter-description">Fact-checking threshold for influencers</div>
+                                        <div class="recommended-values">
+                                            <span class="recommended-value" data-target="truthCommitmentInf" data-value="2">Low (2)</span>
+                                            <span class="recommended-value" data-target="truthCommitmentInf" data-value="4">Med (4)</span>
+                                            <span class="recommended-value" data-target="truthCommitmentInf" data-value="7">High (7)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="parameter-range">
+                                        <label for="truthCommitmentGov">Government Truth Commitment</label>
+                                        <input type="range" class="form-range" id="truthCommitmentGov" min="2" max="9" step="0.5" value="5">
+                                        <div class="slider-value" id="truthCommitmentGovValue">5.0</div>
+                                        <div class="parameter-description">Fact-checking threshold for government media</div>
+                                        <div class="recommended-values">
+                                            <span class="recommended-value" data-target="truthCommitmentGov" data-value="3">Low (3)</span>
+                                            <span class="recommended-value" data-target="truthCommitmentGov" data-value="5">Med (5)</span>
+                                            <span class="recommended-value" data-target="truthCommitmentGov" data-value="9">High (9)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% elif scenario.id == 'network_connectivity' %}
+                        <h5>Network Topology Parameters</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="parameter-range">
+                                    <label for="networkType">Network Type</label>
+                                    <select class="form-select" id="networkType">
+                                        <option value="small_world">Small World</option>
+                                        <option value="scale_free" selected>Scale Free</option>
+                                        <option value="random">Random</option>
+                                    </select>
+                                    <div class="parameter-description">Type of social network structure</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="parameter-range">
+                                    <label for="numCitizens">Number of Citizens</label>
+                                    <input type="range" class="form-range" id="numCitizens" min="50" max="200" step="25" value="150">
+                                    <div class="slider-value" id="numCitizensValue">150</div>
+                                    <div class="parameter-description">Total population size in the simulation</div>
+                                    <div class="recommended-values">
+                                        <span class="recommended-value" data-target="numCitizens" data-value="50">Small (50)</span>
+                                        <span class="recommended-value" data-target="numCitizens" data-value="100">Medium (100)</span>
+                                        <span class="recommended-value" data-target="numCitizens" data-value="150">Large (150)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="network-parameters mt-3">
+                            <!-- Small World Parameters (hidden by default) -->
+                            <div id="smallWorldParams" style="display: none;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="parameter-range">
+                                            <label for="smallWorldK">Neighbor Connections (k)</label>
+                                            <input type="range" class="form-range" id="smallWorldK" min="2" max="8" step="1" value="4">
+                                            <div class="slider-value" id="smallWorldKValue">4</div>
+                                            <div class="parameter-description">Number of nearest neighbors per node</div>
+                                            <div class="recommended-values">
+                                                <span class="recommended-value" data-target="smallWorldK" data-value="3">Sparse (3)</span>
+                                                <span class="recommended-value" data-target="smallWorldK" data-value="5">Medium (5)</span>
+                                                <span class="recommended-value" data-target="smallWorldK" data-value="6">Dense (6)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="parameter-range">
+                                            <label for="smallWorldP">Rewiring Probability (p)</label>
+                                            <input type="range" class="form-range" id="smallWorldP" min="0.01" max="0.5" step="0.01" value="0.1">
+                                            <div class="slider-value" id="smallWorldPValue">0.10</div>
+                                            <div class="parameter-description">Probability of rewiring connections</div>
+                                            <div class="recommended-values">
+                                                <span class="recommended-value" data-target="smallWorldP" data-value="0.05">Low (0.05)</span>
+                                                <span class="recommended-value" data-target="smallWorldP" data-value="0.15">Medium (0.15)</span>
+                                                <span class="recommended-value" data-target="smallWorldP" data-value="0.3">High (0.30)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Scale Free Parameters -->
+                            <div id="scaleFreeParams">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="parameter-range">
+                                            <label for="scaleFreeM">Hub Connectivity (m)</label>
+                                            <input type="range" class="form-range" id="scaleFreeM" min="2" max="6" step="1" value="4">
+                                            <div class="slider-value" id="scaleFreeMValue">4</div>
+                                            <div class="parameter-description">Number of edges added per new node</div>
+                                            <div class="recommended-values">
+                                                <span class="recommended-value" data-target="scaleFreeM" data-value="2">Low (2)</span>
+                                                <span class="recommended-value" data-target="scaleFreeM" data-value="4">Medium (4)</span>
+                                                <span class="recommended-value" data-target="scaleFreeM" data-value="5">High (5)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Random Network Parameters (hidden by default) -->
+                            <div id="randomParams" style="display: none;">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="parameter-range">
+                                            <label for="randomP">Connection Probability (p)</label>
+                                            <input type="range" class="form-range" id="randomP" min="0.05" max="0.3" step="0.01" value="0.1">
+                                            <div class="slider-value" id="randomPValue">0.10</div>
+                                            <div class="parameter-description">Probability of forming a connection</div>
+                                            <div class="recommended-values">
+                                                <span class="recommended-value" data-target="randomP" data-value="0.05">Sparse (0.05)</span>
+                                                <span class="recommended-value" data-target="randomP" data-value="0.1">Medium (0.10)</span>
+                                                <span class="recommended-value" data-target="randomP" data-value="0.2">Dense (0.20)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% elif scenario.id == 'belief_resistance' %}
+                        <h5>Cognitive Profile Parameters</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="parameter-range">
+                                    <label for="confirmationBiasRange">Confirmation Bias Range</label>
+                                    <div class="d-flex">
+                                        <input type="range" class="form-range me-2" id="confirmationBiasMin" min="1" max="7" step="1" value="5">
+                                        <input type="range" class="form-range" id="confirmationBiasMax" min="4" max="9" step="1" value="7">
+                                    </div>
+                                    <div class="slider-value d-flex justify-content-between">
+                                        <span id="confirmationBiasMinValue">5</span>
+                                        <span>to</span>
+                                        <span id="confirmationBiasMaxValue">7</span>
+                                    </div>
+                                    <div class="parameter-description">Tendency to favor information that confirms existing beliefs</div>
+                                    <div class="recommended-values">
+                                        <span class="recommended-value" data-target="confirmationBiasMin" data-target2="confirmationBiasMax" data-value="2" data-value2="4">Low (2-4)</span>
+                                        <span class="recommended-value" data-target="confirmationBiasMin" data-target2="confirmationBiasMax" data-value="5" data-value2="7">Med (5-7)</span>
+                                        <span class="recommended-value" data-target="confirmationBiasMin" data-target2="confirmationBiasMax" data-value="7" data-value2="9">High (7-9)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="parameter-range">
+                                    <label for="criticalThinkingRange">Critical Thinking Range</label>
+                                    <div class="d-flex">
+                                        <input type="range" class="form-range me-2" id="criticalThinkingMin" min="1" max="7" step="1" value="4">
+                                        <input type="range" class="form-range" id="criticalThinkingMax" min="4" max="9" step="1" value="6">
+                                    </div>
+                                    <div class="slider-value d-flex justify-content-between">
+                                        <span id="criticalThinkingMinValue">4</span>
+                                        <span>to</span>
+                                        <span id="criticalThinkingMaxValue">6</span>
+                                    </div>
+                                    <div class="parameter-description">Ability to evaluate source credibility and message quality</div>
+                                    <div class="recommended-values">
+                                        <span class="recommended-value" data-target="criticalThinkingMin" data-target2="criticalThinkingMax" data-value="2" data-value2="4">Low (2-4)</span>
+                                        <span class="recommended-value" data-target="criticalThinkingMin" data-target2="criticalThinkingMax" data-value="4" data-value2="6">Med (4-6)</span>
+                                        <span class="recommended-value" data-target="criticalThinkingMin" data-target2="criticalThinkingMax" data-value="7" data-value2="9">High (7-9)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <div class="parameter-range">
+                                    <label for="truthSeekingMean">Truth-Seeking Mean</label>
+                                    <input type="range" class="form-range" id="truthSeekingMean" min="-3" max="3" step="0.5" value="0">
+                                    <div class="slider-value" id="truthSeekingMeanValue">0.0</div>
+                                    <div class="parameter-description">Motivation to seek accurate information (negative = avoid challenging info)</div>
+                                    <div class="recommended-values">
+                                        <span class="recommended-value" data-target="truthSeekingMean" data-value="-2">Avoid (-2)</span>
+                                        <span class="recommended-value" data-target="truthSeekingMean" data-value="0">Neutral (0)</span>
+                                        <span class="recommended-value" data-target="truthSeekingMean" data-value="3">Seek (3)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="parameter-range">
+                                    <label for="socialConformityRange">Social Conformity Range</label>
+                                    <div class="d-flex">
+                                        <input type="range" class="form-range me-2" id="socialConformityMin" min="1" max="7" step="1" value="5">
+                                        <input type="range" class="form-range" id="socialConformityMax" min="4" max="9" step="1" value="7">
+                                    </div>
+                                    <div class="slider-value d-flex justify-content-between">
+                                        <span id="socialConformityMinValue">5</span>
+                                        <span>to</span>
+                                        <span id="socialConformityMaxValue">7</span>
+                                    </div>
+                                    <div class="parameter-description">Tendency to conform to social circle's beliefs</div>
+                                    <div class="recommended-values">
+                                        <span class="recommended-value" data-target="socialConformityMin" data-target2="socialConformityMax" data-value="2" data-value2="4">Low (2-4)</span>
+                                        <span class="recommended-value" data-target="socialConformityMin" data-target2="socialConformityMax" data-value="5" data-value2="7">Med (5-7)</span>
+                                        <span class="recommended-value" data-target="socialConformityMin" data-target2="socialConformityMax" data-value="7" data-value2="9">High (7-9)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        
+                        <!-- Common Parameters -->
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                {% if scenario.id != 'network_connectivity' %}
+                                <div class="parameter-range">
+                                    <label for="numCitizens">Number of Citizens</label>
+                                    <input type="range" class="form-range" id="numCitizens" min="50" max="200" step="25" value="100">
+                                    <div class="slider-value" id="numCitizensValue">100</div>
+                                </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                <div class="parameter-range">
+                                    <label for="numSteps">Simulation Steps</label>
+                                    <input type="range" class="form-range" id="numSteps" min="20" max="75" step="5" value="50">
+                                    <div class="slider-value" id="numStepsValue">50</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <button type="button" class="btn btn-primary run-button" id="runVariationBtn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill me-1" viewBox="0 0 16 16">
+                                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                                </svg>
+                                Run Simulation with These Parameters
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card variation-card">
+                <div class="variation-heading">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle me-2" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                    </svg>
+                    Parameter Recommendations
+                </div>
+                <div class="card-body">
+                    {% if scenario.id == 'trust_study' %}
+                    <h6>Low Trust Environment</h6>
+                    <ul class="small mb-3">
+                        <li>Initial Corporate Trust: 3.0</li>
+                        <li>Initial Influencer Trust: 3.0</li>
+                        <li>Initial Government Trust: 2.0</li>
+                    </ul>
+                    
+                    <h6>High Trust Environment</h6>
+                    <ul class="small mb-3">
+                        <li>Initial Corporate Trust: 7.0</li>
+                        <li>Initial Influencer Trust: 7.0</li>
+                        <li>Initial Government Trust: 8.0</li>
+                    </ul>
+                    
+                    <h6>Low Credibility Sources</h6>
+                    <ul class="small mb-3">
+                        <li>Corporate Truth Commitment: 3.0</li>
+                        <li>Influencer Truth Commitment: 2.0</li>
+                        <li>Government Truth Commitment: 3.0</li>
+                    </ul>
+                    
+                    <h6>High Credibility Sources</h6>
+                    <ul class="small mb-3">
+                        <li>Corporate Truth Commitment: 8.0</li>
+                        <li>Influencer Truth Commitment: 7.0</li>
+                        <li>Government Truth Commitment: 9.0</li>
+                    </ul>
+                    {% elif scenario.id == 'network_connectivity' %}
+                    <h6>Small World Network</h6>
+                    <p class="small mb-3">Community structure with occasional cross-community connections. Similar to Facebook.</p>
+                    <ul class="small mb-3">
+                        <li>Recommended neighbor count (k): 3-6</li>
+                        <li>Recommended rewiring probability (p): 0.05-0.3</li>
+                    </ul>
+                    
+                    <h6>Scale Free Network</h6>
+                    <p class="small mb-3">Hub-dominated structure with influencers as central nodes. Similar to Twitter.</p>
+                    <ul class="small mb-3">
+                        <li>Recommended hub connectivity (m): 2-5</li>
+                    </ul>
+                    
+                    <h6>Random Network</h6>
+                    <p class="small mb-3">No community structure, purely random connections. Baseline for comparison.</p>
+                    <ul class="small mb-3">
+                        <li>Recommended connection probability (p): 0.05-0.2</li>
+                    </ul>
+                    {% elif scenario.id == 'belief_resistance' %}
+                    <h6>Highly Resistant Profile</h6>
+                    <ul class="small mb-3">
+                        <li>Confirmation Bias: 7-9</li>
+                        <li>Critical Thinking: 2-4</li>
+                        <li>Truth Seeking: -2</li>
+                        <li>Social Conformity: 7-9</li>
+                    </ul>
+                    
+                    <h6>Moderately Resistant Profile</h6>
+                    <ul class="small mb-3">
+                        <li>Confirmation Bias: 5-7</li>
+                        <li>Critical Thinking: 4-6</li>
+                        <li>Truth Seeking: 0</li>
+                        <li>Social Conformity: 5-7</li>
+                    </ul>
+                    
+                    <h6>Update-Friendly Profile</h6>
+                    <ul class="small mb-3">
+                        <li>Confirmation Bias: 2-4</li>
+                        <li>Critical Thinking: 7-9</li>
+                        <li>Truth Seeking: 3</li>
+                        <li>Social Conformity: 2-4</li>
+                    </ul>
+                    {% endif %}
+                    
+                    <div class="alert alert-info mt-3 small">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb-fill me-2" viewBox="0 0 16 16">
+                            <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13h-5a.5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm3 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1-.5-.5z"/>
+                        </svg>
+                        <strong>Research Tip:</strong> Try running multiple simulations with different parameter values to observe how they affect the outcomes. Compare results to identify patterns.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize all range sliders
+        document.querySelectorAll('input[type="range"]').forEach(function(slider) {
+            const valueDisplay = document.getElementById(slider.id + 'Value');
+            if (valueDisplay) {
+                // Update value display when slider changes
+                slider.addEventListener('input', function() {
+                    valueDisplay.textContent = parseFloat(slider.value).toFixed(slider.step.includes('.') ? 1 : 0);
+                    
+                    // For min/max paired sliders, ensure min <= max
+                    if (slider.id.includes('Min')) {
+                        const maxSlider = document.getElementById(slider.id.replace('Min', 'Max'));
+                        if (maxSlider && parseFloat(slider.value) > parseFloat(maxSlider.value)) {
+                            maxSlider.value = slider.value;
+                            document.getElementById(maxSlider.id + 'Value').textContent = parseFloat(maxSlider.value).toFixed(maxSlider.step.includes('.') ? 1 : 0);
+                        }
+                    }
+                    // For max sliders, ensure max >= min
+                    if (slider.id.includes('Max')) {
+                        const minSlider = document.getElementById(slider.id.replace('Max', 'Min'));
+                        if (minSlider && parseFloat(slider.value) < parseFloat(minSlider.value)) {
+                            minSlider.value = slider.value;
+                            document.getElementById(minSlider.id + 'Value').textContent = parseFloat(minSlider.value).toFixed(minSlider.step.includes('.') ? 1 : 0);
+                        }
+                    }
+                });
+            }
+        });
+        
+        // Handle network type change
+        const networkTypeSelect = document.getElementById('networkType');
+        if (networkTypeSelect) {
+            networkTypeSelect.addEventListener('change', function() {
+                // Hide all parameter sets
+                document.getElementById('smallWorldParams').style.display = 'none';
+                document.getElementById('scaleFreeParams').style.display = 'none';
+                document.getElementById('randomParams').style.display = 'none';
+                
+                // Show the selected parameter set
+                if (this.value === 'small_world') {
+                    document.getElementById('smallWorldParams').style.display = 'block';
+                } else if (this.value === 'scale_free') {
+                    document.getElementById('scaleFreeParams').style.display = 'block';
+                } else if (this.value === 'random') {
+                    document.getElementById('randomParams').style.display = 'block';
+                }
+            });
+        }
+        
+        // Handle recommended value clicks
+        document.querySelectorAll('.recommended-value').forEach(function(el) {
+            el.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const value = this.getAttribute('data-value');
+                const target = document.getElementById(targetId);
+                
+                if (target) {
+                    target.value = value;
+                    const event = new Event('input');
+                    target.dispatchEvent(event);
+                }
+                
+                // If there's a second target (for min/max pairs)
+                const targetId2 = this.getAttribute('data-target2');
+                const value2 = this.getAttribute('data-value2');
+                if (targetId2 && value2) {
+                    const target2 = document.getElementById(targetId2);
+                    if (target2) {
+                        target2.value = value2;
+                        const event2 = new Event('input');
+                        target2.dispatchEvent(event2);
+                    }
+                }
+            });
+        });
+        
+        // Run simulation with custom parameters
+        document.getElementById('runVariationBtn').addEventListener('click', function() {
+            // Show loading modal
+            const loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
+            loadingModal.show();
+            
+            // Build parameters object based on the scenario
+            const scenarioId = document.getElementById('scenarioId').value;
+            let params = {
+                scenario_id: scenarioId
+            };
+            
+            // Common parameters
+            if (document.getElementById('numCitizens')) {
+                params.num_citizens = parseInt(document.getElementById('numCitizens').value);
+            }
+            if (document.getElementById('numSteps')) {
+                params.steps = parseInt(document.getElementById('numSteps').value);
+            }
+            
+            // Trust study parameters
+            if (scenarioId === 'trust_study') {
+                params.initial_trust_in_corporate = parseFloat(document.getElementById('initialTrustCorp').value);
+                params.initial_trust_in_influencers = parseFloat(document.getElementById('initialTrustInf').value);
+                params.initial_trust_in_government = parseFloat(document.getElementById('initialTrustGov').value);
+                params.truth_commitment_corporate = parseFloat(document.getElementById('truthCommitmentCorp').value);
+                params.truth_commitment_influencer = parseFloat(document.getElementById('truthCommitmentInf').value);
+                params.truth_commitment_government = parseFloat(document.getElementById('truthCommitmentGov').value);
+                
+                // Add other parameters from base scenario
+                params.num_corporate_media = 3;
+                params.num_influencers = 5;
+                params.num_government = 1;
+                params.network_type = "small_world";
+                params.truth_seeking_mean = 0.5;
+                params.truth_seeking_std = 2.0;
+                params.confirmation_bias_min = 4;
+                params.confirmation_bias_max = 7;
+                params.critical_thinking_min = 4;
+                params.critical_thinking_max = 7;
+                params.social_conformity_min = 4;
+                params.social_conformity_max = 7;
+            }
+            // Network connectivity parameters
+            else if (scenarioId === 'network_connectivity') {
+                params.network_type = document.getElementById('networkType').value;
+                
+                // Add network-specific parameters
+                if (params.network_type === 'small_world') {
+                    params.small_world_k = parseInt(document.getElementById('smallWorldK').value);
+                    params.small_world_p = parseFloat(document.getElementById('smallWorldP').value);
+                } else if (params.network_type === 'scale_free') {
+                    params.scale_free_m = parseInt(document.getElementById('scaleFreeM').value);
+                } else if (params.network_type === 'random') {
+                    params.random_p = parseFloat(document.getElementById('randomP').value);
+                }
+                
+                // Add other parameters from base scenario
+                params.num_corporate_media = 3;
+                params.num_influencers = 6;
+                params.num_government = 1;
+                params.truth_seeking_mean = 0;
+                params.truth_seeking_std = 2.5;
+                params.confirmation_bias_min = 4;
+                params.confirmation_bias_max = 7;
+                params.critical_thinking_min = 4;
+                params.critical_thinking_max = 7;
+                params.social_conformity_min = 4;
+                params.social_conformity_max = 7;
+                params.initial_trust_in_corporate = 5.0;
+                params.initial_trust_in_influencers = 5.0;
+                params.initial_trust_in_government = 5.0;
+            }
+            // Belief resistance parameters
+            else if (scenarioId === 'belief_resistance') {
+                params.confirmation_bias_min = parseInt(document.getElementById('confirmationBiasMin').value);
+                params.confirmation_bias_max = parseInt(document.getElementById('confirmationBiasMax').value);
+                params.critical_thinking_min = parseInt(document.getElementById('criticalThinkingMin').value);
+                params.critical_thinking_max = parseInt(document.getElementById('criticalThinkingMax').value);
+                params.truth_seeking_mean = parseFloat(document.getElementById('truthSeekingMean').value);
+                params.social_conformity_min = parseInt(document.getElementById('socialConformityMin').value);
+                params.social_conformity_max = parseInt(document.getElementById('socialConformityMax').value);
+                
+                // Add other parameters from base scenario
+                params.num_corporate_media = 3;
+                params.num_influencers = 5;
+                params.num_government = 1;
+                params.network_type = "small_world";
+                params.truth_seeking_std = 2.5;
+                params.initial_trust_in_corporate = 5.0;
+                params.initial_trust_in_influencers = 5.0;
+                params.initial_trust_in_government = 5.0;
+            }
+            
+            // Run the simulation with custom parameters
+            fetch('/api/run-simulation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(params)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.status === 'success') {
+                    // Redirect to results page
+                    window.location.href = `/metrics-dashboard/${result.run_id}`;
+                } else {
+                    throw new Error(result.message || 'Failed to run simulation');
+                }
+            })
+            .catch(error => {
+                loadingModal.hide();
+                alert(`Error: ${error.message}`);
+                console.error('Error:', error);
+            });
+        });
+    });
+</script>
+
+<!-- Loading Modal -->
+<div class="modal fade" id="loadingModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center p-5">
+                <div class="spinner-border text-primary mb-4" role="status" style="width: 3rem; height: 3rem;">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <h5>Running Simulation</h5>
+                <p class="text-muted">Please wait while we process your simulation. This may take a few moments...</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

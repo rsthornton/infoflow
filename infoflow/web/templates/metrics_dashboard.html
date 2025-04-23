@@ -1,0 +1,444 @@
+{% extends "base.html" %}
+
+{% block title %}InfoFlow Social Media Metrics Dashboard{% endblock %}
+
+{% block extra_head %}
+<style>
+    .chart-container {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .chart-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #1976d2;
+    }
+    .tab-pane {
+        padding: 1.5rem 0;
+    }
+    .nav-tabs .nav-link {
+        color: #495057;
+    }
+    .nav-tabs .nav-link.active {
+        color: #1976d2;
+        font-weight: 600;
+    }
+    .dashboard-section {
+        margin-bottom: 2rem;
+    }
+    .dashboard-section-title {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #e9ecef;
+    }
+    .dashboard-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .stat-card {
+        flex: 1 1 200px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 1rem;
+        text-align: center;
+    }
+    .stat-value {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #1976d2;
+    }
+    .stat-label {
+        font-size: 0.9rem;
+        color: #6c757d;
+    }
+    .help-text {
+        font-size: 0.85rem;
+        color: #6c757d;
+        margin-top: 0.5rem;
+    }
+    .run-info {
+        background-color: #f1f8ff;
+        border-radius: 8px;
+        padding: 0.75rem;
+        margin-bottom: 1.5rem;
+        border-left: 4px solid #1976d2;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="page-header mb-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>Metrics Dashboard</h1>
+            
+            <div class="simulation-controls">
+                <div class="dropdown d-inline-block me-2">
+                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="simulationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        {% if run_id %}
+                            {% set current_run = namespace(name='') %}
+                            {% for sim in recent_simulations %}
+                                {% if sim.id == run_id %}
+                                    {% set current_run.name = sim.name if sim.name else 'Run ' + sim.id %}
+                                {% endif %}
+                            {% endfor %}
+                            {{ current_run.name if current_run.name else 'Run ' + run_id }}
+                        {% else %}
+                            Select Simulation
+                        {% endif %}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="simulationDropdown">
+                        <li class="dropdown-header">Recent Simulations</li>
+                        {% if has_simulations %}
+                            {% for sim in recent_simulations %}
+                                <li>
+                                    <a class="dropdown-item {% if run_id == sim.id %}active{% endif %}" href="{{ url_for('main.metrics_dashboard', run_id=sim.id) }}">
+                                        {% if sim.name %}{{ sim.name }}{% else %}Run {{ sim.id }}{% endif %}
+                                        <small class="text-muted d-block">{{ sim.timestamp }}</small>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        {% else %}
+                            <li><a class="dropdown-item disabled" href="#">No simulations available</a></li>
+                        {% endif %}
+                        
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item fw-bold text-primary" href="{{ url_for('main.simulations') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-ul me-1" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                </svg>
+                                View All Simulations
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <a href="{{ url_for('main.simulation') }}" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill me-1" viewBox="0 0 16 16">
+                        <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                    </svg>
+                    Run Simulation
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {% if run_id %}
+    <div class="alert alert-info d-flex align-items-center mb-4">
+        <div class="me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-graph-up" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/>
+            </svg>
+        </div>
+        <div>
+            <p class="mb-0"><strong>Viewing actual simulation data</strong> from run: {{ run_id }}</p>
+            <p class="mb-0 text-muted small">Use the dropdown menu above to switch to a different simulation.</p>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-warning d-flex align-items-center mb-4">
+        <div class="me-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle" viewBox="0 0 16 16">
+                <path d="M7.938 2.016A.13.13 0 0 1 8.002 2a.13.13 0 0 1 .063.016.146.146 0 0 1 .054.057l6.857 11.667c.036.06.035.124.002.183a.163.163 0 0 1-.054.06.116.116 0 0 1-.066.017H1.146a.115.115 0 0 1-.066-.017.163.163 0 0 1-.054-.06.176.176 0 0 1 .002-.183L7.884 2.073a.147.147 0 0 1 .054-.057zm1.044-.45a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z"/>
+                <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z"/>
+            </svg>
+        </div>
+        <div>
+            <p class="mb-0"><strong>Currently viewing sample data</strong> {% if has_simulations %}but you have simulations available{% endif %}</p>
+            {% if has_simulations %}
+            <p class="mb-0 text-muted small">
+                Please select a simulation from the dropdown menu above or 
+                <a href="{{ url_for('main.simulations') }}" class="fw-bold">view all simulations</a> 
+                to access your complete simulation history.
+            </p>
+            {% else %}
+            <p class="mb-0 text-muted small">Run a simulation to generate real data for analysis.</p>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    
+    <!-- Summary Stats -->
+    <div class="dashboard-section">
+        <h3 class="dashboard-section-title">Summary Statistics</h3>
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="avg-truth-assessment">0.58</div>
+                    <div class="stat-label">Average Truth Assessment</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="trust-corp">6.2</div>
+                    <div class="stat-label">Trust in Corporate Accounts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="trust-inf">5.8</div>
+                    <div class="stat-label">Trust in Influencers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="trust-gov">4.7</div>
+                    <div class="stat-label">Trust in Government Accounts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="polarization">0.12</div>
+                    <div class="stat-label">Belief Polarization</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation Tabs -->
+        <ul class="nav nav-tabs" id="dashboardTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="truth-tab" data-bs-toggle="tab" data-bs-target="#truth" type="button" role="tab" aria-controls="truth" aria-selected="true">Truth Assessment</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="trust-tab" data-bs-toggle="tab" data-bs-target="#trust" type="button" role="tab" aria-controls="trust" aria-selected="false">Trust Dynamics</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="agents-tab" data-bs-toggle="tab" data-bs-target="#agents" type="button" role="tab" aria-controls="agents" aria-selected="false">User Parameters</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="content-tab" data-bs-toggle="tab" data-bs-target="#content" type="button" role="tab" aria-controls="content" aria-selected="false">Content Metrics</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="correlations-tab" data-bs-toggle="tab" data-bs-target="#correlations" type="button" role="tab" aria-controls="correlations" aria-selected="false">Correlations</button>
+            </li>
+        </ul>
+        
+        <!-- Tab Content -->
+        <div class="tab-content" id="dashboardTabContent">
+            <!-- Truth Assessment Tab -->
+            <div class="tab-pane fade show active" id="truth" role="tabpanel" aria-labelledby="truth-tab">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <div class="chart-title">Truth Assessment Distribution</div>
+                            <img src="{{ url_for('static', filename='charts/truth_distribution.png') }}" alt="Truth Assessment Distribution" class="img-fluid">
+                            <div class="help-text">
+                                Distribution of truth assessments across all social media users. Shows how users evaluate the truthfulness of information (0-1 scale).
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <div class="chart-title">Truth Assessment Evolution</div>
+                            <img src="{{ url_for('static', filename='charts/truth_evolution.png') }}" alt="Truth Assessment Evolution" class="img-fluid">
+                            <div class="help-text">
+                                How the average truth assessment changes over time, along with its variance.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <div class="chart-title">Belief Polarization Over Time</div>
+                            <img src="{{ url_for('static', filename='charts/polarization.png') }}" alt="Belief Polarization" class="img-fluid">
+                            <div class="help-text">
+                                Measures how divided users' truth assessments become over time. Higher values indicate stronger polarization.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <div class="chart-title">Opinion Clusters Over Time</div>
+                            <img src="{{ url_for('static', filename='charts/opinion_clusters.png') }}" alt="Opinion Clusters" class="img-fluid">
+                            <div class="help-text">
+                                Tracks the number of distinct belief clusters that form during the simulation.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trust Dynamics Tab -->
+            <div class="tab-pane fade" id="trust" role="tabpanel" aria-labelledby="trust-tab">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="chart-container">
+                            <div class="chart-title">Trust Levels Over Time</div>
+                            <img src="{{ url_for('static', filename='charts/trust_evolution.png') }}" alt="Trust Evolution" class="img-fluid">
+                            <div class="help-text">
+                                Shows how average trust in different types of social media accounts changes over time (0-10 scale).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="chart-container">
+                            <div class="chart-title">Trust in Corporate Social Media Accounts</div>
+                            <img src="{{ url_for('static', filename='charts/trust_dist_CorporateMediaAgent.png') }}" alt="Corporate Trust Distribution" class="img-fluid">
+                            <div class="help-text">
+                                Distribution of trust in corporate social media accounts across all users.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="chart-container">
+                            <div class="chart-title">Trust in Social Media Influencers</div>
+                            <img src="{{ url_for('static', filename='charts/trust_dist_InfluencerAgent.png') }}" alt="Influencer Trust Distribution" class="img-fluid">
+                            <div class="help-text">
+                                Distribution of trust in social media influencers across all users.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="chart-container">
+                            <div class="chart-title">Trust in Government Social Media Accounts</div>
+                            <img src="{{ url_for('static', filename='charts/trust_dist_GovernmentMediaAgent.png') }}" alt="Government Trust Distribution" class="img-fluid">
+                            <div class="help-text">
+                                Distribution of trust in government social media accounts across all users.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- User Parameters Tab -->
+            <div class="tab-pane fade" id="agents" role="tabpanel" aria-labelledby="agents-tab">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <div class="chart-title">Confirmation Bias Distribution</div>
+                            <img src="{{ url_for('static', filename='charts/confirmation_bias_dist.png') }}" alt="Confirmation Bias Distribution" class="img-fluid">
+                            <div class="help-text">
+                                Distribution of confirmation bias values across users (0-10 scale). Higher values indicate stronger tendency to favor content that aligns with existing beliefs.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <div class="chart-title">Critical Thinking Distribution</div>
+                            <img src="{{ url_for('static', filename='charts/critical_thinking_dist.png') }}" alt="Critical Thinking Distribution" class="img-fluid">
+                            <div class="help-text">
+                                Distribution of critical thinking values (0-10 scale). Higher values indicate better ability to evaluate source credibility.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <div class="chart-title">Social Conformity Distribution</div>
+                            <img src="{{ url_for('static', filename='charts/social_conformity_dist.png') }}" alt="Social Conformity Distribution" class="img-fluid">
+                            <div class="help-text">
+                                Distribution of social conformity values (0-10 scale). Higher values indicate stronger tendency to align with social circle.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <div class="chart-title">Truth Seeking Distribution</div>
+                            <img src="{{ url_for('static', filename='charts/truth_seeking_dist.png') }}" alt="Truth Seeking Distribution" class="img-fluid">
+                            <div class="help-text">
+                                Distribution of truth seeking values (-5 to +5 scale). Positive values indicate preference for accurate content.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content Metrics Tab -->
+            <div class="tab-pane fade" id="content" role="tabpanel" aria-labelledby="content-tab">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <div class="chart-title">Content Sources</div>
+                            <img src="{{ url_for('static', filename='charts/content_sources.png') }}" alt="Content Sources" class="img-fluid">
+                            <div class="help-text">
+                                Breakdown of content by source type.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <div class="chart-title">Content Spread</div>
+                            <img src="{{ url_for('static', filename='charts/content_spread.png') }}" alt="Content Spread" class="img-fluid">
+                            <div class="help-text">
+                                How widely content spreads through the social network.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="chart-container">
+                            <div class="chart-title">Social Media User Network</div>
+                            <img src="{{ url_for('static', filename='charts/network_truth.png') }}" alt="Network Visualization" class="img-fluid">
+                            <div class="help-text">
+                                Visualization of the social network structure, with nodes colored by truth assessment.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Correlations Tab -->
+            <div class="tab-pane fade" id="correlations" role="tabpanel" aria-labelledby="correlations-tab">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <div class="chart-title">Confirmation Bias vs. Truth Assessment</div>
+                            <img src="{{ url_for('static', filename='charts/confirmation_bias_vs_truth.png') }}" alt="Confirmation Bias vs Truth" class="img-fluid">
+                            <div class="help-text">
+                                Shows the relationship between users' confirmation bias and their truth assessments.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <div class="chart-title">Critical Thinking vs. Truth Assessment</div>
+                            <img src="{{ url_for('static', filename='charts/critical_thinking_vs_truth.png') }}" alt="Critical Thinking vs Truth" class="img-fluid">
+                            <div class="help-text">
+                                Shows the relationship between users' critical thinking ability and their truth assessments.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <div class="chart-title">Social Conformity vs. Truth Assessment</div>
+                            <img src="{{ url_for('static', filename='charts/social_conformity_vs_truth.png') }}" alt="Social Conformity vs Truth" class="img-fluid">
+                            <div class="help-text">
+                                Shows the relationship between users' social conformity and their truth assessments.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="chart-container">
+                            <div class="chart-title">Truth Seeking vs. Truth Assessment</div>
+                            <img src="{{ url_for('static', filename='charts/truth_seeking_vs_truth.png') }}" alt="Truth Seeking vs Truth" class="img-fluid">
+                            <div class="help-text">
+                                Shows the relationship between users' truth seeking attitude and their truth assessments.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block scripts %}
+<!-- JavaScript to update stats -->
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        // Update the summary stats with data from the server
+        document.getElementById('avg-truth-assessment').innerText = '{{ avg_truth_assessment|default("0.58") }}';
+        document.getElementById('trust-corp').innerText = '{{ trust_corp|default("6.2") }}';
+        document.getElementById('trust-inf').innerText = '{{ trust_inf|default("5.8") }}';
+        document.getElementById('trust-gov').innerText = '{{ trust_gov|default("4.7") }}';
+        document.getElementById('polarization').innerText = '{{ polarization|default("0.12") }}';
+    });
+</script>
+{% endblock %}

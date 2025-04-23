@@ -1,0 +1,119 @@
+/* InfoFlow Web Interface Styles */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    margin-bottom: 1.5rem;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    font-weight: 600;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+/* Simulation page specific styles */
+.parameter-card h5 {
+    margin-bottom: 1rem;
+    color: #495057;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 0.5rem;
+}
+
+.chart-container {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Content Flow Visualization Styles */
+.content-path {
+    fill: none !important;
+    stroke-linecap: round;
+    pointer-events: none;
+    stroke-width: 2.5px !important;
+    visibility: visible !important;
+    /* Ensure dash patterns are visible */
+    stroke-dashoffset: 0 !important;
+}
+
+/* Content accuracy styling with stronger coloring */
+.content-true, path.content-true, line.content-true, circle.content-true {
+    stroke: rgba(40, 167, 69, 0.8) !important;  /* Stronger green */
+    fill: rgba(40, 167, 69, 0.2) !important;
+}
+
+.content-false, path.content-false, line.content-false, circle.content-false {
+    stroke: rgba(220, 53, 69, 0.8) !important;  /* Stronger red */
+    fill: rgba(220, 53, 69, 0.2) !important;
+}
+
+.content-fuzzy, path.content-fuzzy, line.content-fuzzy, circle.content-fuzzy {
+    stroke: rgba(255, 193, 7, 0.8) !important;  /* Stronger yellow */
+    fill: rgba(255, 193, 7, 0.2) !important;
+}
+
+/* Pulse animation for content flow */
+.content-pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .chart-container {
+        height: 300px;
+    }
+}
+
+/* Animation for loading spinner */
+.spinner-border {
+    animation-duration: 1s;
+}
+
+/* Home page specific styles */
+.display-4 {
+    font-weight: 600;
+    color: #343a40;
+}
+
+.lead {
+    font-size: 1.2rem;
+    color: #6c757d;
+}

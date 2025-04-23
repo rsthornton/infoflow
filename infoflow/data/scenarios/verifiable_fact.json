@@ -1,0 +1,56 @@
+{
+    "id": "verifiable_fact",
+    "name": "Verifiable Fact Propagation",
+    "description": "This scenario explores how factual, easily verifiable information spreads through social networks. It demonstrates the dynamics of information dissemination when content has high accuracy and can be readily verified by multiple sources.",
+    "learning_objectives": [
+        "Compare the spread patterns of factual versus false information",
+        "Observe how truth-seeking individuals influence network information quality",
+        "Identify factors that promote the acceptance of accurate information",
+        "Understand how trust in reliable sources affects information adoption"
+    ],
+    "scenario_context": "A clear, factual piece of information with supporting evidence from multiple credible sources is introduced into the social media environment. The information is straightforward to verify and has minimal political or emotional charge.",
+    "observation_guidance": "Watch how the information spreads through different network clusters. Note how critical thinking and truth-seeking behaviors affect acceptance rates. Compare the speed and penetration of factual information to what you observed in the misinformation scenario.",
+    "simulation_parameters": {
+        "num_citizens": 100,
+        "num_corporate_media": 3,
+        "num_influencers": 5,
+        "num_government": 1,
+        "network_type": "small_world",
+        "steps": 50,
+        
+        "truth_seeking_mean": 2.0,
+        "truth_seeking_std": 1.5,
+        "confirmation_bias_min": 3,
+        "confirmation_bias_max": 6,
+        "critical_thinking_min": 5,
+        "critical_thinking_max": 8,
+        "social_conformity_min": 3,
+        "social_conformity_max": 7,
+        
+        "initial_trust_in_corporate": 5.0,
+        "initial_trust_in_influencers": 5.0,
+        "initial_trust_in_government": 6.0,
+        
+        "corporate_bias_min": -1,
+        "corporate_bias_max": 1,
+        "influencer_bias_min": -2,
+        "influencer_bias_max": 2,
+        "government_bias": 0,
+        
+        "truth_commitment_corporate": 7.0,
+        "truth_commitment_influencer": 6.0,
+        "truth_commitment_government": 8.0,
+        
+        "corporate_publication_rate": 0.8,
+        "corporate_influence_reach": 0.7,
+        "influencer_publication_rate": 0.8,
+        "influencer_influence_reach": 0.6,
+        "government_publication_rate": 0.7,
+        "government_influence_reach": 0.7,
+        
+        "small_world_k": 4,
+        "small_world_p": 0.1,
+        "scale_free_m": 3,
+        "random_p": 0.1
+    }
+}

@@ -1,0 +1,57 @@
+{
+    "id": "belief_resistance",
+    "name": "Belief Update Resistance Study",
+    "description": "This scenario investigates how cognitive parameters influence belief formation and resistance to new information. It models a population with moderate resistance to belief updates to study how cognitive factors affect information trust evaluation.",
+    "learning_objectives": [
+        "Understand how confirmation bias affects the processing of contradictory information",
+        "Observe how critical thinking skills mediate belief formation",
+        "Analyze the relationship between cognitive parameters and trust in different sources",
+        "Identify which cognitive factors most strongly predict resistance to belief updates"
+    ],
+    "scenario_context": "The simulation creates a population with moderate levels of confirmation bias, critical thinking, truth-seeking, and social conformity. This represents a balanced cognitive profile that can be compared with highly resistant or update-friendly profiles to study belief updating mechanisms.",
+    "observation_guidance": "Focus on individuals with different cognitive profiles and track how their beliefs change over time. Notice which cognitive factors correlate most strongly with resistance to updating beliefs when presented with new information. Pay attention to trust evolution patterns for citizens with different cognitive profiles.",
+    "research_question": "How does resistance to update one's beliefs affect information trust evaluation?",
+    "simulation_parameters": {
+        "num_citizens": 100,
+        "num_corporate_media": 3,
+        "num_influencers": 5,
+        "num_government": 1,
+        "network_type": "small_world",
+        "steps": 75,
+        
+        "truth_seeking_mean": 1.0,
+        "truth_seeking_std": 2.5,
+        "confirmation_bias_min": 5,
+        "confirmation_bias_max": 7,
+        "critical_thinking_min": 4,
+        "critical_thinking_max": 6,
+        "social_conformity_min": 5,
+        "social_conformity_max": 7,
+        
+        "initial_trust_in_corporate": 5.0,
+        "initial_trust_in_influencers": 5.0,
+        "initial_trust_in_government": 5.0,
+        
+        "corporate_bias_min": -2,
+        "corporate_bias_max": 2,
+        "influencer_bias_min": -3,
+        "influencer_bias_max": 3,
+        "government_bias": 0,
+        
+        "truth_commitment_corporate": 6.0,
+        "truth_commitment_influencer": 4.0,
+        "truth_commitment_government": 7.0,
+        
+        "corporate_publication_rate": 0.8,
+        "corporate_influence_reach": 0.7,
+        "influencer_publication_rate": 0.8,
+        "influencer_influence_reach": 0.6,
+        "government_publication_rate": 0.7,
+        "government_influence_reach": 0.6,
+        
+        "small_world_k": 4,
+        "small_world_p": 0.1,
+        "scale_free_m": 3,
+        "random_p": 0.1
+    }
+}

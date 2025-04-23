@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+
+{% block title %}InfoFlow - Guided Social Media Scenarios{% endblock %}
+
+{% block extra_head %}
+<style>
+    .scenario-card {
+        height: 100%;
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    }
+    .scenario-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .scenario-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    .card-tag {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        background-color: #e9ecef;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <h1>Guided Social Media Scenarios</h1>
+            <p class="lead">
+                Explore these pre-configured simulation scenarios to understand different aspects of social media information dynamics.
+                Each scenario highlights specific phenomena in online information sharing, belief formation, and social influence.
+            </p>
+        </div>
+    </div>
+    
+    <div class="row mb-5">
+        <div class="col-md-4 mb-4">
+            <div class="card scenario-card">
+                <div class="card-body text-center">
+                    <div class="scenario-icon text-danger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-lightning-charge-fill" viewBox="0 0 16 16">
+                            <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Viral Misinformation</h3>
+                    <p class="card-text">
+                        Observe how false information spreads rapidly through a network despite being easily verifiable as false.
+                    </p>
+                    <div class="mt-3 mb-3">
+                        <span class="card-tag">Fake News</span>
+                        <span class="card-tag">Echo Chambers</span>
+                        <span class="card-tag">Confirmation Bias</span>
+                    </div>
+                    <a href="{{ url_for('main.view_scenario', scenario_id='viral_misinformation') }}" class="btn btn-outline-primary mt-2">Explore Scenario</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card scenario-card">
+                <div class="card-body text-center">
+                    <div class="scenario-icon text-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                            <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                            <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Verifiable Fact</h3>
+                    <p class="card-text">
+                        Examine how factual information with strong supporting evidence spreads through social networks.
+                    </p>
+                    <div class="mt-3 mb-3">
+                        <span class="card-tag">Factual Content</span>
+                        <span class="card-tag">Truth-Seeking</span>
+                        <span class="card-tag">Critical Thinking</span>
+                    </div>
+                    <a href="{{ url_for('main.view_scenario', scenario_id='verifiable_fact') }}" class="btn btn-outline-primary mt-2">Explore Scenario</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card scenario-card">
+                <div class="card-body text-center">
+                    <div class="scenario-icon text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                            <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">Pandemic Response</h3>
+                    <p class="card-text">
+                        Analyze how evolving health information spreads during uncertainty and scientific ambiguity.
+                    </p>
+                    <div class="mt-3 mb-3">
+                        <span class="card-tag">Controversy</span>
+                        <span class="card-tag">Polarization</span>
+                        <span class="card-tag">Trust Dynamics</span>
+                    </div>
+                    <a href="{{ url_for('main.view_scenario', scenario_id='pandemic_response') }}" class="btn btn-outline-primary mt-2">Explore Scenario</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% if scenarios|length > 3 %}
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4">Additional Scenarios</h2>
+        </div>
+        
+        {% for scenario in scenarios %}
+            {% if scenario.id not in ['viral_misinformation', 'verifiable_fact', 'pandemic_response'] %}
+            <div class="col-md-4 mb-4">
+                <div class="card scenario-card">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ scenario.name }}</h4>
+                        <p class="card-text">{{ scenario.description|truncate(150) }}</p>
+                        <a href="{{ url_for('main.view_scenario', scenario_id=scenario.id) }}" class="btn btn-sm btn-outline-primary">Explore Scenario</a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Creating Your Own Scenarios</h3>
+                </div>
+                <div class="card-body">
+                    <p>
+                        You can create your own guided scenarios by adding JSON configuration files to the
+                        <code>infoflow/data/scenarios</code> directory. Each scenario should define simulation
+                        parameters and educational context.
+                    </p>
+                    <p>
+                        See the existing scenarios for examples of the format. Once added, your scenarios
+                        will automatically appear on this page.
+                    </p>
+                    <a href="{{ url_for('main.simulation') }}" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-fill me-1" viewBox="0 0 16 16">
+                            <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+                        </svg>
+                        Create Custom Simulation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

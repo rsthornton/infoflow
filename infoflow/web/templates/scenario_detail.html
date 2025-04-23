@@ -1,0 +1,400 @@
+{% extends "base.html" %}
+
+{% block title %}{{ scenario.name }} - InfoFlow Scenario{% endblock %}
+
+{% block extra_head %}
+<style>
+    .scenario-header {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+    .objective-card {
+        border-left: 4px solid #1976d2;
+        background-color: #f1f8ff;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    .section-heading {
+        border-bottom: 2px solid #e9ecef;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+        color: #495057;
+        font-weight: 600;
+    }
+    .param-group {
+        background-color: white;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .param-value {
+        font-family: monospace;
+        background-color: #f8f9fa;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        color: #212529;
+    }
+    .scenario-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        display: inline-block;
+    }
+    .param-slider {
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="scenario-header text-center">
+        <a href="{{ url_for('main.guided_scenarios') }}" class="btn btn-outline-secondary mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+            </svg>
+            Back to Scenarios
+        </a>
+        
+        <div class="mb-3">
+            {% if scenario.id == 'viral_misinformation' %}
+            <div class="scenario-icon text-danger">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-lightning-charge-fill" viewBox="0 0 16 16">
+                    <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/>
+                </svg>
+            </div>
+            {% elif scenario.id == 'verifiable_fact' %}
+            <div class="scenario-icon text-success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                    <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                    <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                </svg>
+            </div>
+            {% elif scenario.id == 'pandemic_response' %}
+            <div class="scenario-icon text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                </svg>
+            </div>
+            {% else %}
+            <div class="scenario-icon text-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-diagram-3-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zm-6 8A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm6 0A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm6 0a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1z"/>
+                </svg>
+            </div>
+            {% endif %}
+        </div>
+        
+        <h1>{{ scenario.name }}</h1>
+        <p class="lead mb-0">{{ scenario.description }}</p>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-8">
+            <div class="mb-4">
+                <h2 class="section-heading">Learning Objectives</h2>
+                <div class="objective-list">
+                    {% for objective in scenario.learning_objectives %}
+                    <div class="objective-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle me-2" viewBox="0 0 16 16">
+                            <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                            <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                        </svg>
+                        {{ objective }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <h2 class="section-heading">Scenario Context</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <p>{{ scenario.scenario_context }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <h2 class="section-heading">What to Observe</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <p>{{ scenario.observation_guidance }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <h2 class="section-heading">Simulation Parameters</h2>
+                
+                <div class="param-group">
+                    <h4>Basic Configuration</h4>
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <td>Network Size</td>
+                                <td>
+                                    <span class="badge bg-primary">{{ scenario.simulation_parameters.num_citizens }}</span> Social Media Users
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Media Accounts</td>
+                                <td>
+                                    <span class="badge bg-info">{{ scenario.simulation_parameters.num_corporate_media }}</span> Corporate Media
+                                    <span class="badge bg-warning">{{ scenario.simulation_parameters.num_influencers }}</span> Influencers
+                                    <span class="badge bg-success">{{ scenario.simulation_parameters.num_government }}</span> Government
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Network Type</td>
+                                <td><span class="param-value">{{ scenario.simulation_parameters.network_type }}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Simulation Steps</td>
+                                <td><span class="badge bg-secondary">{{ scenario.simulation_parameters.steps }}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="param-group">
+                    <h4>User Cognitive Parameters</h4>
+                    <div class="mb-3">
+                        <label>Truth Seeking: {{ scenario.simulation_parameters.truth_seeking_mean }} ± {{ scenario.simulation_parameters.truth_seeking_std }}</label>
+                        <div class="progress">
+                            {% set truth_seeking_normalized = ((scenario.simulation_parameters.truth_seeking_mean + 5) / 10 * 100)|int %}
+                            <div class="progress-bar" role="progressbar" style="width: {{ truth_seeking_normalized }}%;" 
+                                 aria-valuenow="{{ scenario.simulation_parameters.truth_seeking_mean }}" aria-valuemin="-5" aria-valuemax="5">
+                                {{ scenario.simulation_parameters.truth_seeking_mean }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label>Confirmation Bias: {{ scenario.simulation_parameters.confirmation_bias_min }} - {{ scenario.simulation_parameters.confirmation_bias_max }}</label>
+                        <div class="progress">
+                            {% set conf_bias_min = (scenario.simulation_parameters.confirmation_bias_min / 10 * 100)|int %}
+                            {% set conf_bias_max = (scenario.simulation_parameters.confirmation_bias_max / 10 * 100)|int %}
+                            <div class="progress-bar" role="progressbar" style="width: {{ conf_bias_max - conf_bias_min }}%; margin-left: {{ conf_bias_min }}%;" 
+                                 aria-valuenow="{{ (scenario.simulation_parameters.confirmation_bias_min + scenario.simulation_parameters.confirmation_bias_max) / 2 }}" 
+                                 aria-valuemin="0" aria-valuemax="10">
+                                {{ scenario.simulation_parameters.confirmation_bias_min }} - {{ scenario.simulation_parameters.confirmation_bias_max }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label>Critical Thinking: {{ scenario.simulation_parameters.critical_thinking_min }} - {{ scenario.simulation_parameters.critical_thinking_max }}</label>
+                        <div class="progress">
+                            {% set crit_min = (scenario.simulation_parameters.critical_thinking_min / 10 * 100)|int %}
+                            {% set crit_max = (scenario.simulation_parameters.critical_thinking_max / 10 * 100)|int %}
+                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ crit_max - crit_min }}%; margin-left: {{ crit_min }}%;" 
+                                 aria-valuenow="{{ (scenario.simulation_parameters.critical_thinking_min + scenario.simulation_parameters.critical_thinking_max) / 2 }}" 
+                                 aria-valuemin="0" aria-valuemax="10">
+                                {{ scenario.simulation_parameters.critical_thinking_min }} - {{ scenario.simulation_parameters.critical_thinking_max }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label>Social Conformity: {{ scenario.simulation_parameters.social_conformity_min }} - {{ scenario.simulation_parameters.social_conformity_max }}</label>
+                        <div class="progress">
+                            {% set conf_min = (scenario.simulation_parameters.social_conformity_min / 10 * 100)|int %}
+                            {% set conf_max = (scenario.simulation_parameters.social_conformity_max / 10 * 100)|int %}
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: {{ conf_max - conf_min }}%; margin-left: {{ conf_min }}%;" 
+                                 aria-valuenow="{{ (scenario.simulation_parameters.social_conformity_min + scenario.simulation_parameters.social_conformity_max) / 2 }}" 
+                                 aria-valuemin="0" aria-valuemax="10">
+                                {{ scenario.simulation_parameters.social_conformity_min }} - {{ scenario.simulation_parameters.social_conformity_max }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="param-group">
+                    <h4>Initial Trust Levels</h4>
+                    <div class="mb-3">
+                        <label>Trust in Corporate Media: {{ scenario.simulation_parameters.initial_trust_in_corporate }}</label>
+                        <div class="progress">
+                            {% set trust_corp = (scenario.simulation_parameters.initial_trust_in_corporate / 10 * 100)|int %}
+                            <div class="progress-bar bg-info" role="progressbar" style="width: {{ trust_corp }}%;" 
+                                 aria-valuenow="{{ scenario.simulation_parameters.initial_trust_in_corporate }}" aria-valuemin="0" aria-valuemax="10">
+                                {{ scenario.simulation_parameters.initial_trust_in_corporate }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label>Trust in Influencers: {{ scenario.simulation_parameters.initial_trust_in_influencers }}</label>
+                        <div class="progress">
+                            {% set trust_inf = (scenario.simulation_parameters.initial_trust_in_influencers / 10 * 100)|int %}
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: {{ trust_inf }}%;" 
+                                 aria-valuenow="{{ scenario.simulation_parameters.initial_trust_in_influencers }}" aria-valuemin="0" aria-valuemax="10">
+                                {{ scenario.simulation_parameters.initial_trust_in_influencers }}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label>Trust in Government: {{ scenario.simulation_parameters.initial_trust_in_government }}</label>
+                        <div class="progress">
+                            {% set trust_gov = (scenario.simulation_parameters.initial_trust_in_government / 10 * 100)|int %}
+                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ trust_gov }}%;" 
+                                 aria-valuenow="{{ scenario.simulation_parameters.initial_trust_in_government }}" aria-valuemin="0" aria-valuemax="10">
+                                {{ scenario.simulation_parameters.initial_trust_in_government }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card sticky-top" style="top: 2rem;">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title mb-0">Run This Scenario</h3>
+                </div>
+                <div class="card-body">
+                    <p>Click the button below to run this pre-configured scenario and observe the social media simulation in action.</p>
+                    
+                    <button id="runScenarioBtn" class="btn btn-primary btn-lg w-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill me-2" viewBox="0 0 16 16">
+                            <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                        </svg>
+                        Run Scenario
+                    </button>
+                    
+                    <hr>
+                    
+                    <h5>Why This Scenario?</h5>
+                    <p class="small">
+                        This scenario has been carefully configured to demonstrate specific aspects of social media information dynamics. The parameters above create conditions that highlight particular patterns of information spread and belief formation.
+                    </p>
+                    
+                    <h5>After Running</h5>
+                    <p class="small">
+                        After the simulation completes, be sure to examine:
+                    </p>
+                    <ul class="small">
+                        <li>Metrics showing trust changes over time</li>
+                        <li>The network visualization showing belief clusters</li>
+                        <li>The content spread patterns</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Loading Modal -->
+<div class="modal fade" id="loadingModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center p-4">
+                <div class="spinner-border text-primary mb-3" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <h4>Running Simulation</h4>
+                <p class="mb-0">Please wait while the social media scenario is simulated...</p>
+                <div class="progress mt-3">
+                    <div id="simulationProgress" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const runBtn = document.getElementById('runScenarioBtn');
+        const loadingModal = new bootstrap.Modal(document.getElementById('loadingModal'));
+        const progressBar = document.getElementById('simulationProgress');
+        
+        // Add click handler to the run button
+        runBtn.addEventListener('click', function() {
+            // Show loading modal
+            loadingModal.show();
+            progressBar.style.width = "0%";
+            
+            // Animation progress even though we don't have real progress data
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 2;
+                if (progress > 90) {
+                    clearInterval(interval);
+                } else {
+                    progressBar.style.width = progress + "%";
+                }
+            }, 200);
+            
+            // Get the scenario ID
+            const scenarioId = '{{ scenario.id }}';
+            
+            // Fetch the scenario parameters
+            fetch(`/api/scenarios/${scenarioId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        // Extract simulation parameters
+                        const params = data.scenario.simulation_parameters;
+                        
+                        // Run the simulation with these parameters
+                        fetch('/api/run-simulation', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(params)
+                        })
+                        .then(response => response.json())
+                        .then(result => {
+                            clearInterval(interval);
+                            progressBar.style.width = "100%";
+                            
+                            if (result.status === 'success') {
+                                // Name the run with the scenario name
+                                fetch('/api/name-simulation', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        run_id: result.run_id,
+                                        name: '{{ scenario.name }}'
+                                    })
+                                })
+                                .then(() => {
+                                    // Redirect to metrics dashboard
+                                    window.location.href = `/metrics-dashboard/${result.run_id}`;
+                                })
+                                .catch(error => {
+                                    console.error('Error naming simulation:', error);
+                                    window.location.href = `/metrics-dashboard/${result.run_id}`;
+                                });
+                            } else {
+                                alert('Error running simulation. Please try again.');
+                                loadingModal.hide();
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error running simulation:', error);
+                            alert('Error running simulation. Please try again.');
+                            loadingModal.hide();
+                        });
+                    } else {
+                        alert('Error loading scenario parameters. Please try again.');
+                        loadingModal.hide();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading scenario:', error);
+                    alert('Error loading scenario. Please try again.');
+                    loadingModal.hide();
+                });
+        });
+    });
+</script>
+{% endblock %}

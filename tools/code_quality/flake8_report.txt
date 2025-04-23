@@ -1,0 +1,785 @@
+infoflow/__init__.py:3:1: F401 'infoflow.core.model.InformationFlowModel' imported but unused
+infoflow/__init__.py:3:1: F401 'infoflow.core.model.create_model' imported but unused
+infoflow/__init__.py:5:22: W292 no newline at end of file
+infoflow/agents/__init__.py:3:1: F401 'infoflow.agents.base.CitizenAgent' imported but unused
+infoflow/agents/__init__.py:3:1: F401 'infoflow.agents.base.SocialMediaAgent' imported but unused
+infoflow/agents/base.py:8:1: F401 'typing.Union' imported but unused
+infoflow/agents/base.py:8:1: F401 'typing.Tuple' imported but unused
+infoflow/agents/base.py:10:1: F401 'numpy as np' imported but unused
+infoflow/agents/base.py:11:1: F401 'math' imported but unused
+infoflow/agents/base.py:12:1: F401 'mesa.agent.AgentSet' imported but unused
+infoflow/agents/base.py:12:80: E501 line too long (90 > 79 characters)
+infoflow/agents/base.py:17:1: W293 blank line contains whitespace
+infoflow/agents/base.py:20:1: W293 blank line contains whitespace
+infoflow/agents/base.py:26:1: W293 blank line contains whitespace
+infoflow/agents/base.py:35:1: W293 blank line contains whitespace
+infoflow/agents/base.py:37:80: E501 line too long (104 > 79 characters)
+infoflow/agents/base.py:41:80: E501 line too long (84 > 79 characters)
+infoflow/agents/base.py:43:80: E501 line too long (82 > 79 characters)
+infoflow/agents/base.py:44:80: E501 line too long (80 > 79 characters)
+infoflow/agents/base.py:46:1: W293 blank line contains whitespace
+infoflow/agents/base.py:47:42: W291 trailing whitespace
+infoflow/agents/base.py:48:56: W291 trailing whitespace
+infoflow/agents/base.py:56:1: W293 blank line contains whitespace
+infoflow/agents/base.py:59:80: E501 line too long (81 > 79 characters)
+infoflow/agents/base.py:63:80: E501 line too long (82 > 79 characters)
+infoflow/agents/base.py:65:80: E501 line too long (80 > 79 characters)
+infoflow/agents/base.py:68:1: W293 blank line contains whitespace
+infoflow/agents/base.py:72:1: W293 blank line contains whitespace
+infoflow/agents/base.py:79:1: W293 blank line contains whitespace
+infoflow/agents/base.py:86:1: W293 blank line contains whitespace
+infoflow/agents/base.py:89:1: W293 blank line contains whitespace
+infoflow/agents/base.py:92:1: W293 blank line contains whitespace
+infoflow/agents/base.py:93:80: E501 line too long (86 > 79 characters)
+infoflow/agents/base.py:95:1: W293 blank line contains whitespace
+infoflow/agents/base.py:99:1: W293 blank line contains whitespace
+infoflow/agents/base.py:105:80: E501 line too long (136 > 79 characters)
+infoflow/agents/base.py:106:1: W293 blank line contains whitespace
+infoflow/agents/base.py:114:1: W293 blank line contains whitespace
+infoflow/agents/base.py:120:9: F841 local variable 'source_authority' is assigned to but never used
+infoflow/agents/base.py:121:1: W293 blank line contains whitespace
+infoflow/agents/base.py:122:80: E501 line too long (171 > 79 characters)
+infoflow/agents/base.py:123:1: W293 blank line contains whitespace
+infoflow/agents/base.py:127:1: W293 blank line contains whitespace
+infoflow/agents/base.py:131:80: E501 line too long (210 > 79 characters)
+infoflow/agents/base.py:132:1: W293 blank line contains whitespace
+infoflow/agents/base.py:135:80: E501 line too long (80 > 79 characters)
+infoflow/agents/base.py:137:80: E501 line too long (99 > 79 characters)
+infoflow/agents/base.py:139:80: E501 line too long (83 > 79 characters)
+infoflow/agents/base.py:141:80: E501 line too long (98 > 79 characters)
+infoflow/agents/base.py:141:99: W291 trailing whitespace
+infoflow/agents/base.py:142:80: E501 line too long (90 > 79 characters)
+infoflow/agents/base.py:143:1: W293 blank line contains whitespace
+infoflow/agents/base.py:147:65: W291 trailing whitespace
+infoflow/agents/base.py:148:31: E128 continuation line under-indented for visual indent
+infoflow/agents/base.py:149:1: W293 blank line contains whitespace
+infoflow/agents/base.py:155:80: E501 line too long (104 > 79 characters)
+infoflow/agents/base.py:157:1: W293 blank line contains whitespace
+infoflow/agents/base.py:160:1: W293 blank line contains whitespace
+infoflow/agents/base.py:163:1: W293 blank line contains whitespace
+infoflow/agents/base.py:168:1: W293 blank line contains whitespace
+infoflow/agents/base.py:171:80: E501 line too long (179 > 79 characters)
+infoflow/agents/base.py:172:1: W293 blank line contains whitespace
+infoflow/agents/base.py:174:80: E501 line too long (122 > 79 characters)
+infoflow/agents/base.py:175:1: W293 blank line contains whitespace
+infoflow/agents/base.py:178:80: E501 line too long (85 > 79 characters)
+infoflow/agents/base.py:179:80: E501 line too long (82 > 79 characters)
+infoflow/agents/base.py:180:1: W293 blank line contains whitespace
+infoflow/agents/base.py:183:1: W293 blank line contains whitespace
+infoflow/agents/base.py:186:13: F841 local variable 'bias_weight' is assigned to but never used
+infoflow/agents/base.py:187:1: W293 blank line contains whitespace
+infoflow/agents/base.py:190:80: E501 line too long (99 > 79 characters)
+infoflow/agents/base.py:191:1: W293 blank line contains whitespace
+infoflow/agents/base.py:193:80: E501 line too long (81 > 79 characters)
+infoflow/agents/base.py:193:82: W291 trailing whitespace
+infoflow/agents/base.py:195:1: W293 blank line contains whitespace
+infoflow/agents/base.py:197:80: E501 line too long (90 > 79 characters)
+infoflow/agents/base.py:199:1: W293 blank line contains whitespace
+infoflow/agents/base.py:200:80: E501 line too long (80 > 79 characters)
+infoflow/agents/base.py:202:1: W293 blank line contains whitespace
+infoflow/agents/base.py:205:80: E501 line too long (93 > 79 characters)
+infoflow/agents/base.py:206:1: W293 blank line contains whitespace
+infoflow/agents/base.py:208:80: E501 line too long (82 > 79 characters)
+infoflow/agents/base.py:209:1: W293 blank line contains whitespace
+infoflow/agents/base.py:210:80: E501 line too long (81 > 79 characters)
+infoflow/agents/base.py:212:80: E501 line too long (192 > 79 characters)
+infoflow/agents/base.py:213:1: W293 blank line contains whitespace
+infoflow/agents/base.py:214:80: E501 line too long (92 > 79 characters)
+infoflow/agents/base.py:217:1: W293 blank line contains whitespace
+infoflow/agents/base.py:218:80: E501 line too long (92 > 79 characters)
+infoflow/agents/base.py:221:1: W293 blank line contains whitespace
+infoflow/agents/base.py:224:80: E501 line too long (139 > 79 characters)
+infoflow/agents/base.py:227:1: W293 blank line contains whitespace
+infoflow/agents/base.py:228:80: E501 line too long (213 > 79 characters)
+infoflow/agents/base.py:229:1: W293 blank line contains whitespace
+infoflow/agents/base.py:231:80: E501 line too long (87 > 79 characters)
+infoflow/agents/base.py:232:1: W293 blank line contains whitespace
+infoflow/agents/base.py:237:80: E501 line too long (173 > 79 characters)
+infoflow/agents/base.py:238:73: W291 trailing whitespace
+infoflow/agents/base.py:242:80: E501 line too long (169 > 79 characters)
+infoflow/agents/base.py:243:1: W293 blank line contains whitespace
+infoflow/agents/base.py:245:80: E501 line too long (143 > 79 characters)
+infoflow/agents/base.py:248:80: E501 line too long (102 > 79 characters)
+infoflow/agents/base.py:249:1: W293 blank line contains whitespace
+infoflow/agents/base.py:251:1: W293 blank line contains whitespace
+infoflow/agents/base.py:254:1: W293 blank line contains whitespace
+infoflow/agents/base.py:257:80: E501 line too long (82 > 79 characters)
+infoflow/agents/base.py:261:80: E501 line too long (140 > 79 characters)
+infoflow/agents/base.py:262:1: W293 blank line contains whitespace
+infoflow/agents/base.py:266:80: E501 line too long (134 > 79 characters)
+infoflow/agents/base.py:267:1: W293 blank line contains whitespace
+infoflow/agents/base.py:269:80: E501 line too long (117 > 79 characters)
+infoflow/agents/base.py:270:1: W293 blank line contains whitespace
+infoflow/agents/base.py:272:80: E501 line too long (82 > 79 characters)
+infoflow/agents/base.py:273:1: W293 blank line contains whitespace
+infoflow/agents/base.py:278:80: E501 line too long (92 > 79 characters)
+infoflow/agents/base.py:279:80: E501 line too long (145 > 79 characters)
+infoflow/agents/base.py:282:80: E501 line too long (89 > 79 characters)
+infoflow/agents/base.py:283:80: E501 line too long (146 > 79 characters)
+infoflow/agents/base.py:286:80: E501 line too long (84 > 79 characters)
+infoflow/agents/base.py:287:80: E501 line too long (145 > 79 characters)
+infoflow/agents/base.py:288:1: W293 blank line contains whitespace
+infoflow/agents/base.py:291:80: E501 line too long (84 > 79 characters)
+infoflow/agents/base.py:292:80: E501 line too long (160 > 79 characters)
+infoflow/agents/base.py:293:1: W293 blank line contains whitespace
+infoflow/agents/base.py:295:80: E501 line too long (90 > 79 characters)
+infoflow/agents/base.py:296:80: E501 line too long (105 > 79 characters)
+infoflow/agents/base.py:297:1: W293 blank line contains whitespace
+infoflow/agents/base.py:300:80: E501 line too long (178 > 79 characters)
+infoflow/agents/base.py:301:1: W293 blank line contains whitespace
+infoflow/agents/base.py:304:1: W293 blank line contains whitespace
+infoflow/agents/base.py:307:1: W293 blank line contains whitespace
+infoflow/agents/base.py:314:1: W293 blank line contains whitespace
+infoflow/agents/base.py:318:1: W293 blank line contains whitespace
+infoflow/agents/base.py:322:1: W293 blank line contains whitespace
+infoflow/agents/base.py:323:80: E501 line too long (88 > 79 characters)
+infoflow/agents/base.py:327:1: W293 blank line contains whitespace
+infoflow/agents/base.py:329:80: E501 line too long (84 > 79 characters)
+infoflow/agents/base.py:331:1: W293 blank line contains whitespace
+infoflow/agents/base.py:332:80: E501 line too long (90 > 79 characters)
+infoflow/agents/base.py:333:80: E501 line too long (109 > 79 characters)
+infoflow/agents/base.py:335:1: W293 blank line contains whitespace
+infoflow/agents/base.py:337:80: E501 line too long (95 > 79 characters)
+infoflow/agents/base.py:340:80: E501 line too long (106 > 79 characters)
+infoflow/agents/base.py:341:1: W293 blank line contains whitespace
+infoflow/agents/base.py:342:80: E501 line too long (88 > 79 characters)
+infoflow/agents/base.py:346:1: W293 blank line contains whitespace
+infoflow/agents/base.py:347:80: E501 line too long (84 > 79 characters)
+infoflow/agents/base.py:354:1: W293 blank line contains whitespace
+infoflow/agents/base.py:360:1: W293 blank line contains whitespace
+infoflow/agents/base.py:361:80: E501 line too long (85 > 79 characters)
+infoflow/agents/base.py:362:80: E501 line too long (90 > 79 characters)
+infoflow/agents/base.py:363:1: W293 blank line contains whitespace
+infoflow/agents/base.py:365:80: E501 line too long (83 > 79 characters)
+infoflow/agents/base.py:367:80: E501 line too long (110 > 79 characters)
+infoflow/agents/base.py:368:1: W293 blank line contains whitespace
+infoflow/agents/base.py:371:1: W293 blank line contains whitespace
+infoflow/agents/base.py:375:1: W293 blank line contains whitespace
+infoflow/agents/base.py:379:1: W293 blank line contains whitespace
+infoflow/agents/base.py:380:80: E501 line too long (89 > 79 characters)
+infoflow/agents/base.py:384:80: E501 line too long (82 > 79 characters)
+infoflow/agents/base.py:385:1: W293 blank line contains whitespace
+infoflow/agents/base.py:387:80: E501 line too long (109 > 79 characters)
+infoflow/agents/base.py:388:80: E501 line too long (109 > 79 characters)
+infoflow/agents/base.py:389:1: W293 blank line contains whitespace
+infoflow/agents/base.py:393:1: W293 blank line contains whitespace
+infoflow/agents/base.py:394:80: E501 line too long (99 > 79 characters)
+infoflow/agents/base.py:395:80: E501 line too long (95 > 79 characters)
+infoflow/agents/base.py:396:80: E501 line too long (84 > 79 characters)
+infoflow/agents/base.py:397:1: W293 blank line contains whitespace
+infoflow/agents/base.py:400:80: E501 line too long (95 > 79 characters)
+infoflow/agents/base.py:403:80: E501 line too long (96 > 79 characters)
+infoflow/agents/base.py:406:80: E501 line too long (96 > 79 characters)
+infoflow/agents/base.py:408:1: W293 blank line contains whitespace
+infoflow/agents/base.py:410:80: E501 line too long (84 > 79 characters)
+infoflow/agents/base.py:412:1: W293 blank line contains whitespace
+infoflow/agents/base.py:416:80: E501 line too long (80 > 79 characters)
+infoflow/agents/base.py:417:1: W293 blank line contains whitespace
+infoflow/agents/base.py:420:80: E501 line too long (98 > 79 characters)
+infoflow/agents/base.py:422:1: W293 blank line contains whitespace
+infoflow/agents/base.py:424:1: W293 blank line contains whitespace
+infoflow/agents/base.py:430:1: W293 blank line contains whitespace
+infoflow/agents/base.py:431:80: E501 line too long (81 > 79 characters)
+infoflow/agents/base.py:434:1: W293 blank line contains whitespace
+infoflow/agents/base.py:438:80: E501 line too long (82 > 79 characters)
+infoflow/agents/base.py:440:1: W293 blank line contains whitespace
+infoflow/agents/base.py:444:1: W293 blank line contains whitespace
+infoflow/agents/base.py:446:80: E501 line too long (139 > 79 characters)
+infoflow/agents/base.py:447:1: W293 blank line contains whitespace
+infoflow/agents/base.py:451:1: W293 blank line contains whitespace
+infoflow/agents/base.py:453:80: E501 line too long (114 > 79 characters)
+infoflow/agents/base.py:454:1: W293 blank line contains whitespace
+infoflow/agents/base.py:456:80: E501 line too long (103 > 79 characters)
+infoflow/agents/base.py:457:1: W293 blank line contains whitespace
+infoflow/agents/base.py:463:1: W293 blank line contains whitespace
+infoflow/agents/base.py:466:80: E501 line too long (94 > 79 characters)
+infoflow/agents/base.py:468:80: E501 line too long (90 > 79 characters)
+infoflow/agents/base.py:471:1: W293 blank line contains whitespace
+infoflow/agents/base.py:474:1: W293 blank line contains whitespace
+infoflow/agents/base.py:478:80: E501 line too long (104 > 79 characters)
+infoflow/agents/base.py:479:1: W293 blank line contains whitespace
+infoflow/agents/base.py:481:80: E501 line too long (86 > 79 characters)
+infoflow/agents/base.py:482:80: E501 line too long (113 > 79 characters)
+infoflow/agents/base.py:483:1: W293 blank line contains whitespace
+infoflow/agents/base.py:488:1: W293 blank line contains whitespace
+infoflow/agents/base.py:491:1: W293 blank line contains whitespace
+infoflow/agents/base.py:494:27: W291 trailing whitespace
+infoflow/agents/base.py:498:1: W293 blank line contains whitespace
+infoflow/agents/base.py:503:1: W293 blank line contains whitespace
+infoflow/agents/base.py:508:1: W293 blank line contains whitespace
+infoflow/agents/base.py:514:1: W293 blank line contains whitespace
+infoflow/agents/base.py:521:80: E501 line too long (84 > 79 characters)
+infoflow/agents/base.py:522:1: W293 blank line contains whitespace
+infoflow/agents/base.py:531:1: W293 blank line contains whitespace
+infoflow/agents/base.py:540:1: W293 blank line contains whitespace
+infoflow/agents/base.py:551:1: W293 blank line contains whitespace
+infoflow/agents/base.py:558:1: W293 blank line contains whitespace
+infoflow/agents/base.py:561:1: W293 blank line contains whitespace
+infoflow/agents/base.py:567:1: W293 blank line contains whitespace
+infoflow/agents/base.py:570:44: W291 trailing whitespace
+infoflow/agents/base.py:571:29: E128 continuation line under-indented for visual indent
+infoflow/agents/base.py:571:80: E501 line too long (81 > 79 characters)
+infoflow/agents/base.py:572:1: W293 blank line contains whitespace
+infoflow/agents/base.py:573:80: E501 line too long (90 > 79 characters)
+infoflow/agents/base.py:574:80: E501 line too long (86 > 79 characters)
+infoflow/agents/base.py:575:1: W293 blank line contains whitespace
+infoflow/agents/base.py:583:1: W293 blank line contains whitespace
+infoflow/agents/base.py:585:80: E501 line too long (84 > 79 characters)
+infoflow/agents/base.py:586:1: W293 blank line contains whitespace
+infoflow/agents/base.py:592:1: W293 blank line contains whitespace
+infoflow/agents/base.py:595:1: W293 blank line contains whitespace
+infoflow/agents/base.py:596:80: E501 line too long (188 > 79 characters)
+infoflow/agents/base.py:597:1: W293 blank line contains whitespace
+infoflow/agents/base.py:600:80: E501 line too long (145 > 79 characters)
+infoflow/agents/base.py:603:1: W293 blank line contains whitespace
+infoflow/agents/base.py:604:80: E501 line too long (81 > 79 characters)
+infoflow/agents/base.py:606:1: W293 blank line contains whitespace
+infoflow/agents/base.py:609:1: W293 blank line contains whitespace
+infoflow/agents/base.py:615:80: E501 line too long (109 > 79 characters)
+infoflow/agents/base.py:616:1: W293 blank line contains whitespace
+infoflow/agents/base.py:620:1: W293 blank line contains whitespace
+infoflow/agents/base.py:625:1: W293 blank line contains whitespace
+infoflow/agents/base.py:628:1: W293 blank line contains whitespace
+infoflow/agents/base.py:632:80: E501 line too long (130 > 79 characters)
+infoflow/agents/base.py:632:131: W292 no newline at end of file
+infoflow/agents/media/__init__.py:3:1: F401 'infoflow.agents.media.base.SocialMediaAgent' imported but unused
+infoflow/agents/media/__init__.py:4:1: F401 'infoflow.agents.media.corporate.CorporateMediaAgent' imported but unused
+infoflow/agents/media/__init__.py:5:1: F401 'infoflow.agents.media.influencer.InfluencerAgent' imported but unused
+infoflow/agents/media/__init__.py:6:1: F401 'infoflow.agents.media.government.GovernmentMediaAgent' imported but unused
+infoflow/agents/media/base.py:5:1: F401 'typing.Any' imported but unused
+infoflow/agents/media/base.py:9:1: E302 expected 2 blank lines, found 1
+infoflow/agents/media/base.py:11:80: E501 line too long (84 > 79 characters)
+infoflow/agents/media/base.py:12:1: W293 blank line contains whitespace
+infoflow/agents/media/base.py:21:1: W293 blank line contains whitespace
+infoflow/agents/media/base.py:30:1: W293 blank line contains whitespace
+infoflow/agents/media/base.py:41:1: W293 blank line contains whitespace
+infoflow/agents/media/base.py:48:1: W293 blank line contains whitespace
+infoflow/agents/media/base.py:51:1: W293 blank line contains whitespace
+infoflow/agents/media/base.py:67:1: W293 blank line contains whitespace
+infoflow/agents/media/base.py:71:44: W291 trailing whitespace
+infoflow/agents/media/base.py:72:29: E128 continuation line under-indented for visual indent
+infoflow/agents/media/base.py:72:80: E501 line too long (99 > 79 characters)
+infoflow/agents/media/base.py:73:1: W293 blank line contains whitespace
+infoflow/agents/media/base.py:74:80: E501 line too long (90 > 79 characters)
+infoflow/agents/media/base.py:75:80: E501 line too long (86 > 79 characters)
+infoflow/agents/media/base.py:76:1: W293 blank line contains whitespace
+infoflow/agents/media/base.py:84:1: W293 blank line contains whitespace
+infoflow/agents/media/base.py:86:80: E501 line too long (84 > 79 characters)
+infoflow/agents/media/base.py:87:1: W293 blank line contains whitespace
+infoflow/agents/media/base.py:94:1: W293 blank line contains whitespace
+infoflow/agents/media/base.py:95:80: E501 line too long (81 > 79 characters)
+infoflow/agents/media/base.py:97:1: W293 blank line contains whitespace
+infoflow/agents/media/base.py:100:1: W293 blank line contains whitespace
+infoflow/agents/media/base.py:106:1: W293 blank line contains whitespace
+infoflow/agents/media/base.py:110:80: E501 line too long (137 > 79 characters)
+infoflow/agents/media/base.py:111:1: W293 blank line contains whitespace
+infoflow/agents/media/base.py:114:1: W293 blank line contains whitespace
+infoflow/agents/media/base.py:117:80: E501 line too long (128 > 79 characters)
+infoflow/agents/media/base.py:119:80: E501 line too long (139 > 79 characters)
+infoflow/agents/media/base.py:121:80: E501 line too long (128 > 79 characters)
+infoflow/agents/media/base.py:121:129: W292 no newline at end of file
+infoflow/agents/media/corporate.py:8:1: F401 'typing.Any' imported but unused
+infoflow/agents/media/corporate.py:8:1: F401 'typing.Optional' imported but unused
+infoflow/agents/media/corporate.py:13:1: E302 expected 2 blank lines, found 1
+infoflow/agents/media/corporate.py:16:1: W293 blank line contains whitespace
+infoflow/agents/media/corporate.py:20:1: W293 blank line contains whitespace
+infoflow/agents/media/corporate.py:22:17: E128 continuation line under-indented for visual indent
+infoflow/agents/media/corporate.py:23:17: E128 continuation line under-indented for visual indent
+infoflow/agents/media/corporate.py:24:17: E128 continuation line under-indented for visual indent
+infoflow/agents/media/corporate.py:25:17: E128 continuation line under-indented for visual indent
+infoflow/agents/media/corporate.py:25:80: E501 line too long (80 > 79 characters)
+infoflow/agents/media/corporate.py:26:17: E128 continuation line under-indented for visual indent
+infoflow/agents/media/corporate.py:27:17: E128 continuation line under-indented for visual indent
+infoflow/agents/media/corporate.py:27:48: E261 at least two spaces before inline comment
+infoflow/agents/media/corporate.py:27:80: E501 line too long (80 > 79 characters)
+infoflow/agents/media/corporate.py:38:1: W293 blank line contains whitespace
+infoflow/agents/media/corporate.py:39:80: E501 line too long (81 > 79 characters)
+infoflow/agents/media/corporate.py:42:1: W293 blank line contains whitespace
+infoflow/agents/media/corporate.py:44:1: W293 blank line contains whitespace
+infoflow/agents/media/corporate.py:47:1: W293 blank line contains whitespace
+infoflow/agents/media/corporate.py:53:80: E501 line too long (140 > 79 characters)
+infoflow/agents/media/corporate.py:54:1: W293 blank line contains whitespace
+infoflow/agents/media/corporate.py:58:80: E501 line too long (106 > 79 characters)
+infoflow/agents/media/corporate.py:60:1: W293 blank line contains whitespace
+infoflow/agents/media/corporate.py:63:80: E501 line too long (178 > 79 characters)
+infoflow/agents/media/corporate.py:64:1: W293 blank line contains whitespace
+infoflow/agents/media/corporate.py:71:1: W293 blank line contains whitespace
+infoflow/agents/media/corporate.py:73:1: W293 blank line contains whitespace
+infoflow/agents/media/corporate.py:76:1: W293 blank line contains whitespace
+infoflow/agents/media/corporate.py:82:1: W293 blank line contains whitespace
+infoflow/agents/media/corporate.py:83:80: E501 line too long (154 > 79 characters)
+infoflow/agents/media/corporate.py:85:1: W293 blank line contains whitespace
+infoflow/agents/media/corporate.py:86:18: W292 no newline at end of file
+infoflow/agents/media/government.py:8:1: F401 'typing.Optional' imported but unused
+infoflow/agents/media/government.py:13:1: E302 expected 2 blank lines, found 1
+infoflow/agents/media/government.py:16:1: W293 blank line contains whitespace
+infoflow/agents/media/government.py:20:1: W293 blank line contains whitespace
+infoflow/agents/media/government.py:22:17: E128 continuation line under-indented for visual indent
+infoflow/agents/media/government.py:23:17: E128 continuation line under-indented for visual indent
+infoflow/agents/media/government.py:24:17: E128 continuation line under-indented for visual indent
+infoflow/agents/media/government.py:25:17: E128 continuation line under-indented for visual indent
+infoflow/agents/media/government.py:25:47: E261 at least two spaces before inline comment
+infoflow/agents/media/government.py:26:17: E128 continuation line under-indented for visual indent
+infoflow/agents/media/government.py:27:17: E128 continuation line under-indented for visual indent
+infoflow/agents/media/government.py:27:48: E261 at least two spaces before inline comment
+infoflow/agents/media/government.py:38:1: W293 blank line contains whitespace
+infoflow/agents/media/government.py:42:1: W293 blank line contains whitespace
+infoflow/agents/media/government.py:43:73: W291 trailing whitespace
+infoflow/agents/media/government.py:48:1: W293 blank line contains whitespace
+infoflow/agents/media/government.py:50:80: E501 line too long (85 > 79 characters)
+infoflow/agents/media/government.py:60:1: W293 blank line contains whitespace
+infoflow/agents/media/government.py:62:1: W293 blank line contains whitespace
+infoflow/agents/media/government.py:64:1: W293 blank line contains whitespace
+infoflow/agents/media/government.py:68:1: W293 blank line contains whitespace
+infoflow/agents/media/government.py:70:1: W293 blank line contains whitespace
+infoflow/agents/media/government.py:73:1: W293 blank line contains whitespace
+infoflow/agents/media/government.py:81:1: W293 blank line contains whitespace
+infoflow/agents/media/government.py:84:1: W293 blank line contains whitespace
+infoflow/agents/media/government.py:91:1: W293 blank line contains whitespace
+infoflow/agents/media/government.py:93:1: W293 blank line contains whitespace
+infoflow/agents/media/government.py:97:1: W293 blank line contains whitespace
+infoflow/agents/media/government.py:99:1: W293 blank line contains whitespace
+infoflow/agents/media/government.py:100:18: W292 no newline at end of file
+infoflow/agents/media/influencer.py:8:1: F401 'typing.Optional' imported but unused
+infoflow/agents/media/influencer.py:13:1: E302 expected 2 blank lines, found 1
+infoflow/agents/media/influencer.py:16:1: W293 blank line contains whitespace
+infoflow/agents/media/influencer.py:20:1: W293 blank line contains whitespace
+infoflow/agents/media/influencer.py:22:17: E128 continuation line under-indented for visual indent
+infoflow/agents/media/influencer.py:23:17: E128 continuation line under-indented for visual indent
+infoflow/agents/media/influencer.py:24:17: E128 continuation line under-indented for visual indent
+infoflow/agents/media/influencer.py:25:17: E128 continuation line under-indented for visual indent
+infoflow/agents/media/influencer.py:26:17: E128 continuation line under-indented for visual indent
+infoflow/agents/media/influencer.py:27:17: E128 continuation line under-indented for visual indent
+infoflow/agents/media/influencer.py:28:17: E128 continuation line under-indented for visual indent
+infoflow/agents/media/influencer.py:28:49: E261 at least two spaces before inline comment
+infoflow/agents/media/influencer.py:28:80: E501 line too long (80 > 79 characters)
+infoflow/agents/media/influencer.py:41:1: W293 blank line contains whitespace
+infoflow/agents/media/influencer.py:46:1: W293 blank line contains whitespace
+infoflow/agents/media/influencer.py:51:1: W293 blank line contains whitespace
+infoflow/agents/media/influencer.py:55:1: W293 blank line contains whitespace
+infoflow/agents/media/influencer.py:62:1: W293 blank line contains whitespace
+infoflow/agents/media/influencer.py:66:1: W293 blank line contains whitespace
+infoflow/agents/media/influencer.py:69:1: W293 blank line contains whitespace
+infoflow/agents/media/influencer.py:79:1: W293 blank line contains whitespace
+infoflow/agents/media/influencer.py:87:80: E501 line too long (83 > 79 characters)
+infoflow/agents/media/influencer.py:93:1: W293 blank line contains whitespace
+infoflow/agents/media/influencer.py:94:80: E501 line too long (84 > 79 characters)
+infoflow/agents/media/influencer.py:95:1: W293 blank line contains whitespace
+infoflow/agents/media/influencer.py:98:1: W293 blank line contains whitespace
+infoflow/agents/media/influencer.py:100:1: W293 blank line contains whitespace
+infoflow/agents/media/influencer.py:101:32: W292 no newline at end of file
+infoflow/core/__init__.py:3:1: F401 'infoflow.core.model.InformationFlowModel' imported but unused
+infoflow/core/__init__.py:3:1: F401 'infoflow.core.model.create_model' imported but unused
+infoflow/core/model.py:11:1: F401 'typing.List' imported but unused
+infoflow/core/model.py:11:1: F401 'typing.Any' imported but unused
+infoflow/core/model.py:11:1: F401 'typing.Tuple' imported but unused
+infoflow/core/model.py:15:1: F401 'infoflow.agents.base.SocialMediaAgent' imported but unused
+infoflow/core/model.py:24:1: W293 blank line contains whitespace
+infoflow/core/model.py:29:1: W293 blank line contains whitespace
+infoflow/core/model.py:44:1: W293 blank line contains whitespace
+infoflow/core/model.py:52:80: E501 line too long (91 > 79 characters)
+infoflow/core/model.py:58:1: W293 blank line contains whitespace
+infoflow/core/model.py:65:1: W293 blank line contains whitespace
+infoflow/core/model.py:68:1: W293 blank line contains whitespace
+infoflow/core/model.py:80:1: W293 blank line contains whitespace
+infoflow/core/model.py:89:1: W293 blank line contains whitespace
+infoflow/core/model.py:96:1: W293 blank line contains whitespace
+infoflow/core/model.py:100:1: W293 blank line contains whitespace
+infoflow/core/model.py:104:1: W293 blank line contains whitespace
+infoflow/core/model.py:107:1: W293 blank line contains whitespace
+infoflow/core/model.py:110:80: E501 line too long (82 > 79 characters)
+infoflow/core/model.py:111:80: E501 line too long (91 > 79 characters)
+infoflow/core/model.py:112:80: E501 line too long (88 > 79 characters)
+infoflow/core/model.py:113:80: E501 line too long (93 > 79 characters)
+infoflow/core/model.py:114:80: E501 line too long (148 > 79 characters)
+infoflow/core/model.py:115:1: W293 blank line contains whitespace
+infoflow/core/model.py:121:1: W293 blank line contains whitespace
+infoflow/core/model.py:127:1: W293 blank line contains whitespace
+infoflow/core/model.py:132:1: W293 blank line contains whitespace
+infoflow/core/model.py:137:1: W293 blank line contains whitespace
+infoflow/core/model.py:139:80: E501 line too long (90 > 79 characters)
+infoflow/core/model.py:140:80: E501 line too long (97 > 79 characters)
+infoflow/core/model.py:141:80: E501 line too long (94 > 79 characters)
+infoflow/core/model.py:142:1: W293 blank line contains whitespace
+infoflow/core/model.py:144:80: E501 line too long (83 > 79 characters)
+infoflow/core/model.py:145:80: E501 line too long (91 > 79 characters)
+infoflow/core/model.py:146:1: W293 blank line contains whitespace
+infoflow/core/model.py:152:1: W293 blank line contains whitespace
+infoflow/core/model.py:154:80: E501 line too long (84 > 79 characters)
+infoflow/core/model.py:155:1: W293 blank line contains whitespace
+infoflow/core/model.py:157:80: E501 line too long (224 > 79 characters)
+infoflow/core/model.py:158:1: W293 blank line contains whitespace
+infoflow/core/model.py:161:1: W293 blank line contains whitespace
+infoflow/core/model.py:164:1: W293 blank line contains whitespace
+infoflow/core/model.py:168:1: W293 blank line contains whitespace
+infoflow/core/model.py:197:1: W293 blank line contains whitespace
+infoflow/core/model.py:204:80: E501 line too long (101 > 79 characters)
+infoflow/core/model.py:223:1: W293 blank line contains whitespace
+infoflow/core/model.py:226:80: E501 line too long (109 > 79 characters)
+infoflow/core/model.py:227:1: W293 blank line contains whitespace
+infoflow/core/model.py:229:80: E501 line too long (107 > 79 characters)
+infoflow/core/model.py:230:1: W293 blank line contains whitespace
+infoflow/core/model.py:232:80: E501 line too long (111 > 79 characters)
+infoflow/core/model.py:233:1: W293 blank line contains whitespace
+infoflow/core/model.py:236:1: W293 blank line contains whitespace
+infoflow/core/model.py:244:1: W293 blank line contains whitespace
+infoflow/core/model.py:248:80: E501 line too long (81 > 79 characters)
+infoflow/core/model.py:250:80: E501 line too long (90 > 79 characters)
+infoflow/core/model.py:251:80: E501 line too long (87 > 79 characters)
+infoflow/core/model.py:255:1: W293 blank line contains whitespace
+infoflow/core/model.py:261:1: W293 blank line contains whitespace
+infoflow/core/model.py:265:80: E501 line too long (82 > 79 characters)
+infoflow/core/model.py:267:80: E501 line too long (91 > 79 characters)
+infoflow/core/model.py:268:80: E501 line too long (88 > 79 characters)
+infoflow/core/model.py:272:1: W293 blank line contains whitespace
+infoflow/core/model.py:275:13: F841 local variable 'agent' is assigned to but never used
+infoflow/core/model.py:278:80: E501 line too long (82 > 79 characters)
+infoflow/core/model.py:280:80: E501 line too long (91 > 79 characters)
+infoflow/core/model.py:281:80: E501 line too long (88 > 79 characters)
+infoflow/core/model.py:285:1: W293 blank line contains whitespace
+infoflow/core/model.py:286:80: E501 line too long (81 > 79 characters)
+infoflow/core/model.py:287:1: W293 blank line contains whitespace
+infoflow/core/model.py:292:1: W293 blank line contains whitespace
+infoflow/core/model.py:301:1: W293 blank line contains whitespace
+infoflow/core/model.py:305:80: E501 line too long (120 > 79 characters)
+infoflow/core/model.py:306:80: E501 line too long (112 > 79 characters)
+infoflow/core/model.py:307:80: E501 line too long (121 > 79 characters)
+infoflow/core/model.py:309:1: W293 blank line contains whitespace
+infoflow/core/model.py:314:80: E501 line too long (104 > 79 characters)
+infoflow/core/model.py:315:80: E501 line too long (104 > 79 characters)
+infoflow/core/model.py:317:80: E501 line too long (86 > 79 characters)
+infoflow/core/model.py:320:80: E501 line too long (82 > 79 characters)
+infoflow/core/model.py:323:80: E501 line too long (87 > 79 characters)
+infoflow/core/model.py:327:80: E501 line too long (86 > 79 characters)
+infoflow/core/model.py:330:80: E501 line too long (87 > 79 characters)
+infoflow/core/model.py:333:80: E501 line too long (82 > 79 characters)
+infoflow/core/model.py:338:80: E501 line too long (83 > 79 characters)
+infoflow/core/model.py:340:80: E501 line too long (85 > 79 characters)
+infoflow/core/model.py:341:80: E501 line too long (153 > 79 characters)
+infoflow/core/model.py:342:80: E501 line too long (151 > 79 characters)
+infoflow/core/model.py:343:80: E501 line too long (148 > 79 characters)
+infoflow/core/model.py:346:1: W293 blank line contains whitespace
+infoflow/core/model.py:349:1: W293 blank line contains whitespace
+infoflow/core/model.py:353:1: W293 blank line contains whitespace
+infoflow/core/model.py:364:1: W293 blank line contains whitespace
+infoflow/core/model.py:368:1: W293 blank line contains whitespace
+infoflow/core/model.py:372:1: W293 blank line contains whitespace
+infoflow/core/model.py:376:1: W293 blank line contains whitespace
+infoflow/core/model.py:378:1: W293 blank line contains whitespace
+infoflow/core/model.py:386:1: W293 blank line contains whitespace
+infoflow/core/model.py:391:80: E501 line too long (91 > 79 characters)
+infoflow/core/model.py:393:1: W293 blank line contains whitespace
+infoflow/core/model.py:403:1: W293 blank line contains whitespace
+infoflow/core/model.py:408:1: W293 blank line contains whitespace
+infoflow/core/model.py:412:1: W293 blank line contains whitespace
+infoflow/core/model.py:417:1: W293 blank line contains whitespace
+infoflow/core/model.py:420:1: W293 blank line contains whitespace
+infoflow/core/model.py:423:80: E501 line too long (130 > 79 characters)
+infoflow/core/model.py:424:1: W293 blank line contains whitespace
+infoflow/core/model.py:429:80: E501 line too long (87 > 79 characters)
+infoflow/core/model.py:430:80: E501 line too long (80 > 79 characters)
+infoflow/core/model.py:431:1: W293 blank line contains whitespace
+infoflow/core/model.py:432:80: E501 line too long (94 > 79 characters)
+infoflow/core/model.py:435:80: E501 line too long (143 > 79 characters)
+infoflow/core/model.py:436:80: E501 line too long (140 > 79 characters)
+infoflow/core/model.py:437:80: E501 line too long (145 > 79 characters)
+infoflow/core/model.py:438:1: W293 blank line contains whitespace
+infoflow/core/model.py:439:80: E501 line too long (86 > 79 characters)
+infoflow/core/model.py:440:80: E501 line too long (82 > 79 characters)
+infoflow/core/model.py:441:80: E501 line too long (88 > 79 characters)
+infoflow/core/model.py:442:1: W293 blank line contains whitespace
+infoflow/core/model.py:443:80: E501 line too long (86 > 79 characters)
+infoflow/core/model.py:444:80: E501 line too long (124 > 79 characters)
+infoflow/core/model.py:445:1: W293 blank line contains whitespace
+infoflow/core/model.py:446:80: E501 line too long (195 > 79 characters)
+infoflow/core/model.py:447:1: W293 blank line contains whitespace
+infoflow/core/model.py:451:80: E501 line too long (84 > 79 characters)
+infoflow/core/model.py:453:1: W293 blank line contains whitespace
+infoflow/core/model.py:457:1: W293 blank line contains whitespace
+infoflow/core/model.py:459:80: E501 line too long (82 > 79 characters)
+infoflow/core/model.py:461:1: W293 blank line contains whitespace
+infoflow/core/model.py:465:1: W293 blank line contains whitespace
+infoflow/core/model.py:468:1: W293 blank line contains whitespace
+infoflow/core/model.py:471:1: W293 blank line contains whitespace
+infoflow/core/model.py:473:80: E501 line too long (106 > 79 characters)
+infoflow/core/model.py:474:80: E501 line too long (105 > 79 characters)
+infoflow/core/model.py:475:80: E501 line too long (119 > 79 characters)
+infoflow/core/model.py:476:1: W293 blank line contains whitespace
+infoflow/core/model.py:478:1: W293 blank line contains whitespace
+infoflow/core/model.py:483:80: E501 line too long (116 > 79 characters)
+infoflow/core/model.py:484:80: E501 line too long (113 > 79 characters)
+infoflow/core/model.py:485:80: E501 line too long (118 > 79 characters)
+infoflow/core/model.py:486:1: W293 blank line contains whitespace
+infoflow/core/model.py:488:80: E501 line too long (115 > 79 characters)
+infoflow/core/model.py:489:80: E501 line too long (112 > 79 characters)
+infoflow/core/model.py:490:80: E501 line too long (117 > 79 characters)
+infoflow/core/model.py:491:1: W293 blank line contains whitespace
+infoflow/core/model.py:493:80: E501 line too long (89 > 79 characters)
+infoflow/core/model.py:494:80: E501 line too long (88 > 79 characters)
+infoflow/core/model.py:495:1: W293 blank line contains whitespace
+infoflow/core/model.py:497:80: E501 line too long (112 > 79 characters)
+infoflow/core/model.py:498:80: E501 line too long (112 > 79 characters)
+infoflow/core/model.py:499:80: E501 line too long (114 > 79 characters)
+infoflow/core/model.py:500:80: E501 line too long (114 > 79 characters)
+infoflow/core/model.py:501:1: W293 blank line contains whitespace
+infoflow/core/model.py:503:80: E501 line too long (124 > 79 characters)
+infoflow/core/model.py:504:80: E501 line too long (124 > 79 characters)
+infoflow/core/model.py:505:1: W293 blank line contains whitespace
+infoflow/core/model.py:509:1: W293 blank line contains whitespace
+infoflow/core/model.py:543:80: E501 line too long (95 > 79 characters)
+infoflow/core/model.py:544:80: E501 line too long (82 > 79 characters)
+infoflow/core/model.py:545:80: E501 line too long (97 > 79 characters)
+infoflow/core/model.py:546:80: E501 line too long (82 > 79 characters)
+infoflow/core/model.py:548:80: E501 line too long (82 > 79 characters)
+infoflow/core/model.py:557:1: W293 blank line contains whitespace
+infoflow/core/model.py:558:80: E501 line too long (80 > 79 characters)
+infoflow/core/model.py:559:1: W293 blank line contains whitespace
+infoflow/core/model.py:567:1: W293 blank line contains whitespace
+infoflow/core/model.py:580:1: W293 blank line contains whitespace
+infoflow/core/model.py:589:80: E501 line too long (81 > 79 characters)
+infoflow/core/model.py:590:1: W293 blank line contains whitespace
+infoflow/core/model.py:592:80: E501 line too long (91 > 79 characters)
+infoflow/core/model.py:593:80: E501 line too long (87 > 79 characters)
+infoflow/core/model.py:594:80: E501 line too long (88 > 79 characters)
+infoflow/core/model.py:595:80: E501 line too long (84 > 79 characters)
+infoflow/core/model.py:596:80: E501 line too long (93 > 79 characters)
+infoflow/core/model.py:597:80: E501 line too long (89 > 79 characters)
+infoflow/core/model.py:598:1: W293 blank line contains whitespace
+infoflow/core/model.py:604:1: W293 blank line contains whitespace
+infoflow/core/model.py:622:1: W293 blank line contains whitespace
+infoflow/core/model.py:637:1: W293 blank line contains whitespace
+infoflow/core/model.py:644:1: W293 blank line contains whitespace
+infoflow/core/model.py:657:1: W293 blank line contains whitespace
+infoflow/core/model.py:660:1: W293 blank line contains whitespace
+infoflow/core/model.py:661:17: W292 no newline at end of file
+infoflow/core/network.py:11:1: E302 expected 2 blank lines, found 1
+infoflow/core/network.py:19:1: W293 blank line contains whitespace
+infoflow/core/network.py:25:1: W293 blank line contains whitespace
+infoflow/core/network.py:31:1: E302 expected 2 blank lines, found 1
+infoflow/core/network.py:38:1: W293 blank line contains whitespace
+infoflow/core/network.py:43:1: W293 blank line contains whitespace
+infoflow/core/network.py:49:1: E302 expected 2 blank lines, found 1
+infoflow/core/network.py:56:1: W293 blank line contains whitespace
+infoflow/core/network.py:61:1: W293 blank line contains whitespace
+infoflow/core/network.py:67:1: E302 expected 2 blank lines, found 1
+infoflow/core/network.py:75:1: W293 blank line contains whitespace
+infoflow/core/network.py:77:80: E501 line too long (87 > 79 characters)
+infoflow/core/network.py:81:1: W293 blank line contains whitespace
+infoflow/core/network.py:106:44: W292 no newline at end of file
+infoflow/data/__init__.py:3:1: F401 'infoflow.data.collectors.DataCollector' imported but unused
+infoflow/data/__init__.py:4:1: F401 'infoflow.data.metrics.calculate_polarization' imported but unused
+infoflow/data/collectors.py:5:1: F401 'typing.Dict' imported but unused
+infoflow/data/collectors.py:5:1: F401 'typing.List' imported but unused
+infoflow/data/collectors.py:5:1: F401 'typing.Any' imported but unused
+infoflow/data/collectors.py:5:1: F401 'typing.Optional' imported but unused
+infoflow/data/collectors.py:8:1: E302 expected 2 blank lines, found 1
+infoflow/data/collectors.py:10:1: W293 blank line contains whitespace
+infoflow/data/collectors.py:15:1: W293 blank line contains whitespace
+infoflow/data/collectors.py:20:1: W293 blank line contains whitespace
+infoflow/data/collectors.py:21:80: E501 line too long (92 > 79 characters)
+infoflow/data/collectors.py:22:80: E501 line too long (86 > 79 characters)
+infoflow/data/collectors.py:23:1: W293 blank line contains whitespace
+infoflow/data/collectors.py:27:1: W293 blank line contains whitespace
+infoflow/data/collectors.py:29:80: E501 line too long (94 > 79 characters)
+infoflow/data/collectors.py:30:80: E501 line too long (91 > 79 characters)
+infoflow/data/collectors.py:31:80: E501 line too long (88 > 79 characters)
+infoflow/data/collectors.py:32:1: W293 blank line contains whitespace
+infoflow/data/collectors.py:37:25: W292 no newline at end of file
+infoflow/data/metrics.py:5:1: F401 'typing.Dict' imported but unused
+infoflow/data/metrics.py:5:1: F401 'typing.Any' imported but unused
+infoflow/data/metrics.py:8:1: E302 expected 2 blank lines, found 1
+infoflow/data/metrics.py:11:1: W293 blank line contains whitespace
+infoflow/data/metrics.py:12:80: E501 line too long (83 > 79 characters)
+infoflow/data/metrics.py:13:1: W293 blank line contains whitespace
+infoflow/data/metrics.py:16:1: W293 blank line contains whitespace
+infoflow/data/metrics.py:23:1: W293 blank line contains whitespace
+infoflow/data/metrics.py:26:1: W293 blank line contains whitespace
+infoflow/data/metrics.py:28:80: E501 line too long (81 > 79 characters)
+infoflow/data/metrics.py:29:1: W293 blank line contains whitespace
+infoflow/data/metrics.py:33:1: E302 expected 2 blank lines, found 1
+infoflow/data/metrics.py:33:80: E501 line too long (94 > 79 characters)
+infoflow/data/metrics.py:36:1: W293 blank line contains whitespace
+infoflow/data/metrics.py:40:1: W293 blank line contains whitespace
+infoflow/data/metrics.py:46:1: W293 blank line contains whitespace
+infoflow/data/metrics.py:49:1: W293 blank line contains whitespace
+infoflow/data/metrics.py:52:1: W293 blank line contains whitespace
+infoflow/data/metrics.py:57:1: W293 blank line contains whitespace
+infoflow/data/metrics.py:60:1: E302 expected 2 blank lines, found 1
+infoflow/data/metrics.py:60:80: E501 line too long (101 > 79 characters)
+infoflow/data/metrics.py:62:80: E501 line too long (82 > 79 characters)
+infoflow/data/metrics.py:63:1: W293 blank line contains whitespace
+infoflow/data/metrics.py:67:1: W293 blank line contains whitespace
+infoflow/data/metrics.py:71:80: E501 line too long (83 > 79 characters)
+infoflow/data/metrics.py:73:1: W293 blank line contains whitespace
+infoflow/data/metrics.py:77:1: W293 blank line contains whitespace
+infoflow/data/metrics.py:79:62: W291 trailing whitespace
+infoflow/data/metrics.py:80:20: E128 continuation line under-indented for visual indent
+infoflow/data/metrics.py:83:1: W293 blank line contains whitespace
+infoflow/data/metrics.py:87:1: W293 blank line contains whitespace
+infoflow/data/metrics.py:88:71: W292 no newline at end of file
+infoflow/data/visualization.py:7:1: F401 'typing.Any' imported but unused
+infoflow/data/visualization.py:7:1: F401 'typing.Optional' imported but unused
+infoflow/data/visualization.py:9:1: E302 expected 2 blank lines, found 1
+infoflow/data/visualization.py:9:80: E501 line too long (117 > 79 characters)
+infoflow/data/visualization.py:12:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:18:80: E501 line too long (87 > 79 characters)
+infoflow/data/visualization.py:24:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:29:80: E501 line too long (98 > 79 characters)
+infoflow/data/visualization.py:30:80: E501 line too long (106 > 79 characters)
+infoflow/data/visualization.py:32:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:35:1: E302 expected 2 blank lines, found 1
+infoflow/data/visualization.py:38:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:43:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:49:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:56:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:59:1: E302 expected 2 blank lines, found 1
+infoflow/data/visualization.py:62:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:67:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:69:79: W291 trailing whitespace
+infoflow/data/visualization.py:71:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:73:80: E501 line too long (86 > 79 characters)
+infoflow/data/visualization.py:73:87: W291 trailing whitespace
+infoflow/data/visualization.py:74:17: E128 continuation line under-indented for visual indent
+infoflow/data/visualization.py:75:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:82:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:85:1: E302 expected 2 blank lines, found 1
+infoflow/data/visualization.py:85:80: E501 line too long (88 > 79 characters)
+infoflow/data/visualization.py:88:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:96:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:99:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:102:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:104:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:109:80: E501 line too long (99 > 79 characters)
+infoflow/data/visualization.py:111:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:113:47: W291 trailing whitespace
+infoflow/data/visualization.py:114:39: E128 continuation line under-indented for visual indent
+infoflow/data/visualization.py:114:62: W291 trailing whitespace
+infoflow/data/visualization.py:115:39: E128 continuation line under-indented for visual indent
+infoflow/data/visualization.py:116:39: E128 continuation line under-indented for visual indent
+infoflow/data/visualization.py:116:55: W291 trailing whitespace
+infoflow/data/visualization.py:117:39: E128 continuation line under-indented for visual indent
+infoflow/data/visualization.py:118:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:121:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:123:80: E501 line too long (81 > 79 characters)
+infoflow/data/visualization.py:124:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:128:1: W293 blank line contains whitespace
+infoflow/data/visualization.py:132:20: W292 no newline at end of file
+infoflow/utils/__init__.py:3:1: F401 'infoflow.utils.helpers.calculate_variance' imported but unused
+infoflow/utils/helpers.py:5:1: E302 expected 2 blank lines, found 1
+infoflow/utils/helpers.py:8:1: W293 blank line contains whitespace
+infoflow/utils/helpers.py:11:1: W293 blank line contains whitespace
+infoflow/utils/helpers.py:17:1: W293 blank line contains whitespace
+infoflow/utils/helpers.py:19:62: W292 no newline at end of file
+infoflow/utils/simple_stats.py:4:80: E501 line too long (88 > 79 characters)
+infoflow/utils/simple_stats.py:16:1: E302 expected 2 blank lines, found 1
+infoflow/utils/simple_stats.py:19:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:20:80: E501 line too long (93 > 79 characters)
+infoflow/utils/simple_stats.py:23:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:27:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:29:80: E501 line too long (88 > 79 characters)
+infoflow/utils/simple_stats.py:37:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:41:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:46:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:57:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:67:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:70:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:74:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:77:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:83:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:87:80: E501 line too long (92 > 79 characters)
+infoflow/utils/simple_stats.py:89:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:92:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:94:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:98:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:105:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:108:80: E501 line too long (80 > 79 characters)
+infoflow/utils/simple_stats.py:111:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:117:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:122:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:125:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:129:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:135:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:140:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:143:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:148:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:151:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:158:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:161:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:164:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:166:80: E501 line too long (105 > 79 characters)
+infoflow/utils/simple_stats.py:169:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:170:80: E501 line too long (99 > 79 characters)
+infoflow/utils/simple_stats.py:171:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:174:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:179:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:182:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:189:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:192:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:195:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:199:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:203:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:206:80: E501 line too long (96 > 79 characters)
+infoflow/utils/simple_stats.py:209:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:217:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:219:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:228:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:233:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:237:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:242:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:245:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:251:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:254:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:256:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:261:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:264:80: E501 line too long (84 > 79 characters)
+infoflow/utils/simple_stats.py:267:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:273:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:278:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:282:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:284:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:288:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:293:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:297:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:304:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:310:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:312:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:315:1: W293 blank line contains whitespace
+infoflow/utils/simple_stats.py:316:25: W292 no newline at end of file
+infoflow/web/__init__.py:5:1: E302 expected 2 blank lines, found 1
+infoflow/web/__init__.py:8:1: W293 blank line contains whitespace
+infoflow/web/__init__.py:11:1: W293 blank line contains whitespace
+infoflow/web/__init__.py:15:1: W293 blank line contains whitespace
+infoflow/web/routes.py:9:1: E302 expected 2 blank lines, found 1
+infoflow/web/routes.py:14:1: E302 expected 2 blank lines, found 1
+infoflow/web/routes.py:19:1: E302 expected 2 blank lines, found 1
+infoflow/web/routes.py:24:1: E302 expected 2 blank lines, found 1
+infoflow/web/routes.py:28:1: W293 blank line contains whitespace
+infoflow/web/routes.py:37:1: W293 blank line contains whitespace
+infoflow/web/routes.py:47:80: E501 line too long (81 > 79 characters)
+infoflow/web/routes.py:48:80: E501 line too long (85 > 79 characters)
+infoflow/web/routes.py:49:80: E501 line too long (83 > 79 characters)
+infoflow/web/routes.py:50:1: W293 blank line contains whitespace
+infoflow/web/routes.py:57:80: E501 line too long (81 > 79 characters)
+infoflow/web/routes.py:58:80: E501 line too long (83 > 79 characters)
+infoflow/web/routes.py:59:80: E501 line too long (83 > 79 characters)
+infoflow/web/routes.py:60:1: W293 blank line contains whitespace
+infoflow/web/routes.py:62:80: E501 line too long (81 > 79 characters)
+infoflow/web/routes.py:64:80: E501 line too long (83 > 79 characters)
+infoflow/web/routes.py:65:80: E501 line too long (81 > 79 characters)
+infoflow/web/routes.py:66:80: E501 line too long (83 > 79 characters)
+infoflow/web/routes.py:67:80: E501 line too long (81 > 79 characters)
+infoflow/web/routes.py:68:1: W293 blank line contains whitespace
+infoflow/web/routes.py:75:1: W293 blank line contains whitespace
+infoflow/web/routes.py:79:1: W293 blank line contains whitespace
+infoflow/web/routes.py:82:1: W293 blank line contains whitespace
+infoflow/web/routes.py:89:1: W293 blank line contains whitespace
+infoflow/web/routes.py:95:1: E302 expected 2 blank lines, found 1
+infoflow/web/routes.py:100:1: W293 blank line contains whitespace
+infoflow/web/routes.py:106:1: E302 expected 2 blank lines, found 1
+infoflow/web/routes.py:110:1: W293 blank line contains whitespace
+infoflow/web/routes.py:116:1: W293 blank line contains whitespace
+infoflow/web/routes.py:122:1: E302 expected 2 blank lines, found 1
+infoflow/web/routes.py:127:1: W293 blank line contains whitespace
+infoflow/web/routes.py:133:1: W293 blank line contains whitespace
+infoflow/web/routes.py:138:1: W293 blank line contains whitespace
+infoflow/web/routes.py:142:7: W292 no newline at end of file

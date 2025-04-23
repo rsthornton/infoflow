@@ -1,0 +1,855 @@
+{% extends "base.html" %}
+
+{% block title %}InfoFlow - Social Media Simulation History{% endblock %}
+
+{% block extra_head %}
+<style>
+    .sim-card {
+        margin-bottom: 15px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .sim-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .chart-container {
+        height: 400px;
+        margin-bottom: 20px;
+    }
+    .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">Social Media Simulation History</h2>
+    
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Recent Social Media Simulations</h5>
+                </div>
+                <div class="card-body">
+                    <div id="simList" class="sim-list">
+                        <div class="loading">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 id="simTitle">Select a Simulation</h5>
+                    <div>
+                        <button id="nameSimBtn" class="btn btn-sm btn-outline-primary" disabled>Name Simulation</button>
+                        <a id="viewDashboardBtn" href="#" class="btn btn-sm btn-primary me-2" style="display: none;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-up" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/>
+                            </svg>
+                            View Metrics Dashboard
+                        </a>
+                        <div class="btn-group">
+                            <button id="exportSimBtn" class="btn btn-sm btn-outline-secondary" disabled>Export JSON</button>
+                            <button id="exportCsvBtn" class="btn btn-sm btn-outline-secondary" disabled>Export CSV</button>
+                            <button id="exportHtmlBtn" class="btn btn-sm btn-outline-secondary" disabled>Export HTML</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="simDetails">
+                        <p class="text-muted text-center">Select a simulation from the list to view details</p>
+                    </div>
+                    
+                    <div id="simCharts" class="d-none">
+                        <div class="mb-3">
+                            <label for="metricSelect" class="form-label">Select Metric:</label>
+                            <select id="metricSelect" class="form-select">
+                                <option value="avg_trust_government">Trust in Government Social Media Accounts</option>
+                                <option value="avg_trust_corporate">Trust in Corporate Social Media Accounts</option>
+                                <option value="avg_trust_influencer">Trust in Social Media Influencers</option>
+                                <option value="avg_truth_assessment">Truth Assessment</option>
+                                <option value="trust_var_government">Trust Variance - Government Accounts</option>
+                            </select>
+                        </div>
+                        
+                        <div class="chart-container">
+                            <canvas id="metricChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Compare Simulations</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label>Select Simulations to Compare:</label>
+                                <div id="compareList" class="mt-2">
+                                    <p class="text-muted">No simulations selected</p>
+                                </div>
+                                <div class="mt-2">
+                                    <button id="exportSelectedBtn" class="btn btn-sm btn-outline-secondary" disabled>
+                                        <i class="bi bi-file-earmark-zip"></i> Export Selected
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="compareMetric" class="form-label">Comparison Metric:</label>
+                                <select id="compareMetric" class="form-select">
+                                    <option value="avg_trust_government">Trust in Government Social Media Accounts</option>
+                                    <option value="avg_trust_corporate">Trust in Corporate Social Media Accounts</option>
+                                    <option value="avg_trust_influencer">Trust in Social Media Influencers</option>
+                                    <option value="avg_truth_assessment">Truth Assessment</option>
+                                </select>
+                            </div>
+                            <button id="compareBtn" class="btn btn-primary" disabled>Compare Selected</button>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container mt-4">
+                        <canvas id="compareChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Name Simulation Modal -->
+<div class="modal fade" id="nameSimModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Name Simulation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="simName" class="form-label">Simulation Name</label>
+                    <input type="text" class="form-control" id="simName">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="saveNameBtn">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let metricChart = null;
+    let compareChart = null;
+    let currentSimId = null;
+    let selectedSims = []; // Array to hold selected simulation IDs
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load recent simulations
+        loadSimulations();
+        
+        // Set up event listeners
+        document.getElementById('metricSelect').addEventListener('change', updateMetricChart);
+        document.getElementById('nameSimBtn').addEventListener('click', showNameModal);
+        document.getElementById('exportSimBtn').addEventListener('click', exportSimulation);
+        document.getElementById('exportCsvBtn').addEventListener('click', exportCsvSimulation);
+        document.getElementById('exportHtmlBtn').addEventListener('click', exportHtmlSimulation);
+        document.getElementById('saveNameBtn').addEventListener('click', saveSimulationName);
+        document.getElementById('compareBtn').addEventListener('click', compareSimulations);
+        document.getElementById('exportSelectedBtn').addEventListener('click', exportSelectedSimulations);
+    });
+    
+    function loadSimulations() {
+        fetch('/api/simulation-runs')
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    displaySimulationList(data.data);
+                }
+            })
+            .catch(error => console.error('Error loading simulations:', error));
+    }
+    
+    function displaySimulationList(simulations) {
+        const listContainer = document.getElementById('simList');
+        listContainer.innerHTML = '';
+        
+        if (simulations.length === 0) {
+            listContainer.innerHTML = '<p class="text-muted">No simulations found</p>';
+            return;
+        }
+        
+        for (const sim of simulations) {
+            const card = document.createElement('div');
+            card.className = 'card sim-card mb-2';
+            card.dataset.id = sim.id;
+            
+            const nameDisplay = sim.name || `Simulation ${sim.id}`;
+            
+            card.innerHTML = `
+                <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="mb-0">${nameDisplay}</h6>
+                            <small class="text-muted">${sim.timestamp} (${sim.steps} steps)</small>
+                            <div class="mt-1">
+                                <a href="/metrics-dashboard/${sim.id}" class="btn btn-sm btn-outline-primary">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
+                                        <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z"/>
+                                    </svg>
+                                    Dashboard
+                                </a>
+                                <button class="btn btn-sm btn-outline-danger ms-1 delete-sim-btn" data-id="${sim.id}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                    </svg>
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input compare-check" type="checkbox" data-id="${sim.id}">
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            card.addEventListener('click', (e) => {
+                // Ignore if checkbox, dashboard link, or delete button was clicked
+                if (e.target.classList.contains('compare-check') || 
+                    e.target.type === 'checkbox' || 
+                    e.target.tagName === 'A' || 
+                    e.target.closest('a') || 
+                    e.target.tagName === 'svg' || 
+                    e.target.tagName === 'path' ||
+                    e.target.classList.contains('delete-sim-btn') ||
+                    e.target.closest('.delete-sim-btn')) {
+                    e.stopPropagation();
+                    return;
+                }
+                
+                loadSimulationDetails(sim.id);
+            });
+            
+            listContainer.appendChild(card);
+        }
+        
+        // Add event listeners to checkboxes
+        document.querySelectorAll('.compare-check').forEach(checkbox => {
+            checkbox.addEventListener('change', function(e) {
+                // Prevent the event from bubbling to the card
+                e.stopPropagation();
+                
+                // Update selection
+                const simId = this.dataset.id;
+                if (this.checked) {
+                    if (!selectedSims.includes(simId)) {
+                        selectedSims.push(simId);
+                    }
+                } else {
+                    const index = selectedSims.indexOf(simId);
+                    if (index !== -1) {
+                        selectedSims.splice(index, 1);
+                    }
+                }
+                
+                // Debug log
+                console.log("Checkbox changed, selected simulations:", selectedSims);
+                
+                updateCompareList();
+            });
+        });
+        
+        // Add event listeners to delete buttons
+        document.querySelectorAll('.delete-sim-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Prevent the event from bubbling to the card
+                e.stopPropagation();
+                
+                const simId = this.dataset.id;
+                const cardElement = document.querySelector(`.sim-card[data-id="${simId}"]`);
+                let simName = `Simulation ${simId}`;
+                
+                if (cardElement) {
+                    const titleEl = cardElement.querySelector('h6');
+                    if (titleEl) {
+                        simName = titleEl.textContent;
+                    }
+                }
+                
+                // Confirm deletion
+                if (confirm(`Are you sure you want to delete "${simName}"?\n\nThis action cannot be undone.`)) {
+                    deleteSimulation(simId);
+                }
+            });
+        });
+    }
+    
+    function loadSimulationDetails(simId) {
+        currentSimId = simId;
+        
+        // Update UI state
+        document.querySelectorAll('.sim-card').forEach(card => {
+            card.classList.remove('bg-light');
+        });
+        const selectedCard = document.querySelector(`.sim-card[data-id="${simId}"]`);
+        if (selectedCard) {
+            selectedCard.classList.add('bg-light');
+        }
+        
+        document.getElementById('nameSimBtn').disabled = false;
+        document.getElementById('exportSimBtn').disabled = false;
+        document.getElementById('exportCsvBtn').disabled = false;
+        document.getElementById('exportHtmlBtn').disabled = false;
+        
+        // Update dashboard button
+        const dashboardBtn = document.getElementById('viewDashboardBtn');
+        dashboardBtn.href = `/metrics-dashboard/${simId}`;
+        dashboardBtn.style.display = 'inline-block';
+        
+        // Fetch simulation data
+        fetch(`/api/simulation-data/${simId}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    displaySimulationDetails(data.data);
+                    updateMetricChart();
+                }
+            })
+            .catch(error => console.error('Error loading simulation details:', error));
+    }
+    
+    function displaySimulationDetails(simData) {
+        const detailsContainer = document.getElementById('simDetails');
+        document.getElementById('simCharts').classList.remove('d-none');
+        
+        const name = simData.name || `Simulation ${simData.id}`;
+        document.getElementById('simTitle').textContent = name;
+        
+        // Display basic info
+        let html = `
+            <div class="mb-4">
+                <h6>Basic Information</h6>
+                <p><strong>ID:</strong> ${simData.id}</p>
+                <p><strong>Date:</strong> ${simData.timestamp}</p>
+                <p><strong>Steps:</strong> ${simData.steps}</p>
+            </div>
+            
+            <div class="mb-4">
+                <h6>Parameters</h6>
+                <div class="small">
+        `;
+        
+        // Group parameters by type
+        const paramGroups = {
+            'Basic': [],
+            'Citizen': [],
+            'Media': [],
+            'Network': []
+        };
+        
+        for (const [key, value] of Object.entries(simData.parameters)) {
+            if (key.startsWith('citizen_')) {
+                paramGroups['Citizen'].push([key.replace('citizen_', ''), value]);
+            } else if (key.startsWith('media_')) {
+                paramGroups['Media'].push([key.replace('media_', ''), value]);
+            } else if (key.startsWith('network_')) {
+                paramGroups['Network'].push([key.replace('network_', ''), value]);
+            } else {
+                paramGroups['Basic'].push([key, value]);
+            }
+        }
+        
+        for (const [group, params] of Object.entries(paramGroups)) {
+            if (params.length > 0) {
+                html += `<h6 class="mt-2">${group}</h6><ul class="mb-2">`;
+                params.forEach(([key, value]) => {
+                    html += `<li><strong>${key}:</strong> ${value}</li>`;
+                });
+                html += `</ul>`;
+            }
+        }
+        
+        html += `
+                </div>
+            </div>
+        `;
+        
+        detailsContainer.innerHTML = html;
+    }
+    
+    function updateMetricChart() {
+        if (!currentSimId) return;
+        
+        const metric = document.getElementById('metricSelect').value;
+        
+        fetch(`/api/simulation-data/${currentSimId}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    const chartData = prepareChartData(data.data, metric);
+                    renderMetricChart(chartData, metric);
+                }
+            })
+            .catch(error => console.error('Error updating chart:', error));
+    }
+    
+    function prepareChartData(simData, metric) {
+        const steps = [];
+        const values = [];
+        
+        // Sort steps numerically
+        const sortedSteps = Object.keys(simData.metrics).map(Number).sort((a, b) => a - b);
+        
+        for (const step of sortedSteps) {
+            const stepData = simData.metrics[step.toString()];
+            if (stepData && metric in stepData) {
+                steps.push(step);
+                values.push(stepData[metric]);
+            }
+        }
+        
+        return { steps, values };
+    }
+    
+    function renderMetricChart(data, metric) {
+        const ctx = document.getElementById('metricChart').getContext('2d');
+        
+        if (metricChart) {
+            metricChart.destroy();
+        }
+        
+        metricChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: data.steps,
+                datasets: [{
+                    label: formatMetricName(metric),
+                    data: data.values,
+                    borderColor: 'rgb(75, 192, 192)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: formatMetricName(metric) + ' Over Time'
+                    },
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Step'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Value'
+                        }
+                    }
+                }
+            }
+        });
+    }
+    
+    function formatMetricName(metric) {
+        // Convert camelCase or snake_case to Title Case
+        return metric
+            .replace(/_/g, ' ')
+            .replace(/([a-z])([A-Z])/g, '$1 $2')
+            .replace(/\b\w/g, c => c.toUpperCase());
+    }
+    
+    function showNameModal() {
+        const modal = new bootstrap.Modal(document.getElementById('nameSimModal'));
+        modal.show();
+    }
+    
+    function saveSimulationName() {
+        const name = document.getElementById('simName').value.trim();
+        
+        if (!name) {
+            alert('Please enter a name for the simulation');
+            return;
+        }
+        
+        fetch('/api/name-simulation', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                run_id: currentSimId,
+                name: name
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                // Close modal
+                bootstrap.Modal.getInstance(document.getElementById('nameSimModal')).hide();
+                
+                // Update title
+                document.getElementById('simTitle').textContent = name;
+                
+                // Refresh simulation list
+                loadSimulations();
+            }
+        })
+        .catch(error => console.error('Error saving name:', error));
+    }
+    
+    function exportSimulation() {
+        if (!currentSimId) {
+            alert('No simulation selected to export');
+            return;
+        }
+        
+        // Call the server to save the file, but don't trigger a download
+        fetch(`/api/export-simulation/${currentSimId}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // Show success message with path and download option
+                    const filename = data.file_name;
+                    const path = data.file_path;
+                    
+                    // Create a modal or alert with download option
+                    const message = `JSON file saved successfully to:\n${path}\n\nWould you like to download a copy now?`;
+                    
+                    if (confirm(message)) {
+                        // If user wants to download, redirect to download URL
+                        window.location.href = data.download_url;
+                    }
+                } else {
+                    alert(`Error exporting simulation: ${data.message}`);
+                }
+            })
+            .catch(error => {
+                console.error('Error exporting simulation:', error);
+                alert('Error exporting simulation. See console for details.');
+            });
+    }
+    
+    function exportCsvSimulation() {
+        if (!currentSimId) {
+            alert('No simulation selected to export');
+            return;
+        }
+        
+        // Call the server to save the file, but don't trigger a download
+        fetch(`/api/export-simulation/${currentSimId}?format=csv`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    // Show success message with path and download option
+                    const filename = data.file_name;
+                    const path = data.file_path;
+                    
+                    // Create a modal or alert with download option
+                    const message = `CSV file saved successfully to:\n${path}\n\nWould you like to download a copy now?`;
+                    
+                    if (confirm(message)) {
+                        // If user wants to download, redirect to download URL
+                        window.location.href = data.download_url;
+                    }
+                } else {
+                    alert(`Error exporting simulation: ${data.message}`);
+                }
+            })
+            .catch(error => {
+                console.error('Error exporting CSV:', error);
+                alert('Error exporting CSV. See console for details.');
+            });
+    }
+    
+    function exportHtmlSimulation() {
+        if (!currentSimId) {
+            alert('No simulation selected to export');
+            return;
+        }
+        
+        // HTML exports are always downloaded (no server-side saving)
+        window.location.href = `/api/export-html/${currentSimId}`;
+    }
+    
+    function exportSelectedSimulations() {
+        if (selectedSims.length === 0) {
+            alert('No simulations selected to export');
+            return;
+        }
+        
+        // Create a zip of multiple files (for now, download sequentially)
+        // In a production environment, this would be a server-side process
+        
+        // Alert users about the behavior
+        alert(`Exporting ${selectedSims.length} selected simulations.\n\nEach file will download individually.`);
+        
+        // Start sequential download of each selected simulation
+        downloadSimulationsSequentially(selectedSims, 0);
+    }
+    
+    function downloadSimulationsSequentially(simIds, index) {
+        if (index >= simIds.length) return;
+        
+        const simId = simIds[index];
+        // Create a link element for the download
+        const link = document.createElement('a');
+        link.href = `/api/export-simulation/${simId}`;
+        document.body.appendChild(link);
+        
+        console.log(`Downloading simulation ${index + 1}/${simIds.length}: ${simId}`);
+        
+        // Click the link to trigger download
+        link.click();
+        
+        // Clean up
+        document.body.removeChild(link);
+        
+        // Add a delay before processing the next download
+        setTimeout(() => {
+            downloadSimulationsSequentially(simIds, index + 1);
+        }, 800);
+    }
+    
+    function deleteSimulation(simId) {
+        // Call the API to delete the simulation
+        fetch(`/api/delete-simulation/${simId}`, {
+            method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                // Remove the simulation from the UI
+                const simCard = document.querySelector(`.sim-card[data-id="${simId}"]`);
+                if (simCard) {
+                    simCard.remove();
+                }
+                
+                // Clear the details pane if this was the current simulation
+                if (currentSimId === simId) {
+                    currentSimId = null;
+                    document.getElementById('simDetails').innerHTML = 
+                        '<p class="text-muted text-center">Select a simulation from the list to view details</p>';
+                    document.getElementById('simCharts').classList.add('d-none');
+                    document.getElementById('nameSimBtn').disabled = true;
+                    document.getElementById('exportSimBtn').disabled = true;
+                    document.getElementById('exportCsvBtn').disabled = true;
+                    document.getElementById('exportHtmlBtn').disabled = true;
+                    document.getElementById('viewDashboardBtn').style.display = 'none';
+                    document.getElementById('simTitle').textContent = 'Select a Simulation';
+                }
+                
+                // Remove from selected simulations if present
+                const index = selectedSims.indexOf(simId);
+                if (index !== -1) {
+                    selectedSims.splice(index, 1);
+                    updateCompareList();
+                }
+                
+                // Show success message
+                alert(`Simulation successfully deleted.`);
+            } else {
+                // Show error message
+                alert(`Error: ${data.message}`);
+            }
+        })
+        .catch(error => {
+            console.error('Error deleting simulation:', error);
+            alert(`Error deleting simulation: ${error.message}`);
+        });
+    }
+    
+    function toggleCompareSelection(simId) {
+        const index = selectedSims.indexOf(simId);
+        
+        if (index === -1) {
+            selectedSims.push(simId);
+            
+            // Update checkbox state
+            const checkbox = document.querySelector(`.compare-check[data-id="${simId}"]`);
+            if (checkbox) {
+                checkbox.checked = true;
+            }
+        } else {
+            selectedSims.splice(index, 1);
+            
+            // Update checkbox state
+            const checkbox = document.querySelector(`.compare-check[data-id="${simId}"]`);
+            if (checkbox) {
+                checkbox.checked = false;
+            }
+        }
+        
+        // Debug log
+        console.log("Selected simulations:", selectedSims);
+        
+        updateCompareList();
+    }
+    
+    function updateCompareList() {
+        const compareList = document.getElementById('compareList');
+        compareList.innerHTML = '';
+        
+        if (selectedSims.length === 0) {
+            compareList.innerHTML = '<p class="text-muted">No simulations selected</p>';
+            document.getElementById('compareBtn').disabled = true;
+            document.getElementById('exportSelectedBtn').disabled = true;
+            return;
+        }
+        
+        // Enable export button when at least one simulation is selected
+        document.getElementById('exportSelectedBtn').disabled = false;
+        
+        for (const simId of selectedSims) {
+            const simCard = document.querySelector(`.sim-card[data-id="${simId}"]`);
+            let name = `Simulation ${simId}`;
+            
+            if (simCard) {
+                const titleEl = simCard.querySelector('h6');
+                if (titleEl) {
+                    name = titleEl.textContent;
+                }
+            }
+            
+            const badge = document.createElement('span');
+            badge.className = 'badge bg-primary me-2 mb-2';
+            badge.textContent = name;
+            badge.style.cursor = 'pointer';
+            
+            badge.addEventListener('click', () => {
+                toggleCompareSelection(simId);
+            });
+            
+            compareList.appendChild(badge);
+        }
+        
+        document.getElementById('compareBtn').disabled = selectedSims.length < 2;
+    }
+    
+    function compareSimulations() {
+        if (selectedSims.length < 2) {
+            alert('Please select at least two simulations to compare');
+            return;
+        }
+        
+        const metric = document.getElementById('compareMetric').value;
+        const ctx = document.getElementById('compareChart').getContext('2d');
+        
+        if (compareChart) {
+            compareChart.destroy();
+        }
+        
+        // Prepare datasets
+        const datasets = [];
+        const colors = [
+            'rgb(75, 192, 192)',
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)',
+            'rgb(153, 102, 255)'
+        ];
+        
+        const fetchPromises = selectedSims.map((simId, index) => 
+            fetch(`/api/simulation-data/${simId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        const chartData = prepareChartData(data.data, metric);
+                        
+                        datasets.push({
+                            label: data.data.name || `Simulation ${data.data.id}`,
+                            data: chartData.values,
+                            borderColor: colors[index % colors.length],
+                            backgroundColor: colors[index % colors.length].replace('rgb', 'rgba').replace(')', ', 0.2)'),
+                            tension: 0.1,
+                            pointRadius: 2
+                        });
+                        
+                        return chartData.steps;
+                    }
+                })
+        );
+        
+        Promise.all(fetchPromises)
+            .then(stepsArrays => {
+                // Use the longest steps array for the x-axis
+                let longestSteps = [];
+                for (const steps of stepsArrays) {
+                    if (steps && steps.length > longestSteps.length) {
+                        longestSteps = steps;
+                    }
+                }
+                
+                compareChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: longestSteps,
+                        datasets: datasets
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: `Comparison of ${formatMetricName(metric)}`
+                            },
+                            legend: {
+                                position: 'top',
+                            }
+                        },
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Step'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Value'
+                                }
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('Error comparing simulations:', error));
+    }
+</script>
+{% endblock %}

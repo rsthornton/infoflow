@@ -1,0 +1,172 @@
+2025-04-13 19:46:04,393 - trust_dynamics_tests - INFO - Media agent 6 (CorporateMediaAgent): publication_rate=0.7, influence_reach=0.7, bias=-0.36, truth_commitment=5.00
+2025-04-13 19:46:04,393 - trust_dynamics_tests - INFO - Media agent 7 (InfluencerAgent): publication_rate=0.8, influence_reach=0.5, bias=-2.31, truth_commitment=4.00
+2025-04-13 19:46:04,393 - trust_dynamics_tests - INFO - Media agent 8 (GovernmentMediaAgent): publication_rate=0.5, influence_reach=0.6, bias=1.00, truth_commitment=7.00
+2025-04-13 19:46:04,394 - trust_dynamics_tests - INFO - Initial trust values:
+2025-04-13 19:46:04,394 - trust_dynamics_tests - INFO - Government trust avg: 5.0000, var: 0.0000
+2025-04-13 19:46:04,394 - trust_dynamics_tests - INFO - Corporate trust avg: 5.0000, var: 0.0000
+2025-04-13 19:46:04,395 - MESA.mesa.model - INFO - calling model.step for timestep 1 
+2025-04-13 19:46:04,400 - trust_dynamics_tests - INFO - Completed step 1
+2025-04-13 19:46:04,400 - trust_dynamics_tests - INFO - After step 1 - Citizen 5 trust changed:
+2025-04-13 19:46:04,401 - trust_dynamics_tests - INFO -   Government: 5.0000 → 5.0000 (Δ 0.0000)
+2025-04-13 19:46:04,401 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.6437 (Δ -0.3563)
+2025-04-13 19:46:04,401 - MESA.mesa.model - INFO - calling model.step for timestep 2 
+2025-04-13 19:46:04,404 - trust_dynamics_tests - INFO - Completed step 2
+2025-04-13 19:46:04,404 - trust_dynamics_tests - INFO - After step 2 - Citizen 1 trust changed:
+2025-04-13 19:46:04,404 - trust_dynamics_tests - INFO -   Government: 5.0000 → 7.0278 (Δ 2.0278)
+2025-04-13 19:46:04,404 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 5.0000 (Δ 0.0000)
+2025-04-13 19:46:04,404 - trust_dynamics_tests - INFO - After step 2 - Citizen 3 trust changed:
+2025-04-13 19:46:04,405 - trust_dynamics_tests - INFO -   Government: 5.0000 → 6.5503 (Δ 1.5503)
+2025-04-13 19:46:04,405 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 5.0000 (Δ 0.0000)
+2025-04-13 19:46:04,405 - trust_dynamics_tests - INFO - After step 2 - Citizen 5 trust changed:
+2025-04-13 19:46:04,405 - trust_dynamics_tests - INFO -   Government: 5.0000 → 6.7311 (Δ 1.7311)
+2025-04-13 19:46:04,405 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.5972 (Δ -0.4028)
+2025-04-13 19:46:04,405 - MESA.mesa.model - INFO - calling model.step for timestep 3 
+2025-04-13 19:46:04,408 - trust_dynamics_tests - INFO - Completed step 3
+2025-04-13 19:46:04,408 - trust_dynamics_tests - INFO - After step 3 - Citizen 1 trust changed:
+2025-04-13 19:46:04,409 - trust_dynamics_tests - INFO -   Government: 5.0000 → 7.0278 (Δ 2.0278)
+2025-04-13 19:46:04,409 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 5.0000 (Δ 0.0000)
+2025-04-13 19:46:04,409 - trust_dynamics_tests - INFO - After step 3 - Citizen 3 trust changed:
+2025-04-13 19:46:04,409 - trust_dynamics_tests - INFO -   Government: 5.0000 → 6.5503 (Δ 1.5503)
+2025-04-13 19:46:04,409 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 5.0000 (Δ 0.0000)
+2025-04-13 19:46:04,409 - trust_dynamics_tests - INFO - After step 3 - Citizen 4 trust changed:
+2025-04-13 19:46:04,409 - trust_dynamics_tests - INFO -   Government: 5.0000 → 5.0000 (Δ 0.0000)
+2025-04-13 19:46:04,409 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.8878 (Δ -0.1122)
+2025-04-13 19:46:04,409 - trust_dynamics_tests - INFO - After step 3 - Citizen 5 trust changed:
+2025-04-13 19:46:04,409 - trust_dynamics_tests - INFO -   Government: 5.0000 → 8.0115 (Δ 3.0115)
+2025-04-13 19:46:04,409 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.4893 (Δ -0.5107)
+2025-04-13 19:46:04,409 - MESA.mesa.model - INFO - calling model.step for timestep 4 
+2025-04-13 19:46:04,413 - trust_dynamics_tests - INFO - Completed step 4
+2025-04-13 19:46:04,413 - trust_dynamics_tests - INFO - After step 4 - Citizen 1 trust changed:
+2025-04-13 19:46:04,413 - trust_dynamics_tests - INFO -   Government: 5.0000 → 8.6831 (Δ 3.6831)
+2025-04-13 19:46:04,413 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 5.0000 (Δ 0.0000)
+2025-04-13 19:46:04,413 - trust_dynamics_tests - INFO - After step 4 - Citizen 3 trust changed:
+2025-04-13 19:46:04,413 - trust_dynamics_tests - INFO -   Government: 5.0000 → 6.5503 (Δ 1.5503)
+2025-04-13 19:46:04,413 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 5.0000 (Δ 0.0000)
+2025-04-13 19:46:04,414 - trust_dynamics_tests - INFO - After step 4 - Citizen 4 trust changed:
+2025-04-13 19:46:04,414 - trust_dynamics_tests - INFO -   Government: 5.0000 → 6.4705 (Δ 1.4705)
+2025-04-13 19:46:04,414 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.8878 (Δ -0.1122)
+2025-04-13 19:46:04,414 - trust_dynamics_tests - INFO - After step 4 - Citizen 5 trust changed:
+2025-04-13 19:46:04,414 - trust_dynamics_tests - INFO -   Government: 5.0000 → 9.4247 (Δ 4.4247)
+2025-04-13 19:46:04,414 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.4893 (Δ -0.5107)
+2025-04-13 19:46:04,414 - MESA.mesa.model - INFO - calling model.step for timestep 5 
+2025-04-13 19:46:04,417 - trust_dynamics_tests - INFO - Completed step 5
+2025-04-13 19:46:04,417 - trust_dynamics_tests - INFO - After step 5 - Citizen 1 trust changed:
+2025-04-13 19:46:04,417 - trust_dynamics_tests - INFO -   Government: 5.0000 → 9.9845 (Δ 4.9845)
+2025-04-13 19:46:04,417 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 5.0000 (Δ 0.0000)
+2025-04-13 19:46:04,417 - trust_dynamics_tests - INFO - After step 5 - Citizen 2 trust changed:
+2025-04-13 19:46:04,418 - trust_dynamics_tests - INFO -   Government: 5.0000 → 5.0000 (Δ 0.0000)
+2025-04-13 19:46:04,418 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.7889 (Δ -0.2111)
+2025-04-13 19:46:04,418 - trust_dynamics_tests - INFO - After step 5 - Citizen 3 trust changed:
+2025-04-13 19:46:04,418 - trust_dynamics_tests - INFO -   Government: 5.0000 → 6.5503 (Δ 1.5503)
+2025-04-13 19:46:04,418 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.7903 (Δ -0.2097)
+2025-04-13 19:46:04,418 - trust_dynamics_tests - INFO - After step 5 - Citizen 4 trust changed:
+2025-04-13 19:46:04,418 - trust_dynamics_tests - INFO -   Government: 5.0000 → 7.6264 (Δ 2.6264)
+2025-04-13 19:46:04,418 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.8878 (Δ -0.1122)
+2025-04-13 19:46:04,418 - trust_dynamics_tests - INFO - After step 5 - Citizen 5 trust changed:
+2025-04-13 19:46:04,418 - trust_dynamics_tests - INFO -   Government: 5.0000 → 9.4247 (Δ 4.4247)
+2025-04-13 19:46:04,418 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.4893 (Δ -0.5107)
+2025-04-13 19:46:04,418 - MESA.mesa.model - INFO - calling model.step for timestep 6 
+2025-04-13 19:46:04,421 - trust_dynamics_tests - INFO - Completed step 6
+2025-04-13 19:46:04,422 - trust_dynamics_tests - INFO - After step 6 - Citizen 1 trust changed:
+2025-04-13 19:46:04,422 - trust_dynamics_tests - INFO -   Government: 5.0000 → 9.9845 (Δ 4.9845)
+2025-04-13 19:46:04,422 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.6039 (Δ -0.3961)
+2025-04-13 19:46:04,422 - trust_dynamics_tests - INFO - After step 6 - Citizen 2 trust changed:
+2025-04-13 19:46:04,422 - trust_dynamics_tests - INFO -   Government: 5.0000 → 5.0000 (Δ 0.0000)
+2025-04-13 19:46:04,422 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.7889 (Δ -0.2111)
+2025-04-13 19:46:04,422 - trust_dynamics_tests - INFO - After step 6 - Citizen 3 trust changed:
+2025-04-13 19:46:04,422 - trust_dynamics_tests - INFO -   Government: 5.0000 → 6.5503 (Δ 1.5503)
+2025-04-13 19:46:04,422 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.7903 (Δ -0.2097)
+2025-04-13 19:46:04,422 - trust_dynamics_tests - INFO - After step 6 - Citizen 4 trust changed:
+2025-04-13 19:46:04,422 - trust_dynamics_tests - INFO -   Government: 5.0000 → 7.6264 (Δ 2.6264)
+2025-04-13 19:46:04,422 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.5359 (Δ -0.4641)
+2025-04-13 19:46:04,423 - trust_dynamics_tests - INFO - After step 6 - Citizen 5 trust changed:
+2025-04-13 19:46:04,423 - trust_dynamics_tests - INFO -   Government: 5.0000 → 9.4247 (Δ 4.4247)
+2025-04-13 19:46:04,423 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.4893 (Δ -0.5107)
+2025-04-13 19:46:04,423 - MESA.mesa.model - INFO - calling model.step for timestep 7 
+2025-04-13 19:46:04,427 - trust_dynamics_tests - INFO - Completed step 7
+2025-04-13 19:46:04,427 - trust_dynamics_tests - INFO - After step 7 - Citizen 1 trust changed:
+2025-04-13 19:46:04,427 - trust_dynamics_tests - INFO -   Government: 5.0000 → 9.9845 (Δ 4.9845)
+2025-04-13 19:46:04,427 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.6039 (Δ -0.3961)
+2025-04-13 19:46:04,427 - trust_dynamics_tests - INFO - After step 7 - Citizen 2 trust changed:
+2025-04-13 19:46:04,427 - trust_dynamics_tests - INFO -   Government: 5.0000 → 5.0000 (Δ 0.0000)
+2025-04-13 19:46:04,427 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.7889 (Δ -0.2111)
+2025-04-13 19:46:04,427 - trust_dynamics_tests - INFO - After step 7 - Citizen 3 trust changed:
+2025-04-13 19:46:04,427 - trust_dynamics_tests - INFO -   Government: 5.0000 → 6.5503 (Δ 1.5503)
+2025-04-13 19:46:04,427 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 5.1161 (Δ 0.1161)
+2025-04-13 19:46:04,427 - trust_dynamics_tests - INFO - After step 7 - Citizen 4 trust changed:
+2025-04-13 19:46:04,428 - trust_dynamics_tests - INFO -   Government: 5.0000 → 7.6264 (Δ 2.6264)
+2025-04-13 19:46:04,428 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.5359 (Δ -0.4641)
+2025-04-13 19:46:04,428 - trust_dynamics_tests - INFO - After step 7 - Citizen 5 trust changed:
+2025-04-13 19:46:04,428 - trust_dynamics_tests - INFO -   Government: 5.0000 → 9.4247 (Δ 4.4247)
+2025-04-13 19:46:04,428 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.8531 (Δ -0.1469)
+2025-04-13 19:46:04,428 - MESA.mesa.model - INFO - calling model.step for timestep 8 
+2025-04-13 19:46:04,431 - trust_dynamics_tests - INFO - Completed step 8
+2025-04-13 19:46:04,431 - trust_dynamics_tests - INFO - After step 8 - Citizen 1 trust changed:
+2025-04-13 19:46:04,431 - trust_dynamics_tests - INFO -   Government: 5.0000 → 9.9845 (Δ 4.9845)
+2025-04-13 19:46:04,431 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.6039 (Δ -0.3961)
+2025-04-13 19:46:04,432 - trust_dynamics_tests - INFO - After step 8 - Citizen 2 trust changed:
+2025-04-13 19:46:04,432 - trust_dynamics_tests - INFO -   Government: 5.0000 → 5.0000 (Δ 0.0000)
+2025-04-13 19:46:04,432 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.8932 (Δ -0.1068)
+2025-04-13 19:46:04,432 - trust_dynamics_tests - INFO - After step 8 - Citizen 3 trust changed:
+2025-04-13 19:46:04,432 - trust_dynamics_tests - INFO -   Government: 5.0000 → 6.5503 (Δ 1.5503)
+2025-04-13 19:46:04,432 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 5.1161 (Δ 0.1161)
+2025-04-13 19:46:04,432 - trust_dynamics_tests - INFO - After step 8 - Citizen 4 trust changed:
+2025-04-13 19:46:04,432 - trust_dynamics_tests - INFO -   Government: 5.0000 → 9.6581 (Δ 4.6581)
+2025-04-13 19:46:04,432 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.5359 (Δ -0.4641)
+2025-04-13 19:46:04,432 - trust_dynamics_tests - INFO - After step 8 - Citizen 5 trust changed:
+2025-04-13 19:46:04,432 - trust_dynamics_tests - INFO -   Government: 5.0000 → 9.4247 (Δ 4.4247)
+2025-04-13 19:46:04,432 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.9689 (Δ -0.0311)
+2025-04-13 19:46:04,432 - MESA.mesa.model - INFO - calling model.step for timestep 9 
+2025-04-13 19:46:04,435 - trust_dynamics_tests - INFO - Completed step 9
+2025-04-13 19:46:04,435 - trust_dynamics_tests - INFO - After step 9 - Citizen 1 trust changed:
+2025-04-13 19:46:04,436 - trust_dynamics_tests - INFO -   Government: 5.0000 → 9.9845 (Δ 4.9845)
+2025-04-13 19:46:04,436 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.6039 (Δ -0.3961)
+2025-04-13 19:46:04,436 - trust_dynamics_tests - INFO - After step 9 - Citizen 2 trust changed:
+2025-04-13 19:46:04,436 - trust_dynamics_tests - INFO -   Government: 5.0000 → 5.0000 (Δ 0.0000)
+2025-04-13 19:46:04,436 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.8932 (Δ -0.1068)
+2025-04-13 19:46:04,436 - trust_dynamics_tests - INFO - After step 9 - Citizen 3 trust changed:
+2025-04-13 19:46:04,436 - trust_dynamics_tests - INFO -   Government: 5.0000 → 8.1845 (Δ 3.1845)
+2025-04-13 19:46:04,436 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 5.1990 (Δ 0.1990)
+2025-04-13 19:46:04,436 - trust_dynamics_tests - INFO - After step 9 - Citizen 4 trust changed:
+2025-04-13 19:46:04,436 - trust_dynamics_tests - INFO -   Government: 5.0000 → 9.6581 (Δ 4.6581)
+2025-04-13 19:46:04,436 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.6323 (Δ -0.3677)
+2025-04-13 19:46:04,436 - trust_dynamics_tests - INFO - After step 9 - Citizen 5 trust changed:
+2025-04-13 19:46:04,436 - trust_dynamics_tests - INFO -   Government: 5.0000 → 9.4247 (Δ 4.4247)
+2025-04-13 19:46:04,437 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 5.0614 (Δ 0.0614)
+2025-04-13 19:46:04,437 - MESA.mesa.model - INFO - calling model.step for timestep 10 
+2025-04-13 19:46:04,440 - trust_dynamics_tests - INFO - Completed step 10
+2025-04-13 19:46:04,440 - trust_dynamics_tests - INFO - After step 10 - Citizen 1 trust changed:
+2025-04-13 19:46:04,440 - trust_dynamics_tests - INFO -   Government: 5.0000 → 9.9845 (Δ 4.9845)
+2025-04-13 19:46:04,440 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.6039 (Δ -0.3961)
+2025-04-13 19:46:04,440 - trust_dynamics_tests - INFO - After step 10 - Citizen 2 trust changed:
+2025-04-13 19:46:04,440 - trust_dynamics_tests - INFO -   Government: 5.0000 → 5.0000 (Δ 0.0000)
+2025-04-13 19:46:04,440 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 5.2224 (Δ 0.2224)
+2025-04-13 19:46:04,440 - trust_dynamics_tests - INFO - After step 10 - Citizen 3 trust changed:
+2025-04-13 19:46:04,440 - trust_dynamics_tests - INFO -   Government: 5.0000 → 8.1845 (Δ 3.1845)
+2025-04-13 19:46:04,440 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 5.1990 (Δ 0.1990)
+2025-04-13 19:46:04,441 - trust_dynamics_tests - INFO - After step 10 - Citizen 4 trust changed:
+2025-04-13 19:46:04,441 - trust_dynamics_tests - INFO -   Government: 5.0000 → 9.6581 (Δ 4.6581)
+2025-04-13 19:46:04,441 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 5.0120 (Δ 0.0120)
+2025-04-13 19:46:04,441 - trust_dynamics_tests - INFO - After step 10 - Citizen 5 trust changed:
+2025-04-13 19:46:04,441 - trust_dynamics_tests - INFO -   Government: 5.0000 → 9.4247 (Δ 4.4247)
+2025-04-13 19:46:04,441 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 5.0614 (Δ 0.0614)
+2025-04-13 19:46:04,441 - trust_dynamics_tests - INFO - Final trust values:
+2025-04-13 19:46:04,441 - trust_dynamics_tests - INFO - Government trust avg: 8.4504, var: 3.3474
+2025-04-13 19:46:04,441 - trust_dynamics_tests - INFO - Corporate trust avg: 5.0198, var: 0.0496
+2025-04-13 19:46:04,441 - trust_dynamics_tests - INFO - Government trust change: 3.4504
+2025-04-13 19:46:04,441 - trust_dynamics_tests - INFO - Corporate trust change: 0.0198
+2025-04-13 19:46:04,441 - trust_dynamics_tests - INFO - Citizen 0 trust changed:
+2025-04-13 19:46:04,442 - trust_dynamics_tests - INFO -   Government: 5.0000 → 9.9845 (Δ 4.9845)
+2025-04-13 19:46:04,442 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 4.6039 (Δ -0.3961)
+2025-04-13 19:46:04,442 - trust_dynamics_tests - INFO - Citizen 1 trust changed:
+2025-04-13 19:46:04,442 - trust_dynamics_tests - INFO -   Government: 5.0000 → 5.0000 (Δ 0.0000)
+2025-04-13 19:46:04,442 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 5.2224 (Δ 0.2224)
+2025-04-13 19:46:04,442 - trust_dynamics_tests - INFO - Citizen 2 trust changed:
+2025-04-13 19:46:04,442 - trust_dynamics_tests - INFO -   Government: 5.0000 → 8.1845 (Δ 3.1845)
+2025-04-13 19:46:04,442 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 5.1990 (Δ 0.1990)
+2025-04-13 19:46:04,442 - trust_dynamics_tests - INFO - Citizen 3 trust changed:
+2025-04-13 19:46:04,442 - trust_dynamics_tests - INFO -   Government: 5.0000 → 9.6581 (Δ 4.6581)
+2025-04-13 19:46:04,442 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 5.0120 (Δ 0.0120)
+2025-04-13 19:46:04,442 - trust_dynamics_tests - INFO - Citizen 4 trust changed:
+2025-04-13 19:46:04,442 - trust_dynamics_tests - INFO -   Government: 5.0000 → 9.4247 (Δ 4.4247)
+2025-04-13 19:46:04,442 - trust_dynamics_tests - INFO -   Corporate: 5.0000 → 5.0614 (Δ 0.0614)

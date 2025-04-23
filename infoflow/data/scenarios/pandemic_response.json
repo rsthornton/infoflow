@@ -1,0 +1,56 @@
+{
+    "id": "pandemic_response",
+    "name": "Pandemic Information Landscape",
+    "description": "This scenario models the complex information environment during a public health crisis like a pandemic. It showcases how uncertainty, evolving scientific understanding, and politicized viewpoints create a challenging landscape for accurate information dissemination.",
+    "learning_objectives": [
+        "Understand how pre-existing beliefs affect processing of new health information",
+        "Observe how scientific uncertainty enables belief polarization",
+        "Identify the role trusted authorities play in controversial situations",
+        "Recognize how mixed messaging affects public trust and information acceptance"
+    ],
+    "scenario_context": "Information about a novel contagious disease is being shared across social media. The simulation begins when scientific understanding is still evolving, creating an environment where both accurate information and misinformation circulate simultaneously. Public health authorities, media organizations, and social media influencers all participate in information sharing with varying degrees of accuracy and bias.",
+    "observation_guidance": "Focus on how the network separates into distinct belief clusters. Notice which cognitive factors most strongly predict whether users accept accurate health information. Pay attention to changes in trust over time toward different information sources, and how initial trust levels affect long-term belief formation.",
+    "simulation_parameters": {
+        "num_citizens": 100,
+        "num_corporate_media": 4,
+        "num_influencers": 8,
+        "num_government": 2,
+        "network_type": "scale_free",
+        "steps": 75,
+        
+        "truth_seeking_mean": 0,
+        "truth_seeking_std": 3.0,
+        "confirmation_bias_min": 4,
+        "confirmation_bias_max": 8,
+        "critical_thinking_min": 3,
+        "critical_thinking_max": 7,
+        "social_conformity_min": 4,
+        "social_conformity_max": 8,
+        
+        "initial_trust_in_corporate": 5.0,
+        "initial_trust_in_influencers": 6.0,
+        "initial_trust_in_government": 5.0,
+        
+        "corporate_bias_min": -3,
+        "corporate_bias_max": 3,
+        "influencer_bias_min": -4,
+        "influencer_bias_max": 4,
+        "government_bias": 1.0,
+        
+        "truth_commitment_corporate": 5.0,
+        "truth_commitment_influencer": 4.0,
+        "truth_commitment_government": 7.0,
+        
+        "corporate_publication_rate": 0.9,
+        "corporate_influence_reach": 0.75,
+        "influencer_publication_rate": 0.95,
+        "influencer_influence_reach": 0.7,
+        "government_publication_rate": 0.8,
+        "government_influence_reach": 0.65,
+        
+        "small_world_k": 4,
+        "small_world_p": 0.1,
+        "scale_free_m": 4,
+        "random_p": 0.1
+    }
+}

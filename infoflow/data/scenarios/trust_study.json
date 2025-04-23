@@ -1,0 +1,57 @@
+{
+    "id": "trust_study",
+    "name": "Institutional Trust Study",
+    "description": "This scenario examines how initial trust in different media institutions affects information quality and belief accuracy. It presents a moderate trust environment that can be compared with low or high trust environments to study trust dynamics.",
+    "learning_objectives": [
+        "Understand how initial trust in different information sources shapes belief formation",
+        "Observe how trust levels evolve during information exchange",
+        "Analyze the relationship between institutional trust and information ecosystem health",
+        "Identify conditions that lead to trust polarization versus trust consensus"
+    ],
+    "scenario_context": "This simulation creates a moderate trust environment where citizens begin with neutral trust levels across all media types. Information of varying quality circulates while citizens form beliefs based partly on their initial trust predispositions.",
+    "observation_guidance": "Focus on how trust levels evolve over time for different media types. Notice which media sources gain or lose trust, and how this correlates with their truth commitment. Pay attention to trust variance as an indicator of polarization in institutional trust.",
+    "research_question": "What is the relationship between institutional trust and a healthy social media information ecosystem?",
+    "simulation_parameters": {
+        "num_citizens": 100,
+        "num_corporate_media": 3,
+        "num_influencers": 5,
+        "num_government": 1,
+        "network_type": "small_world",
+        "steps": 75,
+        
+        "truth_seeking_mean": 1.0,
+        "truth_seeking_std": 2.0,
+        "confirmation_bias_min": 4,
+        "confirmation_bias_max": 7,
+        "critical_thinking_min": 4,
+        "critical_thinking_max": 7,
+        "social_conformity_min": 4,
+        "social_conformity_max": 7,
+        
+        "initial_trust_in_corporate": 5.0,
+        "initial_trust_in_influencers": 5.0,
+        "initial_trust_in_government": 5.0,
+        
+        "corporate_bias_min": -2,
+        "corporate_bias_max": 2,
+        "influencer_bias_min": -3,
+        "influencer_bias_max": 3,
+        "government_bias": 0,
+        
+        "truth_commitment_corporate": 6.0,
+        "truth_commitment_influencer": 5.0,
+        "truth_commitment_government": 6.0,
+        
+        "corporate_publication_rate": 0.8,
+        "corporate_influence_reach": 0.7,
+        "influencer_publication_rate": 0.8,
+        "influencer_influence_reach": 0.6,
+        "government_publication_rate": 0.7,
+        "government_influence_reach": 0.7,
+        
+        "small_world_k": 4,
+        "small_world_p": 0.1,
+        "scale_free_m": 3,
+        "random_p": 0.1
+    }
+}

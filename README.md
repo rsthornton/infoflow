@@ -221,7 +221,6 @@ python run_tests.py
 The project includes comprehensive documentation in the `docs/` directory:
 
 - [**Project Overview**](docs/PROJECT_OVERVIEW.md): Introduction to project concepts and architecture
-- [**User Guide**](docs/USER_GUIDE.md): How to use the simulation and interpret results
 - [**Code Structure**](docs/CODE_STRUCTURE.md): Details of code organization
 
 ## Project Status (April 2025)

@@ -1,8 +1,13 @@
 # InfoFlow: Social Media Information Flow Simulation
 
-> **2025 Update**: A streamlined CSV-based analysis framework has been implemented! See the [CSV Analysis Framework](#csv-analysis-framework) section.
+> **Note**: This project was developed in order to support collaborative exploration of a complex social issue where the nuance needed for systematic analysis is often lost in the rush to push political agendas or mechanistic quick fixes. I do not endorse any use of this ABM for the purposes of crafting public policy. It is meant for thought experiments. - [Agent‐based models with qualitative data are thought experiments, not policy engines](https://doi.org/10.1002/ffo2.87)
 
-An agent-based model simulating how information flows through social media networks. The model focuses on how truth assessments form and propagate as users interact with content from different social media sources. It captures how corporate social media accounts, social media influencers, government social media accounts, and regular users interact within various social network structures to influence perceptions of truth and trust dynamics.
+
+> "Scientists seeing members of the public as partners in solving large societal challenges, such as COVID-19, rather than as patients with attitudinal or behavioral pathologies that need to be fixed will be a prerequisite for scientists’ continued ability to inform the urgent policy choices that are coming our way." - [Science and Ethics of “Curing” Misinformation](https://journalofethics.ama-assn.org/article/science-and-ethics-curing-misinformation/2023-03)
+>
+
+
+InfoFlow is an agent-based model simulating how information flows through social media networks. The model focuses on how truth assessments form and propagate as users interact with content from different social media sources. It captures how corporate social media accounts, social media influencers, government social media accounts, and regular users interact within various social network structures to influence perceptions of truth and trust dynamics.
 
 ## Features
 
